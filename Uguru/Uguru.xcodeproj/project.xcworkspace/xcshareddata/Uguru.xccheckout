@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>3DF557EE-EB20-4004-9302-5F0F022BF934</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Uguru</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>D36B2642-8AFB-4B61-BC03-4549D3B7A105</key>
+		<string>ssh://github.com/cameronehrlich/uguru-ios.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Uguru/Uguru.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>D36B2642-8AFB-4B61-BC03-4549D3B7A105</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/cameronehrlich/uguru-ios.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>D36B2642-8AFB-4B61-BC03-4549D3B7A105</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D36B2642-8AFB-4B61-BC03-4549D3B7A105</string>
+			<key>IDESourceControlWCCName</key>
+			<string>uguru-ios</string>
+		</dict>
+	</array>
+</dict>
+</plist>
