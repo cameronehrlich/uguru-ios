@@ -3,6 +3,8 @@
 
 target "Uguru" do
 	pod 'AFNetworking', '~> 2.3'
+    pod 'UIColor+Hex', '~> 1.0'
+    pod 'MBProgressHUD', '~> 0.8'
 end
 
 target "UguruTests" do
