@@ -54,6 +54,24 @@
 #define COCOAPODS_VERSION_MINOR_MBProgressHUD 8
 #define COCOAPODS_VERSION_PATCH_MBProgressHUD 0
 
+// NSDate+RelativeTime
+#define COCOAPODS_POD_AVAILABLE_NSDate_RelativeTime
+#define COCOAPODS_VERSION_MAJOR_NSDate_RelativeTime 1
+#define COCOAPODS_VERSION_MINOR_NSDate_RelativeTime 0
+#define COCOAPODS_VERSION_PATCH_NSDate_RelativeTime 1
+
+// RNFrostedSidebar
+#define COCOAPODS_POD_AVAILABLE_RNFrostedSidebar
+#define COCOAPODS_VERSION_MAJOR_RNFrostedSidebar 0
+#define COCOAPODS_VERSION_MINOR_RNFrostedSidebar 2
+#define COCOAPODS_VERSION_PATCH_RNFrostedSidebar 0
+
+// SSKeychain
+#define COCOAPODS_POD_AVAILABLE_SSKeychain
+#define COCOAPODS_VERSION_MAJOR_SSKeychain 1
+#define COCOAPODS_VERSION_MINOR_SSKeychain 2
+#define COCOAPODS_VERSION_PATCH_SSKeychain 2
+
 // UIColor+Hex
 #define COCOAPODS_POD_AVAILABLE_UIColor_Hex
 #define COCOAPODS_VERSION_MAJOR_UIColor_Hex 1

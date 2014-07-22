@@ -13,6 +13,6 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *email;
 @property (nonatomic, strong) NSString *password;
-@property (nonatomic, strong) NSString *phone_number;
+@property (nonatomic, strong) NSString *auth_token;
 
 @end

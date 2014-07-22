@@ -33,27 +33,24 @@
 {
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    User *newUser = [[User alloc] init];
+    User *newUser = [User new];
     newUser.name = self.name.text;
     newUser.email = self.email.text;
-    newUser.phone_number = self.phoneNumber.text;
     newUser.password = self.password.text;
 
-    [[[UGModel sharedInstance] requestManager] POST:@"sign_up" parameters:[newUser toDictionary] success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        NSString *authenticationToken = [[responseObject objectForKey:@"user"] objectForKey:@"auth_token"];
-        
-        // setting the token returned into the manager's serializer's headers for all future requests!
-        [[[[UGModel sharedInstance] requestManager] requestSerializer] setValue:authenticationToken forHTTPHeaderField:@"X-UGURU-Token"];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-        NSString *descrip = [responseObject description];
+    [[UGModel sharedInstance] signUp:newUser success:^(id responseObject) {
         
+        [self performSegueWithIdentifier:@"signUpToHome" sender:self];
+        
+    } fail:^(NSDictionary *errors) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
-        
-        [[[UIAlertView alloc] initWithTitle:@"Success" message:descrip delegate:nil cancelButtonTitle:@"Cool" otherButtonTitles:nil] show];
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [[[UIAlertView alloc] initWithTitle:@"Error" message:error.debugDescription delegate:nil cancelButtonTitle:@"Cool" otherButtonTitles:nil] show];
+        [[[UIAlertView alloc] initWithTitle:@"Oops"
+                                    message:@"We were unable to sign you up for reasons that the server cannot yet describe."
+                                   delegate:nil
+                          cancelButtonTitle:@"Okay"
+                          otherButtonTitles:nil] show];
     }];
 }
 @end

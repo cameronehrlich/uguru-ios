@@ -11,6 +11,22 @@
 
 @implementation UGObject
 
++ (instancetype)new
+{
+    return [[self alloc] init];
+}
+
++ (instancetype)fromDictionary:(NSDictionary *)dict
+{
+    id newObject = [[self alloc] init];
+    for (NSString *key in [dict allKeys]) {
+        if ([newObject respondsToSelector:NSSelectorFromString(key)]) {
+            [newObject setValue:dict[key] forKey:key];
+        }
+    }
+    return newObject;
+}
+
 - (NSDictionary *)toDictionary
 {
     NSMutableDictionary *body = [NSMutableDictionary dictionary];
@@ -37,11 +53,6 @@
         [body setObject:value forKey:propertyName];
     }
     free(properties);
-    
-    // TODO : If root node is expected by API
-//    NSString *rootName = [NSStringFromClass([self class]) lowercaseString];
-//
-//    return @{rootName: body};
     
     return body;
 }

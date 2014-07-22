@@ -12,6 +12,9 @@
 
 @property (nonatomic, strong) NSNumber *server_id;
 
++ (instancetype)new;
+
++ (instancetype)fromDictionary:(NSDictionary *)dict;
 - (NSDictionary *)toDictionary;
 
 @end

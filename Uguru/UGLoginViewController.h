@@ -10,4 +10,9 @@
 
 @interface UGLoginViewController : UITableViewController
 
+@property (strong, nonatomic) IBOutlet UITextField *email;
+@property (strong, nonatomic) IBOutlet UITextField *password;
+
+- (IBAction)loginAction:(id)sender;
+
 @end

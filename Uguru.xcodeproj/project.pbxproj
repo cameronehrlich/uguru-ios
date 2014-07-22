@@ -26,6 +26,10 @@
 		3254E4DB1975B64600205F33 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3254E4B71975B64600205F33 /* UIKit.framework */; };
 		3254E4E31975B64600205F33 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3254E4E11975B64600205F33 /* InfoPlist.strings */; };
 		3254E4E51975B64600205F33 /* UguruTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3254E4E41975B64600205F33 /* UguruTests.m */; };
+		32C12930197DC99B00FE483D /* UGHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C1292F197DC99B00FE483D /* UGHomeViewController.m */; };
+		32C12937197DE30600FE483D /* Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C12936197DE30600FE483D /* Notification.m */; };
+		32C1293A197E03CC00FE483D /* UGNotificationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C12939197E03CC00FE483D /* UGNotificationTableViewCell.m */; };
+		4605AED1AD5B4D25BE748C28 /* libPods-UguruTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0C9B1101D1F4600A1B4C6F7 /* libPods-UguruTests.a */; };
 		5390E66D51B24390BAD4ECD6 /* libPods-Uguru.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DBA02B7D2546ECAE33C73E /* libPods-Uguru.a */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		27A980C163FB480FAA312D7A /* Pods-UguruTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UguruTests.xcconfig"; path = "Pods/Pods-UguruTests.xcconfig"; sourceTree = "<group>"; };
 		3241625E197836EC0055EF7A /* UGWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGWelcomeViewController.h; sourceTree = "<group>"; };
 		3241625F197836EC0055EF7A /* UGWelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGWelcomeViewController.m; sourceTree = "<group>"; };
 		32416261197845D90055EF7A /* UGModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGModel.h; sourceTree = "<group>"; };
@@ -69,8 +74,15 @@
 		3254E4E01975B64600205F33 /* UguruTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UguruTests-Info.plist"; sourceTree = "<group>"; };
 		3254E4E21975B64600205F33 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3254E4E41975B64600205F33 /* UguruTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UguruTests.m; sourceTree = "<group>"; };
+		32C1292E197DC99B00FE483D /* UGHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGHomeViewController.h; sourceTree = "<group>"; };
+		32C1292F197DC99B00FE483D /* UGHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGHomeViewController.m; sourceTree = "<group>"; };
+		32C12935197DE30600FE483D /* Notification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Notification.h; sourceTree = "<group>"; };
+		32C12936197DE30600FE483D /* Notification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Notification.m; sourceTree = "<group>"; };
+		32C12938197E03CC00FE483D /* UGNotificationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGNotificationTableViewCell.h; sourceTree = "<group>"; };
+		32C12939197E03CC00FE483D /* UGNotificationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGNotificationTableViewCell.m; sourceTree = "<group>"; };
 		48BD3755083547939D6F9810 /* Pods-Uguru.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Uguru.xcconfig"; path = "Pods/Pods-Uguru.xcconfig"; sourceTree = "<group>"; };
 		C5DBA02B7D2546ECAE33C73E /* libPods-Uguru.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Uguru.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0C9B1101D1F4600A1B4C6F7 /* libPods-UguruTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UguruTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +104,7 @@
 				3254E4D91975B64600205F33 /* XCTest.framework in Frameworks */,
 				3254E4DB1975B64600205F33 /* UIKit.framework in Frameworks */,
 				3254E4DA1975B64600205F33 /* Foundation.framework in Frameworks */,
+				4605AED1AD5B4D25BE748C28 /* libPods-UguruTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +120,8 @@
 				3241626919784D900055EF7A /* UGObject.m */,
 				3241626519784D330055EF7A /* User.h */,
 				3241626619784D330055EF7A /* User.m */,
+				32C12935197DE30600FE483D /* Notification.h */,
+				32C12936197DE30600FE483D /* Notification.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -119,6 +134,7 @@
 				3254E4B21975B64600205F33 /* Frameworks */,
 				3254E4B11975B64600205F33 /* Products */,
 				48BD3755083547939D6F9810 /* Pods-Uguru.xcconfig */,
+				27A980C163FB480FAA312D7A /* Pods-UguruTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -139,6 +155,7 @@
 				3254E4B71975B64600205F33 /* UIKit.framework */,
 				3254E4D81975B64600205F33 /* XCTest.framework */,
 				C5DBA02B7D2546ECAE33C73E /* libPods-Uguru.a */,
+				D0C9B1101D1F4600A1B4C6F7 /* libPods-UguruTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -149,13 +166,9 @@
 				3254E4C21975B64600205F33 /* UGAppDelegate.h */,
 				3254E4C31975B64600205F33 /* UGAppDelegate.m */,
 				3254E4C51975B64600205F33 /* Main_iPhone.storyboard */,
-				3241625E197836EC0055EF7A /* UGWelcomeViewController.h */,
-				3241625F197836EC0055EF7A /* UGWelcomeViewController.m */,
-				3241626D19785E990055EF7A /* UGLoginViewController.h */,
-				3241626E19785E990055EF7A /* UGLoginViewController.m */,
-				3241627019785EAD0055EF7A /* UGSignUpViewController.h */,
-				3241627119785EAD0055EF7A /* UGSignUpViewController.m */,
 				3241626419784D230055EF7A /* Model */,
+				32C12931197DC9A800FE483D /* Controllers */,
+				32C1293B197E03D200FE483D /* Views */,
 				3254E4D11975B64600205F33 /* Images.xcassets */,
 				3254E4BA1975B64600205F33 /* Supporting Files */,
 			);
@@ -191,6 +204,30 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		32C12931197DC9A800FE483D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3241625E197836EC0055EF7A /* UGWelcomeViewController.h */,
+				3241625F197836EC0055EF7A /* UGWelcomeViewController.m */,
+				3241626D19785E990055EF7A /* UGLoginViewController.h */,
+				3241626E19785E990055EF7A /* UGLoginViewController.m */,
+				3241627019785EAD0055EF7A /* UGSignUpViewController.h */,
+				3241627119785EAD0055EF7A /* UGSignUpViewController.m */,
+				32C1292E197DC99B00FE483D /* UGHomeViewController.h */,
+				32C1292F197DC99B00FE483D /* UGHomeViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		32C1293B197E03D200FE483D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				32C12938197E03CC00FE483D /* UGNotificationTableViewCell.h */,
+				32C12939197E03CC00FE483D /* UGNotificationTableViewCell.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -217,9 +254,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3254E4EB1975B64600205F33 /* Build configuration list for PBXNativeTarget "UguruTests" */;
 			buildPhases = (
+				A1873DA2E8D64A46A5ED4553 /* Check Pods Manifest.lock */,
 				3254E4D31975B64600205F33 /* Sources */,
 				3254E4D41975B64600205F33 /* Frameworks */,
 				3254E4D51975B64600205F33 /* Resources */,
+				4819DB0F2CCA4CAF87C489F5 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -287,6 +326,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		4819DB0F2CCA4CAF87C489F5 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-UguruTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		829942836E794F8E8857D1D1 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -317,6 +371,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Pods-Uguru-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A1873DA2E8D64A46A5ED4553 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -326,7 +395,10 @@
 			files = (
 				32416260197836EC0055EF7A /* UGWelcomeViewController.m in Sources */,
 				32416263197845D90055EF7A /* UGModel.m in Sources */,
+				32C12937197DE30600FE483D /* Notification.m in Sources */,
 				3254E4C41975B64600205F33 /* UGAppDelegate.m in Sources */,
+				32C1293A197E03CC00FE483D /* UGNotificationTableViewCell.m in Sources */,
+				32C12930197DC99B00FE483D /* UGHomeViewController.m in Sources */,
 				3254E4C01975B64600205F33 /* main.m in Sources */,
 				3241627219785EAD0055EF7A /* UGSignUpViewController.m in Sources */,
 				3241626F19785E990055EF7A /* UGLoginViewController.m in Sources */,
@@ -483,6 +555,7 @@
 		};
 		3254E4EC1975B64600205F33 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27A980C163FB480FAA312D7A /* Pods-UguruTests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Uguru.app/Uguru";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -505,6 +578,7 @@
 		};
 		3254E4ED1975B64600205F33 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27A980C163FB480FAA312D7A /* Pods-UguruTests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Uguru.app/Uguru";
 				FRAMEWORK_SEARCH_PATHS = (

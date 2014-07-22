@@ -14,6 +14,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"welcomeBackground"]]];
     [[self.signUpCell textLabel] setTextColor:[UIColor colorWithCSS:@"#29ADE3"]];
     [[self.loginCell textLabel] setTextColor:[UIColor colorWithCSS:@"#5FBB46"]];
@@ -34,7 +35,18 @@
     }
 }
 
--(BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if (AUTO_LOGIN) {
+        if ([SSKeychain passwordForService:UGURU_KEYCHAIN_SERVICE account:UGURU_KEYCHAIN_ACCOUNT]) {
+            [self performSegueWithIdentifier:@"welcomeToHome" sender:self];
+        }
+    }
+}
+
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
         return NO;

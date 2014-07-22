@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface UGWelcomeViewController : UITableViewController
+
 @property (strong, nonatomic) IBOutlet UITableViewCell *signUpCell;
 @property (strong, nonatomic) IBOutlet UITableViewCell *loginCell;
 
