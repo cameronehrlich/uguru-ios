@@ -41,9 +41,6 @@
     // Setup Sidebar
     NSArray *images = @[
                         [UIImage imageNamed:@"guru"],
-                        [UIImage imageNamed:@"guru"],
-                        [UIImage imageNamed:@"guru"],
-                        [UIImage imageNamed:@"guru"]
                         ];
     
     self.sidebar = [[RNFrostedSidebar alloc] initWithImages:images];
@@ -170,6 +167,16 @@
 
 - (void)sidebar:(RNFrostedSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index
 {
+    switch (index) {
+        case 0:
+            
+            [self performSegueWithIdentifier:@"homeToWelcome" sender:self];
+            break;
+        case 1:
+            break;
+        default:
+            break;
+    }
     [sidebar dismissAnimated:YES];
 }
 - (void)goToFeed
@@ -179,6 +186,15 @@
 
 - (void)goToMessages
 {
+    [[UGModel sharedInstance] getAllConversationsWithSuccess:^(id responseObject) {
+        
+        
+        [self performSegueWithIdentifier:@"homeToInbox" sender:self];
+    } fail:^(NSDictionary *errors) {
+        [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"Couldn't get your conversations, sorry!"
+                                   delegate:nil
+                          cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
+    }];
     
 }
 
@@ -196,6 +212,8 @@
     if ([segue.identifier isEqualToString:@"homeToNotification"]) {
         UGNotificationViewController *dst = [segue destinationViewController];
         [dst setNotification:_selectedNotification];
+    }else if ([segue.identifier isEqualToString:@"homeToWelcome"]){
+        [SSKeychain deletePasswordForService:UGURU_KEYCHAIN_SERVICE account:UGURU_KEYCHAIN_ACCOUNT];
     }
 }
 

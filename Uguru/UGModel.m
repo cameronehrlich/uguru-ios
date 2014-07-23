@@ -35,6 +35,9 @@
     return self;
 }
 
+
+#pragma mark -
+#pragma mark User
 - (void)signUp:(User *)user success:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock
 {
     [self.requestManager POST:@"sign_up" parameters:[user toDictionary] success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -109,7 +112,8 @@
                      }];
 }
 
-
+#pragma mark -
+#pragma mark Notifications
 - (void)getAllNotificationsWithSuccess:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock
 {
     [self.requestManager GET:@"notifications"
@@ -186,5 +190,30 @@
                      }];
 }
 
+#pragma mark -
+#pragma mark Messages
+
+-(void)getAllConversationsWithSuccess:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock
+{
+    [self.requestManager GET:@"conversations"
+                  parameters:nil
+                     success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                         
+                         NSMutableArray *outputConvos = [NSMutableArray array];
+                         
+                         NSArray *_convos = responseObject[@"conversations"];
+                         
+                         for (NSDictionary *convoDict in _convos) {
+                             Conversation *convo = [Conversation fromDictionary:convoDict];
+                             [outputConvos addObject:convo];
+                         }
+                         
+                         self.conversations = [outputConvos copy];
+                         successBlock(self.conversations);
+                     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                         NSLog(@"Failed to get all conversations");
+                         failBlock(@{});
+                     }];
+}
 
 @end

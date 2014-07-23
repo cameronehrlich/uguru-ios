@@ -17,7 +17,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eq9-QA-ai8" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-263" y="64"/>
+            <point key="canvasLocation" x="-631" y="-686"/>
         </scene>
         <!--Welcome View Controller - Welcome-->
         <scene sceneID="VgW-fR-Quf">
@@ -101,7 +101,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Cn-md-YlS" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="283" y="64"/>
+            <point key="canvasLocation" x="-89" y="-677"/>
         </scene>
         <!--Sign Up View Controller - Sign Up-->
         <scene sceneID="ups-Lj-ISI">
@@ -193,7 +193,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gfy-MB-3iE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="878" y="-245"/>
+            <point key="canvasLocation" x="666" y="-770"/>
         </scene>
         <!--Login View Controller - Login-->
         <scene sceneID="7SR-DR-4b0">
@@ -276,7 +276,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hkU-zT-Uiu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="878" y="432"/>
+            <point key="canvasLocation" x="666" y="5"/>
         </scene>
         <!--Home View Controller - Feed-->
         <scene sceneID="gRq-CO-dnM">
@@ -361,11 +361,58 @@
                     </refreshControl>
                     <connections>
                         <segue destination="j7O-e2-yVP" kind="push" identifier="homeToNotification" id="meh-Za-3T1"/>
+                        <segue destination="rS3-R9-Ivy" kind="modal" identifier="homeToWelcome" modalTransitionStyle="crossDissolve" id="2f6-lh-rlg"/>
+                        <segue destination="BJD-gE-45c" kind="push" identifier="homeToInbox" id="dIW-kY-ZUJ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gMb-RC-MWv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1933" y="64"/>
+            <point key="canvasLocation" x="1266" y="729"/>
+        </scene>
+        <!--Inbox View Controller - Inbox-->
+        <scene sceneID="n0A-kq-DEf">
+            <objects>
+                <tableViewController id="BJD-gE-45c" customClass="UGInboxViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="al3-2S-Sv2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ConversationCell" textLabel="xkZ-zs-CIF" detailTextLabel="OLn-o2-4FI" style="IBUITableViewCellStyleSubtitle" id="yTq-dY-qlO">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yTq-dY-qlO" id="q0n-P3-RdF">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xkZ-zs-CIF">
+                                            <rect key="frame" x="15" y="3" width="34" height="22"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OLn-o2-4FI">
+                                            <rect key="frame" x="15" y="25" width="43" height="15"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="BJD-gE-45c" id="r37-v4-i68"/>
+                            <outlet property="delegate" destination="BJD-gE-45c" id="BWB-RV-LBC"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Inbox" id="wyu-NQ-gZ6"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BwC-na-bKm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1790" y="5"/>
         </scene>
         <!--Notification View Controller - Notification-->
         <scene sceneID="1fv-xE-jVf">
@@ -398,7 +445,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rsr-XZ-t0h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2342" y="64"/>
+            <point key="canvasLocation" x="1790" y="729"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tEN-E3-Fuc">
@@ -419,7 +466,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1k4-5o-fsP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1480" y="73"/>
+            <point key="canvasLocation" x="666" y="729"/>
         </scene>
     </scenes>
     <resources>
@@ -431,6 +478,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ZGu-O4-Fxo"/>
+        <segue reference="xAL-2C-Ljb"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -20,7 +20,7 @@
     [[self.loginCell textLabel] setTextColor:[UIColor colorWithCSS:@"#5FBB46"]];
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{    
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     switch (indexPath.row) {
         case 0:
             return;
@@ -39,16 +39,15 @@
 {
     [super viewDidAppear:animated];
     
-    if (AUTO_LOGIN) {
-        if ([SSKeychain passwordForService:UGURU_KEYCHAIN_SERVICE account:UGURU_KEYCHAIN_ACCOUNT]) {
-            [[UGModel sharedInstance] getUserWithSuccess:^(id responseObject) {
-                [self performSegueWithIdentifier:@"welcomeToHome" sender:self];
-            } fail:^(NSDictionary *errors) {
-                //
-                NSLog(@"FAILED TO GET THE USER");
-            }];
-        }
+    
+    if ([SSKeychain passwordForService:UGURU_KEYCHAIN_SERVICE account:UGURU_KEYCHAIN_ACCOUNT]) {
+        [[UGModel sharedInstance] getUserWithSuccess:^(id responseObject) {
+            [self performSegueWithIdentifier:@"welcomeToHome" sender:self];
+        } fail:^(NSDictionary *errors) {
+            NSLog(@"FAILED TO GET THE USER");
+        }];
     }
+    
 }
 
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
