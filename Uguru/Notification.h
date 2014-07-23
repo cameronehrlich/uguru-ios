@@ -7,6 +7,8 @@
 //
 
 #import "UGObject.h"
+#import "Payment.h"
+#import "Request.h"
 
 @interface Notification : UGObject
 
@@ -16,5 +18,8 @@
 @property (nonatomic, strong) NSString *time_created;
 @property (nonatomic, strong) NSString *time_read;
 @property (nonatomic, strong) NSString *status;
+@property (nonatomic, strong) NSString *type;
+@property (nonatomic, strong) Payment  *payment;
+@property (nonatomic, strong) Request  *request;
 
 @end

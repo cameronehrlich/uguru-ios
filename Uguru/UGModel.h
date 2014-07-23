@@ -10,15 +10,19 @@
 #import <AFNetworking.h>
 #import <SSKeychain.h>
 #import <MBProgressHUD.h>
+
 #import "UGObject.h"
 #import "User.h"
 #import "Notification.h"
+#import "Payment.h"
+#import "Request.h"
 
-#define API_BASE_URL @"http://testing.uguru.me/api/"
-#define UGURU_AUTH_TOKEN @"X-UGURU-Token"
+#define API_BASE_URL           @"http://testing.uguru.me/api/"
+#define UGURU_AUTH_TOKEN       @"X-UGURU-Token"
 #define UGURU_KEYCHAIN_SERVICE @"uguru-keychain-service"
 #define UGURU_KEYCHAIN_ACCOUNT @"uguru-keychain-account"
-#define AUTO_LOGIN NO
+#define UGURU_APN_TOKEN        @"UGURU-APN-Token"
+#define AUTO_LOGIN             YES
 
 typedef void (^UGSuccessBlock)(id responseObject);
 typedef void (^UGFailBlock)(NSDictionary *errors);
@@ -34,6 +38,10 @@ typedef void (^UGFailBlock)(NSDictionary *errors);
 
 - (void)signUp:(User *)user success:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock;
 - (void)login:(User *)user success:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock;
-- (void)getNotificationsWithSuccess:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock;
+- (void)getUserWithSuccess:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock;
+- (void)updateUser:(User *)user success:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock;
+
+- (void)getAllNotificationsWithSuccess:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock;
+- (void)getNotification:(NSNumber *)server_id withSuccess:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock;
 
 @end

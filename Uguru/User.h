@@ -14,5 +14,6 @@
 @property (nonatomic, strong) NSString *email;
 @property (nonatomic, strong) NSString *password;
 @property (nonatomic, strong) NSString *auth_token;
+@property (nonatomic, strong) NSString *apn_token;
 
 @end

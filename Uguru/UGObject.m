@@ -18,9 +18,10 @@
 
 + (instancetype)fromDictionary:(NSDictionary *)dict
 {
+    NSAssert(dict != nil, @"Can't form %@ with nil dict.", NSStringFromClass([self class]));
     id newObject = [[self alloc] init];
     for (NSString *key in [dict allKeys]) {
-        if ([newObject respondsToSelector:NSSelectorFromString(key)]) {
+        if ([newObject respondsToSelector:NSSelectorFromString(key)] && ![@[@"description", @"id"] containsObject:key]) {
             [newObject setValue:dict[key] forKey:key];
         }
     }
@@ -57,5 +58,9 @@
     return body;
 }
 
+- (NSString *)description
+{
+    return [[self toDictionary] description];
+}
 
 @end

@@ -41,7 +41,12 @@
     
     if (AUTO_LOGIN) {
         if ([SSKeychain passwordForService:UGURU_KEYCHAIN_SERVICE account:UGURU_KEYCHAIN_ACCOUNT]) {
-            [self performSegueWithIdentifier:@"welcomeToHome" sender:self];
+            [[UGModel sharedInstance] getUserWithSuccess:^(id responseObject) {
+                [self performSegueWithIdentifier:@"welcomeToHome" sender:self];
+            } fail:^(NSDictionary *errors) {
+                //
+                NSLog(@"FAILED TO GET THE USER");
+            }];
         }
     }
 }

@@ -1,0 +1,5 @@
+#include "Pods-Uguru-MBProgressHUD.xcconfig"
+GCC_PREPROCESSOR_DEFINITIONS = COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/MBProgressHUD" "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/AFNetworking" "${PODS_ROOT}/Headers/MBProgressHUD" "${PODS_ROOT}/Headers/NSDate+RelativeTime" "${PODS_ROOT}/Headers/RNFrostedSidebar" "${PODS_ROOT}/Headers/SSKeychain" "${PODS_ROOT}/Headers/UIColor+Hex" "${PODS_ROOT}/Headers/XCTestAsync"
+OTHER_LDFLAGS = -ObjC ${PODS_UGURU_MBPROGRESSHUD_OTHER_LDFLAGS}
+PODS_ROOT = ${SRCROOT}

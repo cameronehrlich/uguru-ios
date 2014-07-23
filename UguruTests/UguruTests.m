@@ -21,7 +21,6 @@
 {
     [super setUp];
     self.model = [[UGModel alloc] init];
-    [SSKeychain deletePasswordForService:UGURU_KEYCHAIN_SERVICE account:UGURU_KEYCHAIN_ACCOUNT];
     
     // Put setup code here. This method is called before the invocation of each test method in the class.
 }
@@ -44,7 +43,6 @@
         // Test returned object
         User *returnedUser = responseObject;
         
-        
         XCTAssert([[returnedUser name] isEqualToString:@"Samir"], @"Incorrect response info.");
         
         // Test Token
@@ -55,10 +53,62 @@
         XCAsyncSuccess();
     } fail:^(NSDictionary *errors) {
         
-        XCAsyncFailAfter(0, @"Failed to signup user");
+        XCAsyncFailAfter(0, @"Failed to signup user.");
     }];
 }
 
-// TODO : Test login test (this test will have to create an account and then try to login as the user it just created)
+
+- (void)testLoginAsync
+{
+    User *newUser = [User new];
+    newUser.name = @"Samir";
+    newUser.email = [NSString stringWithFormat:@"%f%@", NSDate.date.timeIntervalSince1970, @"@uguruintegrationtesting.com"];
+    newUser.password = @"Password123";
+    
+    [self.model signUp:newUser success:^(id responseObject) {
+        [self.model login:newUser success:^(id responseObject) { 
+            // TODO : Do more checks on the status of the actual retured object
+            XCAsyncSuccess();
+        } fail:^(NSDictionary *errors) {
+            XCAsyncFailAfter(0, @"Failed to login user");
+        }];
+        XCAsyncSuccess();
+    } fail:^(NSDictionary *errors) {
+        XCAsyncFailAfter(0, @"Failed to signup user.");
+    }];
+}
+
+- (void)testGetUserAsync
+{
+    User *newUser = [User new];
+    newUser.name = @"Samir";
+    newUser.email = [NSString stringWithFormat:@"%f%@", NSDate.date.timeIntervalSince1970, @"@uguruintegrationtesting.com"];
+    newUser.password = @"Password123";
+    
+    [self.model signUp:newUser success:^(id responseObject) {
+        [self.model getUserWithSuccess:^(id responseObject) {
+            XCTAssert([self.model.user.name isEqualToString:@"Samir"], @"Returned user is wrong");
+            XCAsyncSuccess();
+        } fail:^(NSDictionary *errors) {
+            XCAsyncFailAfter(0, @"");
+        }];
+    } fail:^(NSDictionary *errors) {
+        XCAsyncFailAfter(0, @"");
+    }];
+}
+
+- (void)testUpdateUserAsync
+{
+    User *newUser = [User new];
+    newUser.name = @"Samir";
+    newUser.email = [NSString stringWithFormat:@"%f%@", NSDate.date.timeIntervalSince1970, @"@uguruintegrationtesting.com"];
+    newUser.password = @"Password123";
+    
+    [self.model signUp:newUser success:^(id responseObject) {
+        XCAsyncSuccess();
+    } fail:^(NSDictionary *errors) {
+        XCAsyncFailAfter(0, @"");
+    }];
+}
 
 @end

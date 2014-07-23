@@ -12,9 +12,46 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // Let the device know we want to receive push notifications
+	[[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    
+//    UIRemoteNotificationType enabledTypes = [[UIApplication sharedApplication] enabledRemoteNotificationTypes];
+    
     return YES;
 }
-							
+
+#pragma mark NotificationDelegate Methods
+-(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    
+    NSString *apnToken = [deviceToken description];
+    apnToken = [apnToken stringByReplacingOccurrencesOfString:@" " withString:@""];
+    apnToken = [apnToken stringByReplacingOccurrencesOfString:@"<" withString:@""];
+    apnToken = [apnToken stringByReplacingOccurrencesOfString:@">" withString:@""];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:apnToken forKey:UGURU_APN_TOKEN];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    NSLog(@"Set APN token to: %@", apnToken);
+}
+
+-(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    NSLog(@"Failed to get token, error: %@", error);
+}
+
+-(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
+    NSLog(@"%s", __FUNCTION__);
+}
+
+
+
+-(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    NSLog(@"%s", __FUNCTION__);
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

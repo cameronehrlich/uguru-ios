@@ -10,9 +10,4 @@
 
 @implementation User
 
--(NSString *)description
-{
-    return [NSString stringWithFormat:@"< User, %@, %@, %@, %@ >", self.server_id, self.name, self.email, self.auth_token];
-}
-
 @end

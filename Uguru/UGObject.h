@@ -11,6 +11,7 @@
 @interface UGObject : NSObject
 
 @property (nonatomic, strong) NSNumber *server_id;
+@property (nonatomic, strong) NSNumber *time_estimate;
 
 + (instancetype)new;
 

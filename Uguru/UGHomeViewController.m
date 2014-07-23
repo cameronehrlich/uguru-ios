@@ -8,10 +8,15 @@
 
 #import "UGHomeViewController.h"
 #import "UGNotificationTableViewCell.h"
+#import "UGNotificationViewController.h"
 #import <AFNetworking/UIKit+AFNetworking.h>
 #import <NSDate+RelativeTime.h>
 
+
 @implementation UGHomeViewController
+{
+    Notification *_selectedNotification;
+}
 
 - (void)viewDidLoad
 {
@@ -32,7 +37,7 @@
     refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
     [refresh addTarget:self action:@selector(fetchNotifications) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
-
+    
     // Setup Sidebar
     NSArray *images = @[
                         [UIImage imageNamed:@"guru"],
@@ -43,6 +48,21 @@
     
     self.sidebar = [[RNFrostedSidebar alloc] initWithImages:images];
     [self.sidebar setDelegate:self];
+    
+    
+    // Send up the apn token!
+    User *currentUser = [[UGModel sharedInstance] user];
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:UGURU_APN_TOKEN]) {
+        NSLog(@"Pushing up APS Token");
+        [currentUser setApn_token:[[NSUserDefaults standardUserDefaults] stringForKey:UGURU_APN_TOKEN]];
+        
+        
+        [[UGModel sharedInstance] updateUser:currentUser success:^(id responseObject) {
+            NSLog(@"Successfully updated the APS token.");
+        } fail:^(NSDictionary *errors) {
+            NSLog(@"Failed to update the user.");
+        }];
+    }
     
     // Go get 'em
     [self fetchNotifications];
@@ -56,13 +76,27 @@
 
 - (void)fetchNotifications
 {
-    [[UGModel sharedInstance] getNotificationsWithSuccess:^(id responseObject) {
+    // Refresh notifications
+    [[UGModel sharedInstance] getAllNotificationsWithSuccess:^(id responseObject) {
         [self.tableView reloadData];
         [self.refreshControl endRefreshing];
     } fail:^(NSDictionary *errors) {
         [self.refreshControl endRefreshing];
-        [[[UIAlertView alloc] initWithTitle:@"Oops" message:[NSString stringWithFormat:@"Couldn't load feed.\n %@", errors] delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
+        [[[UIAlertView alloc] initWithTitle:@"Oops"
+                                    message:[NSString stringWithFormat:@"Couldn't load feed.\n %@", errors]
+                                   delegate:nil
+                          cancelButtonTitle:@"Okay"
+                          otherButtonTitles:nil] show];
     }];
+    
+    
+    // Refresh user
+    [[UGModel sharedInstance] getUserWithSuccess:^(id responseObject) {
+        // DO SOMETHING???
+    } fail:^(NSDictionary *errors) {
+        // DO SOMETHING ELSE???
+    }];
+    
 }
 
 #pragma mark - Table view data source
@@ -75,6 +109,57 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [[[UGModel sharedInstance] notifications] count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Get the notification and dequeueueue a cell
+    Notification *notification = [[[UGModel sharedInstance] notifications] objectAtIndex:indexPath.row];
+    static NSString *cellIdentifier = @"NotificationCell";
+    UGNotificationTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    
+    // Configure da bitch
+    [cell.notificationTitle setText:[notification feed_message]];
+    if ([notification.image_url rangeOfString:@"http"].location == NSNotFound) {
+        [cell.notificationImageView setImage:[UIImage imageNamed:@"notificationPlaceholder"]];
+    }else{
+        [cell.notificationImageView setImageWithURL:[NSURL URLWithString:notification.image_url] placeholderImage:[UIImage imageNamed:@"notificationPlaceholder"]];
+    }
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat: @"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
+    // Always use this locale when parsing fixed format date strings
+    NSLocale *posix = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+    [formatter setLocale:posix];
+    NSDate *date = [formatter dateFromString:notification.time_created];
+    
+    [cell.notificationDate setText:[date relativeTime]];
+    
+    if (![notification.status isEqual:[NSNull null]]) {
+        [cell.notificationStatus setText:notification.status];
+    }else{
+        [cell.notificationStatus setText:@""];
+    }
+    
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [[UGModel sharedInstance] getNotification:[[[[UGModel sharedInstance] notifications] objectAtIndex:indexPath.row] server_id]
+                                  withSuccess:^(id responseObject) {
+                                      
+                                      _selectedNotification = responseObject;
+                                      
+                                      if (![_selectedNotification.type isEqual:[NSNull null]]) {
+                                          [self performSegueWithIdentifier:@"homeToNotification" sender:self];
+                                      }
+                                  } fail:^(NSDictionary *errors) {
+                                      [[[UIAlertView alloc] initWithTitle:@"Ooops"
+                                                                  message:@"Couldn't fetch information about this notification."
+                                                                 delegate:nil
+                                                        cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
+                                  }];
 }
 
 - (void)showSidebar
@@ -103,50 +188,16 @@
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Get the notification and dequeueueue a cell
-    Notification *notification = [[[UGModel sharedInstance] notifications] objectAtIndex:indexPath.row];
-    static NSString *cellIdentifier = @"NotificationCell";
-    UGNotificationTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-
-    // Configure da bitch
-    [cell.notificationTitle setText:[notification feed_message]];
-    if ([notification.image_url rangeOfString:@"http"].location == NSNotFound) {
-        [cell.notificationImageView setImage:[UIImage imageNamed:@"notificationPlaceholder"]];
-    }else{
-        [cell.notificationImageView setImageWithURL:[NSURL URLWithString:notification.image_url] placeholderImage:[UIImage imageNamed:@"notificationPlaceholder"]];
-    }
-    
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat: @"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
-    // Always use this locale when parsing fixed format date strings
-    NSLocale *posix = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
-    [formatter setLocale:posix];
-    NSDate *date = [formatter dateFromString:notification.time_created];
-    
-    [cell.notificationDate setText:[date relativeTime]];
-    
-    if (![notification.status isEqual:[NSNull null]]) {
-        [cell.notificationStatus setText:notification.status];
-    }else{
-        [cell.notificationStatus setText:@""];
-    }
-
-    return cell;
-}
-
-
-
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"homeToNotification"]) {
+        UGNotificationViewController *dst = [segue destinationViewController];
+        [dst setNotification:_selectedNotification];
+    }
 }
-*/
+
 
 @end

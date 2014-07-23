@@ -38,10 +38,7 @@
 - (void)signUp:(User *)user success:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock
 {
     [self.requestManager POST:@"sign_up" parameters:[user toDictionary] success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        User *newUser = [User new];
-        newUser.name = responseObject[@"user"][@"name"];
-        newUser.email = responseObject[@"user"][@"email"];
-        newUser.auth_token = responseObject[@"user"][@"auth_token"];
+        User *newUser = [User fromDictionary:responseObject[@"user"]];
         
         NSError *error;
         [SSKeychain setPassword:newUser.auth_token forService:UGURU_KEYCHAIN_SERVICE account:UGURU_KEYCHAIN_ACCOUNT error:&error];
@@ -61,11 +58,7 @@
 - (void)login:(User *)user success:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock
 {
     [self.requestManager POST:@"sign_in" parameters:[user toDictionary] success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        User *newUser = [User new];
-        newUser.name = responseObject[@"user"][@"name"];
-        newUser.email = responseObject[@"user"][@"email"];
-        newUser.auth_token = responseObject[@"user"][@"auth_token"];
-        
+        User *newUser = [User fromDictionary:responseObject[@"user"]];
         NSError *error;
         [SSKeychain setPassword:newUser.auth_token forService:UGURU_KEYCHAIN_SERVICE account:UGURU_KEYCHAIN_ACCOUNT error:&error];
         
@@ -82,26 +75,116 @@
     }];
 }
 
-- (void)getNotificationsWithSuccess:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock
+- (void)getUserWithSuccess:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock
 {
-    [self.requestManager GET:@"notifications" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-
-        NSArray *notifications = responseObject[@"notifications"];
-
-        NSMutableArray *output = [NSMutableArray array];
-        
-        for (NSDictionary *notificationDict in notifications) {
-            Notification *notification = [Notification fromDictionary:notificationDict];
-            [output addObject:notification];
+    NSError *error;
+    if (![SSKeychain passwordForService:UGURU_KEYCHAIN_SERVICE account:UGURU_KEYCHAIN_ACCOUNT error:&error]) {
+        if (error) {
+            NSLog(@"Error in Get User: %@", error);
         }
-        
-        self.notifications = [output copy];
-        
-        successBlock(self.notifications);
-        
+        failBlock(@{@"Error": @"Authentication token not found"});
+        return;
+    }
+    
+    [self.requestManager GET:@"user" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        User *returnedUser = [User fromDictionary:responseObject[@"user"]];
+        self.user = returnedUser;
+        successBlock(returnedUser);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@", error);
-        failBlock(@{@"Errors": error.debugDescription});
+        NSLog(@"Get user failed.");
+        failBlock(@{@"Error": @"Get user failed."});
     }];
 }
+- (void)updateUser:(User *)user success:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock
+{
+    [self.requestManager PUT:@"user"
+                  parameters:[user toDictionary]
+                     success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                         User *updatedUser = [User fromDictionary:responseObject[@"user"]];
+                         self.user = updatedUser;
+                         successBlock(updatedUser);
+                     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                         NSLog(@"%@", error.debugDescription);
+                         failBlock(@{});
+                     }];
+}
+
+
+- (void)getAllNotificationsWithSuccess:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock
+{
+    [self.requestManager GET:@"notifications"
+                  parameters:nil
+                     success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                         
+                         NSArray *notifications = responseObject[@"notifications"];
+                         
+                         NSMutableArray *output = [NSMutableArray array];
+                         
+                         for (NSDictionary *notificationDict in notifications) {
+                             Notification *notification = [Notification fromDictionary:notificationDict];
+                             [output addObject:notification];
+                         }
+                         
+                         self.notifications = [output copy];
+                         
+                         successBlock(self.notifications);
+                         
+                     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                         NSLog(@"%@", error);
+                         failBlock(@{@"Errors": error.debugDescription});
+                     }];
+}
+
+- (void)getNotification:(NSNumber *)server_id withSuccess:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock
+{
+    [self.requestManager GET:[NSString stringWithFormat:@"notifications/%@", server_id]
+                  parameters:nil
+                     success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                         
+                         Notification *notification = [Notification fromDictionary:responseObject[@"notification"]];
+                         
+                         // TODO : This is disgusting, like a switch statement but for retards...
+                         NSString *responseType = responseObject[@"type"];
+                         
+                         // Set the type property on the Notification Instance
+                         notification.type = responseType;
+                         
+                         if ([responseType isEqual:[NSNull null]]) {
+                             successBlock(notification);
+                             return;
+                         }
+                         
+                         if ([responseType isEqualToString:@"student-request-help"])
+                         {
+                             notification.request = [Request fromDictionary:responseObject[@"request"]];
+                         }
+                         else if ([responseType isEqualToString:@"tutor-request-offer"])
+                         {
+                             notification.request = [Request fromDictionary:responseObject[@"request"]];
+                         }
+                         else if ([responseType isEqualToString:@"student-incoming-offer"])
+                         {
+                             notification.request = [Request fromDictionary:responseObject[@"request"]];
+                         }
+                         else if ([responseType isEqualToString:@"student-payment-approval"])
+                         {
+                             notification.payment = [Payment fromDictionary:responseObject[@"payment"]];
+                         }
+                         else if ([responseType isEqualToString:@"tutor-receive-payment"])
+                         {
+                             notification.payment = [Payment fromDictionary:responseObject[@"payment"]];
+                         }else
+                         {
+                             NSLog(@"No action associated with this type of notification.");
+                         }
+                         
+                         successBlock(notification);
+                         
+                     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                         NSLog(@"%@", error);
+                         failBlock(@{@"Errors": error.debugDescription});
+                     }];
+}
+
+
 @end

@@ -29,6 +29,9 @@
 		32C12930197DC99B00FE483D /* UGHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C1292F197DC99B00FE483D /* UGHomeViewController.m */; };
 		32C12937197DE30600FE483D /* Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C12936197DE30600FE483D /* Notification.m */; };
 		32C1293A197E03CC00FE483D /* UGNotificationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C12939197E03CC00FE483D /* UGNotificationTableViewCell.m */; };
+		32C1293E197EDE5B00FE483D /* Payment.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C1293D197EDE5B00FE483D /* Payment.m */; };
+		32C12941197EDE6A00FE483D /* Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C12940197EDE6A00FE483D /* Request.m */; };
+		32C12944197EEE1A00FE483D /* UGNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C12943197EEE1A00FE483D /* UGNotificationViewController.m */; };
 		4605AED1AD5B4D25BE748C28 /* libPods-UguruTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0C9B1101D1F4600A1B4C6F7 /* libPods-UguruTests.a */; };
 		5390E66D51B24390BAD4ECD6 /* libPods-Uguru.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DBA02B7D2546ECAE33C73E /* libPods-Uguru.a */; };
 /* End PBXBuildFile section */
@@ -80,6 +83,12 @@
 		32C12936197DE30600FE483D /* Notification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Notification.m; sourceTree = "<group>"; };
 		32C12938197E03CC00FE483D /* UGNotificationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGNotificationTableViewCell.h; sourceTree = "<group>"; };
 		32C12939197E03CC00FE483D /* UGNotificationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGNotificationTableViewCell.m; sourceTree = "<group>"; };
+		32C1293C197EDE5B00FE483D /* Payment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Payment.h; sourceTree = "<group>"; };
+		32C1293D197EDE5B00FE483D /* Payment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Payment.m; sourceTree = "<group>"; };
+		32C1293F197EDE6A00FE483D /* Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Request.h; sourceTree = "<group>"; };
+		32C12940197EDE6A00FE483D /* Request.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Request.m; sourceTree = "<group>"; };
+		32C12942197EEE1A00FE483D /* UGNotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGNotificationViewController.h; sourceTree = "<group>"; };
+		32C12943197EEE1A00FE483D /* UGNotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGNotificationViewController.m; sourceTree = "<group>"; };
 		48BD3755083547939D6F9810 /* Pods-Uguru.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Uguru.xcconfig"; path = "Pods/Pods-Uguru.xcconfig"; sourceTree = "<group>"; };
 		C5DBA02B7D2546ECAE33C73E /* libPods-Uguru.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Uguru.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0C9B1101D1F4600A1B4C6F7 /* libPods-UguruTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UguruTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,6 +131,10 @@
 				3241626619784D330055EF7A /* User.m */,
 				32C12935197DE30600FE483D /* Notification.h */,
 				32C12936197DE30600FE483D /* Notification.m */,
+				32C1293C197EDE5B00FE483D /* Payment.h */,
+				32C1293D197EDE5B00FE483D /* Payment.m */,
+				32C1293F197EDE6A00FE483D /* Request.h */,
+				32C12940197EDE6A00FE483D /* Request.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -215,6 +228,8 @@
 				3241627119785EAD0055EF7A /* UGSignUpViewController.m */,
 				32C1292E197DC99B00FE483D /* UGHomeViewController.h */,
 				32C1292F197DC99B00FE483D /* UGHomeViewController.m */,
+				32C12942197EEE1A00FE483D /* UGNotificationViewController.h */,
+				32C12943197EEE1A00FE483D /* UGNotificationViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -280,6 +295,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Uguru;
 				TargetAttributes = {
+					3254E4AF1975B64500205F33 = {
+						DevelopmentTeam = E8FFVHV7T8;
+					};
 					3254E4D61975B64600205F33 = {
 						TestTargetID = 3254E4AF1975B64500205F33;
 					};
@@ -399,7 +417,10 @@
 				3254E4C41975B64600205F33 /* UGAppDelegate.m in Sources */,
 				32C1293A197E03CC00FE483D /* UGNotificationTableViewCell.m in Sources */,
 				32C12930197DC99B00FE483D /* UGHomeViewController.m in Sources */,
+				32C1293E197EDE5B00FE483D /* Payment.m in Sources */,
 				3254E4C01975B64600205F33 /* main.m in Sources */,
+				32C12941197EDE6A00FE483D /* Request.m in Sources */,
+				32C12944197EEE1A00FE483D /* UGNotificationViewController.m in Sources */,
 				3241627219785EAD0055EF7A /* UGSignUpViewController.m in Sources */,
 				3241626F19785E990055EF7A /* UGLoginViewController.m in Sources */,
 				3241626A19784D900055EF7A /* UGObject.m in Sources */,
@@ -531,6 +552,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Samir Makhani (KJ7F8YE285)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Uguru/Uguru-Prefix.pch";
 				INFOPLIST_FILE = "Uguru/Uguru-Info.plist";
@@ -545,6 +567,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Samir Makhani (E8FFVHV7T8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Samir Makhani (E8FFVHV7T8)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Uguru/Uguru-Prefix.pch";
 				INFOPLIST_FILE = "Uguru/Uguru-Info.plist";
