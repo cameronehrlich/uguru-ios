@@ -25,7 +25,7 @@
 #define UGURU_APN_TOKEN        @"UGURU-APN-Token"
 
 typedef void (^UGSuccessBlock)(id responseObject);
-typedef void (^UGFailBlock)(NSDictionary *errors);
+typedef void (^UGFailBlock)(id errorObject);
 
 @interface UGModel : NSObject
 
@@ -39,6 +39,7 @@ typedef void (^UGFailBlock)(NSDictionary *errors);
 // User
 - (void)signUp:(User *)user success:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock;
 - (void)login:(User *)user success:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock;
+- (void)logoutUserWithSuccess:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock;
 - (void)getUserWithSuccess:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock;
 - (void)updateUser:(User *)user success:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock;
 

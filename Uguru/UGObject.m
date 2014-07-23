@@ -18,6 +18,7 @@
 
 + (instancetype)fromDictionary:(NSDictionary *)dict
 {
+    
     NSAssert(dict != nil, @"Can't form %@ with nil dict.", NSStringFromClass([self class]));
     id newObject = [[self alloc] init];
     for (NSString *key in [dict allKeys]) {
@@ -40,8 +41,10 @@
         objc_property_t property = properties[i];
         const char *propName = property_getName(property);
         NSString *propertyName = [NSString stringWithUTF8String:propName];
-        id value = [self valueForKeyPath:propertyName] ? [self valueForKeyPath:propertyName] : [NSNull null];
-        [body setObject:value forKey:propertyName];
+        id value = [self valueForKeyPath:propertyName] ? [self valueForKeyPath:propertyName] : nil;
+        if (value) {
+            [body setObject:value forKey:propertyName];
+        }
     }
     
     // For self class properties
@@ -50,8 +53,10 @@
         objc_property_t property = properties[i];
         const char *propName = property_getName(property);
         NSString *propertyName = [NSString stringWithUTF8String:propName];
-        id value = [self valueForKeyPath:propertyName] ? [self valueForKeyPath:propertyName] : [NSNull null];
-        [body setObject:value forKey:propertyName];
+        id value = [self valueForKeyPath:propertyName] ? [self valueForKeyPath:propertyName] : nil;
+        if (value) {
+            [body setObject:value forKey:propertyName];
+        }
     }
     free(properties);
     

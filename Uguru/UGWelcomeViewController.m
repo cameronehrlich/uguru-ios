@@ -39,11 +39,13 @@
 {
     [super viewDidAppear:animated];
     
-    
     if ([SSKeychain passwordForService:UGURU_KEYCHAIN_SERVICE account:UGURU_KEYCHAIN_ACCOUNT]) {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [[UGModel sharedInstance] getUserWithSuccess:^(id responseObject) {
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
             [self performSegueWithIdentifier:@"welcomeToHome" sender:self];
         } fail:^(NSDictionary *errors) {
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
             NSLog(@"FAILED TO GET THE USER");
         }];
     }

@@ -78,6 +78,20 @@
     }];
 }
 
+- (void)logoutUserWithSuccess:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock
+{
+    [self setUser:nil];
+    NSError *error;
+    [SSKeychain deletePasswordForService:UGURU_KEYCHAIN_SERVICE account:UGURU_KEYCHAIN_ACCOUNT error:&error];
+    if (error) {
+        NSLog(@"An error occured while trying to delete the keychain item containing the user's authtoken");
+        failBlock(nil);
+    }
+    // TODO : any other cleanup work to clean up after a user logs out
+    // Maybe you want to make a request to the server to alert it that the user has logged out...
+    successBlock(nil);
+}
+
 - (void)getUserWithSuccess:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock
 {
     NSError *error;
@@ -85,17 +99,23 @@
         if (error) {
             NSLog(@"Error in Get User: %@", error);
         }
-        failBlock(@{@"Error": @"Authentication token not found"});
+        failBlock(nil);
         return;
     }
     
     [self.requestManager GET:@"user" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        if ([self errorsToHandle:responseObject]) {
+            failBlock(nil);
+            return;
+        }
+        
         User *returnedUser = [User fromDictionary:responseObject[@"user"]];
         self.user = returnedUser;
         successBlock(returnedUser);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Get user failed.");
-        failBlock(@{@"Error": @"Get user failed."});
+        failBlock(nil);
     }];
 }
 - (void)updateUser:(User *)user success:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock
@@ -214,6 +234,32 @@
                          NSLog(@"Failed to get all conversations");
                          failBlock(@{});
                      }];
+}
+
+- (BOOL)errorsToHandle:(NSDictionary *)responseObject
+{
+    
+    if (responseObject[@"errors"]) {
+        for (NSString *error in responseObject[@"errors"]) {
+            
+            // TODO : API should return an error code so we can switch on it
+            
+            if ([error isEqualToString:@"Invalid Token"]) {
+                [self logoutUserWithSuccess:^(id responseObject) {
+                    [[[UIAlertView alloc] initWithTitle:@"Oops!"
+                                               message:@"Your session has expired, please login again."
+                                              delegate:nil
+                                      cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
+                } fail:nil];
+                
+            }
+            
+            NSLog(@"API Error: %@", error);
+        }
+        return YES;
+    }
+    
+    return NO;
 }
 
 @end

@@ -169,11 +169,14 @@
 {
     switch (index) {
         case 0:
-            
-            [self performSegueWithIdentifier:@"homeToWelcome" sender:self];
+        {
+            [[UGModel sharedInstance] logoutUserWithSuccess:^(id responseObject) {
+                [self performSegueWithIdentifier:@"homeToWelcome" sender:self];
+            } fail:^(id errorObject) {
+                [self performSegueWithIdentifier:@"homeToWelcome" sender:self];
+            }];
             break;
-        case 1:
-            break;
+        }
         default:
             break;
     }
