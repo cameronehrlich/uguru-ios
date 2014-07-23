@@ -236,6 +236,36 @@
                      }];
 }
 
+- (void)getMessagesForConversation:(Conversation *)convo success:(UGSuccessBlock)successBlock fail:(UGSuccessBlock)failBlock
+{
+    [self.requestManager GET:[NSString stringWithFormat:@"conversations/%@", convo.server_id]
+                  parameters:nil
+                     success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                         
+                         if ([self errorsToHandle:responseObject]) {
+                             failBlock(nil);
+                             return;
+                         }
+                         
+                         // TODO : ADD OTHER REAPONSES TO THE CONVERSATION MODEL
+                         NSMutableArray *returnedMessages = [NSMutableArray array];
+                         
+                         convo.conversation_meeting_location = responseObject[@"conversation_meeting_location"];
+                         convo.conversation_meeting_time = responseObject[@"conversation_meeting_time"];
+                         
+                         for (NSDictionary *messageDict in responseObject[@"messages"]) {
+                             Message *newMessage = [Message fromDictionary:messageDict];
+                             [responseObject addObject:newMessage];
+                         }
+                         convo.messages = [returnedMessages copy];
+                         successBlock(convo);
+                         
+                     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                         NSLog(@"Failed to get messages for conversation.");
+                         failBlock(nil);
+                     }];
+}
+
 - (BOOL)errorsToHandle:(NSDictionary *)responseObject
 {
     
@@ -247,8 +277,8 @@
             if ([error isEqualToString:@"Invalid Token"]) {
                 [self logoutUserWithSuccess:^(id responseObject) {
                     [[[UIAlertView alloc] initWithTitle:@"Oops!"
-                                               message:@"Your session has expired, please login again."
-                                              delegate:nil
+                                                message:@"Your session has expired, please login again."
+                                               delegate:nil
                                       cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
                 } fail:nil];
                 

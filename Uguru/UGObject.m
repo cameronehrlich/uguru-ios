@@ -18,11 +18,23 @@
 
 + (instancetype)fromDictionary:(NSDictionary *)dict
 {
-    
     NSAssert(dict != nil, @"Can't form %@ with nil dict.", NSStringFromClass([self class]));
+    
+    NSArray *reservedSymbols = @[@"description", @"id"];
+    
     id newObject = [[self alloc] init];
     for (NSString *key in [dict allKeys]) {
-        if ([newObject respondsToSelector:NSSelectorFromString(key)] && ![@[@"description", @"id"] containsObject:key]) {
+        if ([newObject respondsToSelector:NSSelectorFromString(key)]) {
+            if ([reservedSymbols containsObject:key]) {
+                NSLog(@"Tried to map to an Objc reserved key path. BAD!");
+                continue;
+            }
+            
+            if ([dict[key] isEqual:[NSNull null]]) {
+                // DON'T set properties to [NSNull null] object, leave them as nil
+                continue;
+            }
+            
             [newObject setValue:dict[key] forKey:key];
         }
     }
@@ -58,6 +70,7 @@
             [body setObject:value forKey:propertyName];
         }
     }
+    
     free(properties);
     
     return body;

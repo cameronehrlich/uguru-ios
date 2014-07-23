@@ -60,6 +60,12 @@
 #define COCOAPODS_VERSION_MINOR_NSDate_RelativeTime 0
 #define COCOAPODS_VERSION_PATCH_NSDate_RelativeTime 1
 
+// RDRStickyKeyboardView
+#define COCOAPODS_POD_AVAILABLE_RDRStickyKeyboardView
+#define COCOAPODS_VERSION_MAJOR_RDRStickyKeyboardView 0
+#define COCOAPODS_VERSION_MINOR_RDRStickyKeyboardView 0
+#define COCOAPODS_VERSION_PATCH_RDRStickyKeyboardView 2
+
 // RNFrostedSidebar
 #define COCOAPODS_POD_AVAILABLE_RNFrostedSidebar
 #define COCOAPODS_VERSION_MAJOR_RNFrostedSidebar 0

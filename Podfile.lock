@@ -22,6 +22,7 @@ PODS:
     - AFNetworking/NSURLSession
   - MBProgressHUD (0.8)
   - NSDate+RelativeTime (1.0.1)
+  - RDRStickyKeyboardView (0.0.2)
   - RNFrostedSidebar (0.2.0)
   - SSKeychain (1.2.2)
   - UIColor+Hex (1.0.1):
@@ -34,6 +35,7 @@ DEPENDENCIES:
   - AFNetworking (~> 2.3)
   - MBProgressHUD (~> 0.8)
   - NSDate+RelativeTime (~> 1.0)
+  - RDRStickyKeyboardView (~> 0.0)
   - RNFrostedSidebar (~> 0.2.0)
   - SSKeychain (~> 1.2)
   - UIColor+Hex (~> 1.0)
@@ -43,6 +45,7 @@ SPEC CHECKSUMS:
   AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
   MBProgressHUD: c356980b0cd097f19acec959b49dca5eb8ec31be
   NSDate+RelativeTime: e8b48c62cd2354d9b372b3361cff579c96833b2e
+  RDRStickyKeyboardView: 52f8380fe05eb8bff6b55d367232fa607772658b
   RNFrostedSidebar: f1d95d9b2627f13cc10e75d36e751a623eec079c
   SSKeychain: cc48bd3ad24fcd9125adb9e0d23dd50b8bbd08b9
   UIColor+Hex: ac7e1ae4eeea4f522fe3f6eda35de4af69244432

@@ -7,12 +7,21 @@
 //
 
 #import "UGInboxViewController.h"
+#import "UGInboxTableViewCell.h"
+#import <AFNetworking/UIKit+AFNetworking.h>
+#import <NSDate+RelativeTime.h>
+#import <UIColor+Hex.h>
+#import "UGMessageTableViewController.h"
 
 @implementation UGInboxViewController
+{
+    Conversation *_selectedConversation;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -33,23 +42,53 @@
     return [[[UGModel sharedInstance] conversations] count];
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+-(UGInboxTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentifier = @"ConversationCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-
+    UGInboxTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    
     Conversation *convo = [[[UGModel sharedInstance] conversations]objectAtIndex:indexPath.row];
     
-    
-    if (![[convo last_message] isEqual:[NSNull null]]) {
-        [cell.textLabel setText:[convo last_message]];
+    if ([convo.image_url rangeOfString:@"http"].location == NSNotFound) {
+        [cell.conversationImageView setImageWithURL:[NSURL URLWithString:convo.image_url relativeToURL:[NSURL URLWithString:API_BASE_URL]] placeholderImage:[UIImage imageNamed:@"notificationPlaceholder"]];
+    }else{
+        [cell.conversationImageView setImageWithURL:[NSURL URLWithString:convo.image_url] placeholderImage:[UIImage imageNamed:@"notificationPlaceholder"]];
     }
+    
+    [cell.nameLabel setText:convo.name];
 
-    if (![[convo name] isEqual:[NSNull null]]) {
-        [cell.detailTextLabel setText:[convo name]];
+    [cell.lastMessageLabel setText:convo.last_message];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat: @"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
+    // Always use this locale when parsing fixed format date strings
+    NSLocale *posix = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+    [formatter setLocale:posix];
+    NSDate *date = [formatter dateFromString:convo.last_message_time];
+    
+    [cell.timeLabel setText:[date relativeTime]];
+    
+    if ([convo.read boolValue]) {
+        [cell.contentView setBackgroundColor:[UIColor whiteColor]];
+    }else{
+        UIColor *unreadColor = [UIColor colorWithCSS:@"c5eeff"];
+        [cell.contentView setBackgroundColor:unreadColor];
     }
     
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    _selectedConversation = [[[UGModel sharedInstance] conversations] objectAtIndex:indexPath.row];
+
+    [[UGModel sharedInstance] getMessagesForConversation:_selectedConversation
+                                                 success:^(id responseObject) {
+                                                     [self performSegueWithIdentifier:@"inboxToMessage" sender:self];
+                                                 } fail:^(id responseObject) {
+                                                     NSLog(@"SHIT FAILED");
+                                                 }];
+
 }
 
 #pragma mark - Navigation
@@ -57,8 +96,10 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"inboxToMessage"]) {
+        UGMessageTableViewController *dst = [segue destinationViewController];
+        [dst setCurrentConversation:_selectedConversation];
+    }
 }
 
 @end

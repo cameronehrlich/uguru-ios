@@ -17,6 +17,7 @@
 #import "Payment.h"
 #import "Request.h"
 #import "Conversation.h"
+#import "Message.h"
 
 #define API_BASE_URL           @"http://testing.uguru.me/api/"
 #define UGURU_AUTH_TOKEN       @"X-UGURU-Token"
@@ -45,6 +46,7 @@ typedef void (^UGFailBlock)(id errorObject);
 
 // Messages
 - (void)getAllConversationsWithSuccess:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock;
+- (void)getMessagesForConversation:(Conversation *)convo success:(UGSuccessBlock)successBlock fail:(UGSuccessBlock)failBlock;
 
 - (void)getAllNotificationsWithSuccess:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock;
 - (void)getNotification:(NSNumber *)server_id withSuccess:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock;

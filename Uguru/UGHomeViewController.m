@@ -39,9 +39,7 @@
     self.refreshControl = refresh;
     
     // Setup Sidebar
-    NSArray *images = @[
-                        [UIImage imageNamed:@"guru"],
-                        ];
+    NSArray *images = @[[UIImage imageNamed:@"guru"]];
     
     self.sidebar = [[RNFrostedSidebar alloc] initWithImages:images];
     [self.sidebar setDelegate:self];
@@ -131,12 +129,7 @@
     NSDate *date = [formatter dateFromString:notification.time_created];
     
     [cell.notificationDate setText:[date relativeTime]];
-    
-    if (![notification.status isEqual:[NSNull null]]) {
-        [cell.notificationStatus setText:notification.status];
-    }else{
-        [cell.notificationStatus setText:@""];
-    }
+    [cell.notificationStatus setText:notification.status];
     
     return cell;
 }
@@ -148,7 +141,7 @@
                                       
                                       _selectedNotification = responseObject;
                                       
-                                      if (![_selectedNotification.type isEqual:[NSNull null]]) {
+                                      if (!_selectedNotification.type) {
                                           [self performSegueWithIdentifier:@"homeToNotification" sender:self];
                                       }
                                   } fail:^(NSDictionary *errors) {

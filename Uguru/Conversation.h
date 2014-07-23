@@ -16,4 +16,8 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSNumber *read;
 
+@property (nonatomic, strong) NSArray *messages;
+@property (nonatomic, strong) NSString *conversation_meeting_location;
+@property (nonatomic, strong) NSDate *conversation_meeting_time;
+
 @end
