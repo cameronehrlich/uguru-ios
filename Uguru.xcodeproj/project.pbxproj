@@ -27,6 +27,7 @@
 		3254E4E31975B64600205F33 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3254E4E11975B64600205F33 /* InfoPlist.strings */; };
 		3254E4E51975B64600205F33 /* UguruTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3254E4E41975B64600205F33 /* UguruTests.m */; };
 		32652E471981B8AD004E1E7D /* UGSendMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32652E461981B8AD004E1E7D /* UGSendMessageTableViewCell.m */; };
+		32652E491981C70A004E1E7D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32652E481981C70A004E1E7D /* AudioToolbox.framework */; };
 		3289184F197F6E6700221E42 /* UGInboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3289184E197F6E6700221E42 /* UGInboxViewController.m */; };
 		32891852197F710500221E42 /* Conversation.m in Sources */ = {isa = PBXBuildFile; fileRef = 32891851197F710500221E42 /* Conversation.m */; };
 		32891855198040A300221E42 /* UGInboxTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32891854198040A300221E42 /* UGInboxTableViewCell.m */; };
@@ -90,6 +91,7 @@
 		3254E4E41975B64600205F33 /* UguruTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UguruTests.m; sourceTree = "<group>"; };
 		32652E451981B8AD004E1E7D /* UGSendMessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGSendMessageTableViewCell.h; sourceTree = "<group>"; };
 		32652E461981B8AD004E1E7D /* UGSendMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGSendMessageTableViewCell.m; sourceTree = "<group>"; };
+		32652E481981C70A004E1E7D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		3289184D197F6E6700221E42 /* UGInboxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGInboxViewController.h; sourceTree = "<group>"; };
 		3289184E197F6E6700221E42 /* UGInboxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGInboxViewController.m; sourceTree = "<group>"; };
 		32891850197F710500221E42 /* Conversation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Conversation.h; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32652E491981C70A004E1E7D /* AudioToolbox.framework in Frameworks */,
 				3254E4B61975B64600205F33 /* CoreGraphics.framework in Frameworks */,
 				3254E4B81975B64600205F33 /* UIKit.framework in Frameworks */,
 				3254E4B41975B64600205F33 /* Foundation.framework in Frameworks */,
@@ -200,6 +203,7 @@
 		3254E4B21975B64600205F33 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				32652E481981C70A004E1E7D /* AudioToolbox.framework */,
 				3254E4B31975B64600205F33 /* Foundation.framework */,
 				3254E4B51975B64600205F33 /* CoreGraphics.framework */,
 				3254E4B71975B64600205F33 /* UIKit.framework */,

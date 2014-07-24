@@ -9,7 +9,7 @@
 #import <AFNetworking/UIKit+AFNetworking.h>
 #import <NSDate+RelativeTime.h>
 #import <UIColor+Hex.h>
-
+#import <AudioToolbox/AudioToolbox.h>
 
 #import "UGMessageViewController.h"
 #import "UGMessageDescriptionTableViewCell.h"
@@ -29,6 +29,11 @@
     [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForItem:self.currentConversation.messages.count inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self refreshConversation];
+}
 - (void)keyboardShown:(NSNotification *)notification
 {
     CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
@@ -67,13 +72,30 @@
 
 - (void)refreshConversation
 {
+    __block NSInteger numberOfMessages = self.currentConversation.messages.count;
+    
     [[UGModel sharedInstance] getMessagesForConversation:self.currentConversation
                                                  success:^(id responseObject) {
-                                                     self.currentConversation = responseObject;
-                                                     [self.tableView reloadData];
+                                                     
+                                                     Conversation *retConv = responseObject;
+                                                     
+                                                     if ([retConv.messages count] > numberOfMessages
+                                                         && ![[[[retConv messages] lastObject] server_id] isEqualToNumber:[[[UGModel sharedInstance] user] server_id]]) {
+                                                         
+                                                         self.currentConversation = responseObject;
+                                                         [self.tableView reloadData];
+                                                         AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
+                                                     }
+                                                     
                                                  } fail:^(id responseObject) {
                                                      NSLog(@"SHIT FAILED");
                                                  }];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (self.isViewLoaded && self.view.window) {
+            NSLog(@"Is visible, refreshing.");
+            [self refreshConversation];
+        }
+    });
 }
 
 - (void)didReceiveMemoryWarning
@@ -93,7 +115,6 @@
 {
     // Return the number of rows in the section.
     NSUInteger rows = [self.currentConversation.messages count] + 1;
-    NSLog(@"%lu", (unsigned long)rows);
     return rows;
 }
 
@@ -109,7 +130,7 @@
     }
     
     Message *message = [[self.currentConversation messages] objectAtIndex:indexPath.row];
-
+    
     if ([message.sender_server_id isEqualToNumber:[[[UGModel sharedInstance] user] server_id]]) {
         // Message was sent by me
         UGMessageMeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageMeCell" forIndexPath:indexPath];
