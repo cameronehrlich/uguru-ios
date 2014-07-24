@@ -26,6 +26,7 @@
 		3254E4DB1975B64600205F33 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3254E4B71975B64600205F33 /* UIKit.framework */; };
 		3254E4E31975B64600205F33 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3254E4E11975B64600205F33 /* InfoPlist.strings */; };
 		3254E4E51975B64600205F33 /* UguruTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3254E4E41975B64600205F33 /* UguruTests.m */; };
+		32652E471981B8AD004E1E7D /* UGSendMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32652E461981B8AD004E1E7D /* UGSendMessageTableViewCell.m */; };
 		3289184F197F6E6700221E42 /* UGInboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3289184E197F6E6700221E42 /* UGInboxViewController.m */; };
 		32891852197F710500221E42 /* Conversation.m in Sources */ = {isa = PBXBuildFile; fileRef = 32891851197F710500221E42 /* Conversation.m */; };
 		32891855198040A300221E42 /* UGInboxTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32891854198040A300221E42 /* UGInboxTableViewCell.m */; };
@@ -87,6 +88,8 @@
 		3254E4E01975B64600205F33 /* UguruTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UguruTests-Info.plist"; sourceTree = "<group>"; };
 		3254E4E21975B64600205F33 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3254E4E41975B64600205F33 /* UguruTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UguruTests.m; sourceTree = "<group>"; };
+		32652E451981B8AD004E1E7D /* UGSendMessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGSendMessageTableViewCell.h; sourceTree = "<group>"; };
+		32652E461981B8AD004E1E7D /* UGSendMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGSendMessageTableViewCell.m; sourceTree = "<group>"; };
 		3289184D197F6E6700221E42 /* UGInboxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGInboxViewController.h; sourceTree = "<group>"; };
 		3289184E197F6E6700221E42 /* UGInboxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGInboxViewController.m; sourceTree = "<group>"; };
 		32891850197F710500221E42 /* Conversation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Conversation.h; sourceTree = "<group>"; };
@@ -279,6 +282,8 @@
 		32C1293B197E03D200FE483D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				32652E451981B8AD004E1E7D /* UGSendMessageTableViewCell.h */,
+				32652E461981B8AD004E1E7D /* UGSendMessageTableViewCell.m */,
 				3289C8891980AF3600DA6071 /* UGNotificationTableViewCell.m */,
 				3289C88A1980AF3600DA6071 /* UGNotificationTableViewCell.h */,
 				32891853198040A300221E42 /* UGInboxTableViewCell.h */,
@@ -463,6 +468,7 @@
 			files = (
 				32416260197836EC0055EF7A /* UGWelcomeViewController.m in Sources */,
 				32416263197845D90055EF7A /* UGModel.m in Sources */,
+				32652E471981B8AD004E1E7D /* UGSendMessageTableViewCell.m in Sources */,
 				32891855198040A300221E42 /* UGInboxTableViewCell.m in Sources */,
 				32891864198051AA00221E42 /* UGMessageYouTableViewCell.m in Sources */,
 				32C12937197DE30600FE483D /* Notification.m in Sources */,

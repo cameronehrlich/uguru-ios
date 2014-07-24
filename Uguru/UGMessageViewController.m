@@ -15,33 +15,46 @@
 #import "UGMessageDescriptionTableViewCell.h"
 #import "UGMessageYouTableViewCell.h"
 #import "UGMessageMeTableViewCell.h"
+#import "UGSendMessageTableViewCell.h"
 
 @implementation UGMessageViewController
+{
+    UITextField *_composeField;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.stickyKeyboardView = [[RDRStickyKeyboardView alloc] initWithScrollView:self.tableView];
-    self.stickyKeyboardView.frame = self.view.bounds;
-    [[self.stickyKeyboardView.inputView rightButton] addTarget:self
-                                                        action:@selector(sendButtonAction:)
-                                              forControlEvents:UIControlEventTouchUpInside];
-    
-    
-    self.stickyKeyboardView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
-    [self.view addSubview:self.stickyKeyboardView];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardShown:) name:UIKeyboardDidShowNotification object:nil];
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForItem:self.currentConversation.messages.count inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+}
+
+- (void)keyboardShown:(NSNotification *)notification
+{
+    CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    self.tableView.contentInset = UIEdgeInsetsMake(self.tableView.contentInset.top,
+                                                   self.tableView.contentInset.left,
+                                                   keyboardSize.height,
+                                                   self.tableView.contentInset.right);
 }
 
 - (void)sendButtonAction:(UIButton *)sender
 {
     Message *newMessage = [Message new];
-    [newMessage setContents:self.stickyKeyboardView.inputView.textView.text];
+    [newMessage setContents:_composeField.text];
     [newMessage setConversation_id:self.currentConversation.server_id];
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[UGModel sharedInstance] postMessage:newMessage success:^(id responseObject) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        [_composeField setText:@""];
+        [_composeField resignFirstResponder];
+        self.tableView.contentInset = UIEdgeInsetsMake(self.tableView.contentInset.top,
+                                                       self.tableView.contentInset.left,
+                                                       0,
+                                                       self.tableView.contentInset.right);
         [self refreshConversation];
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForItem:self.currentConversation.messages.count inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
     } fail:^(id responseObject) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         [[[UIAlertView alloc] initWithTitle:@"Oops"
@@ -50,8 +63,6 @@
                           cancelButtonTitle:@"Okay"
                           otherButtonTitles:nil] show];
     }];
-    
-    [self.stickyKeyboardView.inputView.textView setText:@""];
 }
 
 - (void)refreshConversation
@@ -81,14 +92,24 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [self.currentConversation.messages count];
+    NSUInteger rows = [self.currentConversation.messages count] + 1;
+    NSLog(@"%lu", (unsigned long)rows);
+    return rows;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Message *message = [[self.currentConversation messages] objectAtIndex:indexPath.row];
     
+    if (indexPath.row == [self.currentConversation.messages count]) {
+        UGSendMessageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SendMessageCell" forIndexPath:indexPath];
+        [[cell sendButton] addTarget:self action:@selector(sendButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+        _composeField = [cell textField];
+        return cell;
+    }
+    
+    Message *message = [[self.currentConversation messages] objectAtIndex:indexPath.row];
+
     if ([message.sender_server_id isEqualToNumber:[[[UGModel sharedInstance] user] server_id]]) {
         // Message was sent by me
         UGMessageMeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageMeCell" forIndexPath:indexPath];
@@ -109,6 +130,11 @@
         [cell.messageNameLabel setText:message.sender_name];
         return cell;
     }
+}
+
+-(BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return NO;
 }
 
 #pragma mark - Navigation

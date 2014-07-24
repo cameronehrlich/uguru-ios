@@ -9,10 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <RDRStickyKeyboardView.h>
 
-@interface UGMessageViewController : UIViewController
+@interface UGMessageViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) RDRStickyKeyboardView *stickyKeyboardView;
 @property (nonatomic, strong) Conversation *currentConversation;
 
 @end
