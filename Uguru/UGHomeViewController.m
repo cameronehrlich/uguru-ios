@@ -155,7 +155,11 @@
                                       if (_selectedNotification.type) {
                                           if ([_selectedNotification.type isEqualToString:@"tutor-request-offer"]) {
                                               [self performSegueWithIdentifier:@"homeToNotificationTutorAccept" sender:self];
-                                          }else
+                                          }
+                                          else if ([_selectedNotification.type isEqualToString:@"student-incoming-offer"]) {
+                                              [self performSegueWithIdentifier:@"homeToNotificationStudentAccept" sender:self];
+                                          }
+                                          else
                                           {
                                               [[[UIAlertView alloc] initWithTitle:@"Notification Info"
                                                                          message:_selectedNotification.description
@@ -232,6 +236,9 @@
         UGNotificationTutorAcceptViewController *dst = [segue destinationViewController];
         [dst setNotification:_selectedNotification];
         
+    }else if ([segue.identifier isEqualToString:@"homeToNotificationStudentAccept"]){
+        UGNotificationTutorAcceptViewController *dst = [segue destinationViewController];
+        [dst setNotification:_selectedNotification];
     }else if ([segue.identifier isEqualToString:@"homeToWelcome"]){
         [SSKeychain deletePasswordForService:UGURU_KEYCHAIN_SERVICE account:UGURU_KEYCHAIN_ACCOUNT];
     }
