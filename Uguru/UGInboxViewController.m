@@ -22,6 +22,12 @@
 {
     [super viewDidLoad];
     [self.navigationController setToolbarHidden:NO animated:YES];
+    
+    //Setup pull to refresh
+    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
+    [refresh addTarget:self action:@selector(fetchMessages) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refresh;
 }
 
 - (void)didReceiveMemoryWarning
@@ -89,6 +95,21 @@
                                                      NSLog(@"SHIT FAILED");
                                                  }];
 
+}
+
+- (void) fetchMessages
+{
+    [[UGModel sharedInstance] getAllConversationsWithSuccess:^(id responseObject) {
+        [self.tableView reloadData];
+        [self.refreshControl endRefreshing];
+    } fail:^(NSDictionary *errors) {
+        [self.refreshControl endRefreshing];
+        [[[UIAlertView alloc] initWithTitle:@"Oops"
+                                    message:[NSString stringWithFormat:@"Couldn't load messages.\n %@", errors]
+                                   delegate:nil
+                          cancelButtonTitle:@"Okay"
+                          otherButtonTitles: nil] show];
+    }];
 }
 
 #pragma mark - Navigation
