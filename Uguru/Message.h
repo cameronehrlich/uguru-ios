@@ -7,6 +7,7 @@
 //
 
 #import "UGObject.h"
+#import "Conversation.h"
 
 @interface Message : UGObject
 
@@ -16,6 +17,7 @@
 @property (nonatomic, strong) NSNumber *sender_server_id;
 @property (nonatomic, strong) NSNumber *receiver_server_id;
 @property (nonatomic, strong) NSString *write_time;
+@property (nonatomic, strong) NSNumber *conversation_id;
 
 - (NSString *)relativeTimeString;
 

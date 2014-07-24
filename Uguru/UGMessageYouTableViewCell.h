@@ -10,7 +10,7 @@
 
 @interface UGMessageYouTableViewCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UIImageView *messageImageView;
-@property (strong, nonatomic) IBOutlet UITextView *messageContentView;
+@property (strong, nonatomic) IBOutlet UILabel *messageBodyLabel;
 @property (strong, nonatomic) IBOutlet UILabel *messageDateLabel;
 @property (strong, nonatomic) IBOutlet UILabel *messageNameLabel;
 

@@ -11,7 +11,7 @@
 #import <AFNetworking/UIKit+AFNetworking.h>
 #import <NSDate+RelativeTime.h>
 #import <UIColor+Hex.h>
-#import "UGMessageTableViewController.h"
+#import "UGMessageViewController.h"
 
 @implementation UGInboxViewController
 {
@@ -21,7 +21,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.navigationController setToolbarHidden:NO animated:YES];
     
     //Setup pull to refresh
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
@@ -118,7 +117,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"inboxToMessage"]) {
-        UGMessageTableViewController *dst = [segue destinationViewController];
+        UGMessageViewController *dst = [segue destinationViewController];
         [dst setCurrentConversation:_selectedConversation];
     }
 }

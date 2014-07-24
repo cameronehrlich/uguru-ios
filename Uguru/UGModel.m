@@ -264,6 +264,20 @@
                      }];
 }
 
+- (void)postMessage:(Message *)message success:(UGSuccessBlock)successBlock fail:(UGSuccessBlock)failBlock
+{
+    [self.requestManager POST:@"send_message" parameters:[message toDictionary] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if ([self errorsToHandle:responseObject]) {
+            failBlock(responseObject[@"errors"]);
+            return;
+        }
+        
+        successBlock([Message fromDictionary:responseObject[@"message"]]);
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        failBlock(error);
+    }];
+}
 
 #pragma mark -
 #pragma mark Requests

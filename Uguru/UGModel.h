@@ -47,6 +47,8 @@ typedef void (^UGFailBlock)(id errorObject);
 // Messages
 - (void)getAllConversationsWithSuccess:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock;
 - (void)getMessagesForConversation:(Conversation *)convo success:(UGSuccessBlock)successBlock fail:(UGSuccessBlock)failBlock;
+- (void)postMessage:(Message *)message success:(UGSuccessBlock)successBlock fail:(UGSuccessBlock)failBlock;
+
 
 // Notifications
 - (void)getAllNotificationsWithSuccess:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock;

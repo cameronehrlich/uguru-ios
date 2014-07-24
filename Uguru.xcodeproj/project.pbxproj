@@ -32,7 +32,7 @@
 		328918581980501F00221E42 /* UGMessageDescriptionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 328918571980501F00221E42 /* UGMessageDescriptionTableViewCell.m */; };
 		328918611980519F00221E42 /* UGMessageMeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 328918601980519F00221E42 /* UGMessageMeTableViewCell.m */; };
 		32891864198051AA00221E42 /* UGMessageYouTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32891863198051AA00221E42 /* UGMessageYouTableViewCell.m */; };
-		328918671980527100221E42 /* UGMessageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 328918661980527100221E42 /* UGMessageTableViewController.m */; };
+		328918671980527100221E42 /* UGMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 328918661980527100221E42 /* UGMessageViewController.m */; };
 		3289186A198052D600221E42 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 32891869198052D600221E42 /* Message.m */; };
 		3289C88519807F1A00DA6071 /* UGRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3289C88419807F1A00DA6071 /* UGRequestViewController.m */; };
 		3289C88B1980AF3600DA6071 /* UGNotificationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3289C8891980AF3600DA6071 /* UGNotificationTableViewCell.m */; };
@@ -98,8 +98,8 @@
 		328918601980519F00221E42 /* UGMessageMeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGMessageMeTableViewCell.m; sourceTree = "<group>"; };
 		32891862198051AA00221E42 /* UGMessageYouTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGMessageYouTableViewCell.h; sourceTree = "<group>"; };
 		32891863198051AA00221E42 /* UGMessageYouTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGMessageYouTableViewCell.m; sourceTree = "<group>"; };
-		328918651980527100221E42 /* UGMessageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGMessageTableViewController.h; sourceTree = "<group>"; };
-		328918661980527100221E42 /* UGMessageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGMessageTableViewController.m; sourceTree = "<group>"; };
+		328918651980527100221E42 /* UGMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGMessageViewController.h; sourceTree = "<group>"; };
+		328918661980527100221E42 /* UGMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGMessageViewController.m; sourceTree = "<group>"; };
 		32891868198052D600221E42 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
 		32891869198052D600221E42 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		3289C88319807F1A00DA6071 /* UGRequestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGRequestViewController.h; sourceTree = "<group>"; };
@@ -263,8 +263,8 @@
 				32C12943197EEE1A00FE483D /* UGNotificationTutorAcceptViewController.m */,
 				3289184D197F6E6700221E42 /* UGInboxViewController.h */,
 				3289184E197F6E6700221E42 /* UGInboxViewController.m */,
-				328918651980527100221E42 /* UGMessageTableViewController.h */,
-				328918661980527100221E42 /* UGMessageTableViewController.m */,
+				328918651980527100221E42 /* UGMessageViewController.h */,
+				328918661980527100221E42 /* UGMessageViewController.m */,
 				3289C88319807F1A00DA6071 /* UGRequestViewController.h */,
 				3289C88419807F1A00DA6071 /* UGRequestViewController.m */,
 			);
@@ -467,7 +467,7 @@
 				3289186A198052D600221E42 /* Message.m in Sources */,
 				32C12930197DC99B00FE483D /* UGHomeViewController.m in Sources */,
 				32C1293E197EDE5B00FE483D /* Payment.m in Sources */,
-				328918671980527100221E42 /* UGMessageTableViewController.m in Sources */,
+				328918671980527100221E42 /* UGMessageViewController.m in Sources */,
 				3289C88519807F1A00DA6071 /* UGRequestViewController.m in Sources */,
 				3254E4C01975B64600205F33 /* main.m in Sources */,
 				3289C88B1980AF3600DA6071 /* UGNotificationTableViewCell.m in Sources */,
