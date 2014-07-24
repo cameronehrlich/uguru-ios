@@ -35,7 +35,6 @@
     return self;
 }
 
-
 #pragma mark -
 #pragma mark User
 - (void)signUp:(User *)user success:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock
@@ -271,8 +270,6 @@
 
 - (void)postRequest:(Request *)request withSuccess:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock
 {
-    
-    
     [self.requestManager POST:@"request"
                    parameters:[request toDictionary]
                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -290,10 +287,9 @@
                       }];
 }
 
-- (void)putRequestTutorAccept:(NSMutableDictionary *)params withSuccess:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock
+- (void)tutorAcceptRequest:(NSMutableDictionary *)params withSuccess:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock
 {
-    
-    [self.requestManager POST:@"tutor_accept"
+    [self.requestManager PUT:@"tutor_accept"
                    parameters:params
                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
                           if ([self errorsToHandle:responseObject]) {

@@ -46,7 +46,7 @@
     [params setObject:self.messageField.text forKey:@"tutor_message"];
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [[UGModel sharedInstance] putRequestTutorAccept:params withSuccess:^(id responseObject) {
+    [[UGModel sharedInstance] tutorAcceptRequest:params withSuccess:^(id responseObject) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         [self.navigationController popViewControllerAnimated:YES];
     } fail:^(id errorObject) {
