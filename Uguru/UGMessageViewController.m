@@ -79,12 +79,13 @@
                                                      
                                                      Conversation *retConv = responseObject;
                                                      
-                                                     if ([retConv.messages count] > numberOfMessages
-                                                         && ![[[[retConv messages] lastObject] server_id] isEqualToNumber:[[[UGModel sharedInstance] user] server_id]]) {
+                                                     if ([retConv.messages count] > numberOfMessages) {
                                                          
                                                          self.currentConversation = responseObject;
                                                          [self.tableView reloadData];
-                                                         AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
+                                                         if (![[[[retConv messages] lastObject] receiver_server_id] isEqualToNumber:[[[UGModel sharedInstance] user] server_id]]) {
+                                                             AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
+                                                         }
                                                      }
                                                      
                                                  } fail:^(id responseObject) {
@@ -92,7 +93,6 @@
                                                  }];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         if (self.isViewLoaded && self.view.window) {
-            NSLog(@"Is visible, refreshing.");
             [self refreshConversation];
         }
     });
