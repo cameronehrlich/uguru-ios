@@ -54,5 +54,7 @@ typedef void (^UGFailBlock)(id errorObject);
 
 // Requests
 - (void)postRequest:(Request *)request withSuccess:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock;
+- (void)putRequestTutorAccept:(NSMutableDictionary *)params withSuccess:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock;
+
 
 @end

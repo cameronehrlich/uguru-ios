@@ -25,4 +25,6 @@
 @property (nonatomic, strong) Notification *notification;
 - (IBAction)hourlyRateSliderAction:(id)sender;
 
+- (IBAction)sendAction:(id)sender;
+
 @end

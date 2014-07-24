@@ -289,6 +289,27 @@
                           failBlock(nil);
                       }];
 }
+
+- (void)putRequestTutorAccept:(NSMutableDictionary *)params withSuccess:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock
+{
+    
+    [self.requestManager POST:@"tutor_accept"
+                   parameters:params
+                      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                          if ([self errorsToHandle:responseObject]) {
+                              failBlock(responseObject[@"errors"]);
+                              return;
+                          }
+                          successBlock(params);
+                          
+                      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                          NSLog(@"Failed in Post Request");
+                          failBlock(nil);
+                      }
+     ];
+    
+}
+
 #pragma mark -
 #pragma mark Helper methods
 - (BOOL)errorsToHandle:(NSDictionary *)responseObject
