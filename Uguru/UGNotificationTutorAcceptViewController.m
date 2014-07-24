@@ -6,14 +6,13 @@
 //  Copyright (c) 2014 Uguru. All rights reserved.
 //
 
-#import "UGNotificationViewController.h"
+#import "UGNotificationTutorAcceptViewController.h"
 
-@implementation UGNotificationViewController
+@implementation UGNotificationTutorAcceptViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.blahField setText:self.notification.description];
     // Do any additional setup after loading the view.
 }
 
@@ -23,4 +22,6 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)hourlyRateSliderAction:(id)sender {
+}
 @end

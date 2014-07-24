@@ -8,7 +8,7 @@
 
 #import "UGHomeViewController.h"
 #import "UGNotificationTableViewCell.h"
-#import "UGNotificationViewController.h"
+#import "UGNotificationTutorAcceptViewController.h"
 #import <AFNetworking/UIKit+AFNetworking.h>
 #import <NSDate+RelativeTime.h>
 
@@ -146,14 +146,27 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     [[UGModel sharedInstance] getNotification:[[[[UGModel sharedInstance] notifications] objectAtIndex:indexPath.row] server_id]
                                   withSuccess:^(id responseObject) {
                                       
                                       _selectedNotification = responseObject;
                                       
-                                      if (!_selectedNotification.type) {
-                                          [self performSegueWithIdentifier:@"homeToNotification" sender:self];
+                                      if (_selectedNotification.type) {
+                                          if ([_selectedNotification.type isEqualToString:@"tutor-request-offer"]) {
+                                              [self performSegueWithIdentifier:@"homeToNotificationTutorAccept" sender:self];
+                                          }else
+                                          {
+                                              [[[UIAlertView alloc] initWithTitle:@"Notification Info"
+                                                                         message:_selectedNotification.description
+                                                                        delegate:nil
+                                                               cancelButtonTitle:@"Okay"
+                                                                otherButtonTitles:nil] show];
+                                          }
+
+                                          
                                       }
+                                      
                                   } fail:^(NSDictionary *errors) {
                                       [[[UIAlertView alloc] initWithTitle:@"Ooops"
                                                                   message:@"Couldn't fetch information about this notification."
@@ -213,9 +226,12 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"homeToNotification"]) {
-        UGNotificationViewController *dst = [segue destinationViewController];
+    
+    if ([segue.identifier isEqualToString:@"homeToNotificationTutorAccept"]) {
+        
+        UGNotificationTutorAcceptViewController *dst = [segue destinationViewController];
         [dst setNotification:_selectedNotification];
+        
     }else if ([segue.identifier isEqualToString:@"homeToWelcome"]){
         [SSKeychain deletePasswordForService:UGURU_KEYCHAIN_SERVICE account:UGURU_KEYCHAIN_ACCOUNT];
     }

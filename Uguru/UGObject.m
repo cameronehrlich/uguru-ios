@@ -26,7 +26,7 @@
     for (NSString *key in [dict allKeys]) {
         if ([newObject respondsToSelector:NSSelectorFromString(key)]) {
             if ([reservedSymbols containsObject:key]) {
-                NSLog(@"Tried to map to an Objc reserved key path. BAD!");
+                NSLog(@"Tried to map to an Objc reserved key path. BAD! ( %@ -> %@ )", NSStringFromClass([self class]), key);
                 continue;
             }
             

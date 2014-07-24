@@ -35,12 +35,12 @@
 		328918671980527100221E42 /* UGMessageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 328918661980527100221E42 /* UGMessageTableViewController.m */; };
 		3289186A198052D600221E42 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 32891869198052D600221E42 /* Message.m */; };
 		3289C88519807F1A00DA6071 /* UGRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3289C88419807F1A00DA6071 /* UGRequestViewController.m */; };
+		3289C88B1980AF3600DA6071 /* UGNotificationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3289C8891980AF3600DA6071 /* UGNotificationTableViewCell.m */; };
 		32C12930197DC99B00FE483D /* UGHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C1292F197DC99B00FE483D /* UGHomeViewController.m */; };
 		32C12937197DE30600FE483D /* Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C12936197DE30600FE483D /* Notification.m */; };
-		32C1293A197E03CC00FE483D /* UGNotificationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C12939197E03CC00FE483D /* UGNotificationTableViewCell.m */; };
 		32C1293E197EDE5B00FE483D /* Payment.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C1293D197EDE5B00FE483D /* Payment.m */; };
 		32C12941197EDE6A00FE483D /* Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C12940197EDE6A00FE483D /* Request.m */; };
-		32C12944197EEE1A00FE483D /* UGNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C12943197EEE1A00FE483D /* UGNotificationViewController.m */; };
+		32C12944197EEE1A00FE483D /* UGNotificationTutorAcceptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C12943197EEE1A00FE483D /* UGNotificationTutorAcceptViewController.m */; };
 		4605AED1AD5B4D25BE748C28 /* libPods-UguruTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0C9B1101D1F4600A1B4C6F7 /* libPods-UguruTests.a */; };
 		5390E66D51B24390BAD4ECD6 /* libPods-Uguru.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DBA02B7D2546ECAE33C73E /* libPods-Uguru.a */; };
 /* End PBXBuildFile section */
@@ -104,18 +104,18 @@
 		32891869198052D600221E42 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		3289C88319807F1A00DA6071 /* UGRequestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGRequestViewController.h; sourceTree = "<group>"; };
 		3289C88419807F1A00DA6071 /* UGRequestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGRequestViewController.m; sourceTree = "<group>"; };
+		3289C8891980AF3600DA6071 /* UGNotificationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGNotificationTableViewCell.m; sourceTree = "<group>"; };
+		3289C88A1980AF3600DA6071 /* UGNotificationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGNotificationTableViewCell.h; sourceTree = "<group>"; };
 		32C1292E197DC99B00FE483D /* UGHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGHomeViewController.h; sourceTree = "<group>"; };
 		32C1292F197DC99B00FE483D /* UGHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGHomeViewController.m; sourceTree = "<group>"; };
 		32C12935197DE30600FE483D /* Notification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Notification.h; sourceTree = "<group>"; };
 		32C12936197DE30600FE483D /* Notification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Notification.m; sourceTree = "<group>"; };
-		32C12938197E03CC00FE483D /* UGNotificationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGNotificationTableViewCell.h; sourceTree = "<group>"; };
-		32C12939197E03CC00FE483D /* UGNotificationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGNotificationTableViewCell.m; sourceTree = "<group>"; };
 		32C1293C197EDE5B00FE483D /* Payment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Payment.h; sourceTree = "<group>"; };
 		32C1293D197EDE5B00FE483D /* Payment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Payment.m; sourceTree = "<group>"; };
 		32C1293F197EDE6A00FE483D /* Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Request.h; sourceTree = "<group>"; };
 		32C12940197EDE6A00FE483D /* Request.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Request.m; sourceTree = "<group>"; };
-		32C12942197EEE1A00FE483D /* UGNotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGNotificationViewController.h; sourceTree = "<group>"; };
-		32C12943197EEE1A00FE483D /* UGNotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGNotificationViewController.m; sourceTree = "<group>"; };
+		32C12942197EEE1A00FE483D /* UGNotificationTutorAcceptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGNotificationTutorAcceptViewController.h; sourceTree = "<group>"; };
+		32C12943197EEE1A00FE483D /* UGNotificationTutorAcceptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGNotificationTutorAcceptViewController.m; sourceTree = "<group>"; };
 		48BD3755083547939D6F9810 /* Pods-Uguru.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Uguru.xcconfig"; path = "Pods/Pods-Uguru.xcconfig"; sourceTree = "<group>"; };
 		C5DBA02B7D2546ECAE33C73E /* libPods-Uguru.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Uguru.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0C9B1101D1F4600A1B4C6F7 /* libPods-UguruTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UguruTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -259,8 +259,8 @@
 				3241627119785EAD0055EF7A /* UGSignUpViewController.m */,
 				32C1292E197DC99B00FE483D /* UGHomeViewController.h */,
 				32C1292F197DC99B00FE483D /* UGHomeViewController.m */,
-				32C12942197EEE1A00FE483D /* UGNotificationViewController.h */,
-				32C12943197EEE1A00FE483D /* UGNotificationViewController.m */,
+				32C12942197EEE1A00FE483D /* UGNotificationTutorAcceptViewController.h */,
+				32C12943197EEE1A00FE483D /* UGNotificationTutorAcceptViewController.m */,
 				3289184D197F6E6700221E42 /* UGInboxViewController.h */,
 				3289184E197F6E6700221E42 /* UGInboxViewController.m */,
 				328918651980527100221E42 /* UGMessageTableViewController.h */,
@@ -274,8 +274,8 @@
 		32C1293B197E03D200FE483D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				32C12938197E03CC00FE483D /* UGNotificationTableViewCell.h */,
-				32C12939197E03CC00FE483D /* UGNotificationTableViewCell.m */,
+				3289C8891980AF3600DA6071 /* UGNotificationTableViewCell.m */,
+				3289C88A1980AF3600DA6071 /* UGNotificationTableViewCell.h */,
 				32891853198040A300221E42 /* UGInboxTableViewCell.h */,
 				32891854198040A300221E42 /* UGInboxTableViewCell.m */,
 				328918561980501F00221E42 /* UGMessageDescriptionTableViewCell.h */,
@@ -464,15 +464,15 @@
 				3254E4C41975B64600205F33 /* UGAppDelegate.m in Sources */,
 				328918611980519F00221E42 /* UGMessageMeTableViewCell.m in Sources */,
 				32891852197F710500221E42 /* Conversation.m in Sources */,
-				32C1293A197E03CC00FE483D /* UGNotificationTableViewCell.m in Sources */,
 				3289186A198052D600221E42 /* Message.m in Sources */,
 				32C12930197DC99B00FE483D /* UGHomeViewController.m in Sources */,
 				32C1293E197EDE5B00FE483D /* Payment.m in Sources */,
 				328918671980527100221E42 /* UGMessageTableViewController.m in Sources */,
 				3289C88519807F1A00DA6071 /* UGRequestViewController.m in Sources */,
 				3254E4C01975B64600205F33 /* main.m in Sources */,
+				3289C88B1980AF3600DA6071 /* UGNotificationTableViewCell.m in Sources */,
 				32C12941197EDE6A00FE483D /* Request.m in Sources */,
-				32C12944197EEE1A00FE483D /* UGNotificationViewController.m in Sources */,
+				32C12944197EEE1A00FE483D /* UGNotificationTutorAcceptViewController.m in Sources */,
 				3241627219785EAD0055EF7A /* UGSignUpViewController.m in Sources */,
 				3241626F19785E990055EF7A /* UGLoginViewController.m in Sources */,
 				3289184F197F6E6700221E42 /* UGInboxViewController.m in Sources */,

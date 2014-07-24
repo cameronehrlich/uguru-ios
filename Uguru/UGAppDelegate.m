@@ -7,6 +7,7 @@
 //
 
 #import "UGAppDelegate.h"
+#import <UIColor+Hex.h>
 
 @implementation UGAppDelegate
 
@@ -14,6 +15,8 @@
 {
     // Let the device know we want to receive push notifications
 	[[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithCSS:@"29ADE3"]];
+    [[self window] setTintColor:[UIColor whiteColor]];
     
 //    UIRemoteNotificationType enabledTypes = [[UIApplication sharedApplication] enabledRemoteNotificationTypes];
     
