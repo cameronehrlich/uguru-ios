@@ -21,7 +21,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    [self.navigationController setToolbarHidden:NO animated:YES];
 }
 
 - (void)didReceiveMemoryWarning

@@ -212,7 +212,6 @@
 
 #pragma mark -
 #pragma mark Messages
-
 -(void)getAllConversationsWithSuccess:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock
 {
     [self.requestManager GET:@"conversations"
@@ -255,7 +254,7 @@
                          
                          for (NSDictionary *messageDict in responseObject[@"messages"]) {
                              Message *newMessage = [Message fromDictionary:messageDict];
-                             [responseObject addObject:newMessage];
+                             [returnedMessages addObject:newMessage];
                          }
                          convo.messages = [returnedMessages copy];
                          successBlock(convo);
@@ -266,9 +265,34 @@
                      }];
 }
 
-- (BOOL)errorsToHandle:(NSDictionary *)responseObject
+
+#pragma mark -
+#pragma mark Requests
+
+- (void)postRequest:(Request *)request withSuccess:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock
 {
     
+    
+    [self.requestManager POST:@"request"
+                   parameters:[request toDictionary]
+                      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                          
+                          if ([self errorsToHandle:responseObject]) {
+                              failBlock(responseObject[@"errors"]);
+                              return;
+                          }
+                          
+                          Request *request = [Request fromDictionary:responseObject[@"request"]];
+                          successBlock(request);
+                      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                          NSLog(@"Failed in Post Request");
+                          failBlock(nil);
+                      }];
+}
+#pragma mark -
+#pragma mark Helper methods
+- (BOOL)errorsToHandle:(NSDictionary *)responseObject
+{
     if (responseObject[@"errors"]) {
         for (NSString *error in responseObject[@"errors"]) {
             
@@ -281,9 +305,7 @@
                                                delegate:nil
                                       cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
                 } fail:nil];
-                
             }
-            
             NSLog(@"API Error: %@", error);
         }
         return YES;

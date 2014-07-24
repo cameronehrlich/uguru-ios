@@ -15,6 +15,8 @@
 @property (nonatomic, strong) NSString *receiver_name;
 @property (nonatomic, strong) NSNumber *sender_server_id;
 @property (nonatomic, strong) NSNumber *receiver_server_id;
-@property (nonatomic, strong) NSDate *write_time;
+@property (nonatomic, strong) NSString *write_time;
+
+- (NSString *)relativeTimeString;
 
 @end

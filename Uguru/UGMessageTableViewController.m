@@ -6,6 +6,10 @@
 //  Copyright (c) 2014 Uguru. All rights reserved.
 //
 
+#import <AFNetworking/UIKit+AFNetworking.h>
+#import <NSDate+RelativeTime.h>
+#import <UIColor+Hex.h>
+
 #import "UGMessageTableViewController.h"
 #import "UGMessageDescriptionTableViewCell.h"
 #import "UGMessageYouTableViewCell.h"
@@ -16,6 +20,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.navigationController setToolbarHidden:YES animated:YES];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+//    self.stickeyKeyboardView = [[RDRStickyKeyboardView alloc] initWithScrollView:self.tableView];
+//    [self.stickeyKeyboardView setFrame:self.view.bounds];
+//    [self.stickeyKeyboardView setAutoresizingMask: (UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth) ];
+//    [self.view addSubview:self.stickeyKeyboardView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -34,58 +48,42 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 0;
+    return [self.currentConversation.messages count] + 1;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:nil forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
+    if (indexPath.row == 0) {
+        UGMessageDescriptionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageDescriptionCell" forIndexPath:indexPath];
+        return cell;
+    }else
+    {
+        Message *message = [[self.currentConversation messages] objectAtIndex:indexPath.row - 1];
+        
+        if ([message.sender_server_id isEqualToNumber:[[[UGModel sharedInstance] user] server_id]]) {
+            // Message was sent by me
+            UGMessageMeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageMeCell" forIndexPath:indexPath];
+            NSURL *imageURL = [NSURL URLWithString:[[[UGModel sharedInstance] user] image_url]];
+            [cell.messageImageView setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"guru"]];
+            [cell.messageContentView setText:message.contents];
+            [cell.messageDateLabel setText:message.relativeTimeString];
+            [cell.messageNameLabel setText:message.sender_name];
+            
+            return cell;
+        }else{
+            // Message was sent by other person
+            UGMessageYouTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageYouCell" forIndexPath:indexPath];
+            NSURL *imageURL = [NSURL URLWithString:self.currentConversation.image_url];
+            [cell.messageImageView setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"guru"]];
+            [cell.messageContentView setText:message.contents];
+            [cell.messageDateLabel setText:message.relativeTimeString];
+            [cell.messageNameLabel setText:message.sender_name];
+            return cell;
+        }
+    }
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -94,6 +92,5 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
 
 @end

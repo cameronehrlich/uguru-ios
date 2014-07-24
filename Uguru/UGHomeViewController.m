@@ -22,11 +22,13 @@
 {
     [super viewDidLoad];
     // Create top right toolbar items
-    UIBarButtonItem *feedButton = [[UIBarButtonItem alloc] initWithTitle:@"N" style:UIBarButtonItemStylePlain target:self action:@selector(goToFeed)];
     UIBarButtonItem *messagesButton = [[UIBarButtonItem alloc] initWithTitle:@"M" style:UIBarButtonItemStylePlain target:self action:@selector(goToMessages)];
     UIBarButtonItem *requestsButton = [[UIBarButtonItem alloc] initWithTitle:@"A+" style:UIBarButtonItemStylePlain target:self action:@selector(goToRequests)];
     
-    [self.navigationItem setRightBarButtonItems:@[requestsButton, messagesButton, feedButton] animated:YES];
+    UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    spacer.width = 20;
+    
+    [self.navigationItem setRightBarButtonItems:@[requestsButton, spacer, messagesButton, spacer] animated:YES];
     
     // Create left toolbar item
     UIBarButtonItem *hamburger = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"hamburger"] style:UIBarButtonItemStylePlain target:self action:@selector(showSidebar)];
@@ -61,6 +63,14 @@
     
     // Go get 'em
     [self fetchNotifications];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self fetchNotifications];
+    
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
 }
 
 - (void)didReceiveMemoryWarning
@@ -166,6 +176,7 @@
             [[UGModel sharedInstance] logoutUserWithSuccess:^(id responseObject) {
                 [self performSegueWithIdentifier:@"homeToWelcome" sender:self];
             } fail:^(id errorObject) {
+                NSLog(@"FAILED TO LOGOUT, CHECK YOURSELF!");
                 [self performSegueWithIdentifier:@"homeToWelcome" sender:self];
             }];
             break;
@@ -175,18 +186,15 @@
     }
     [sidebar dismissAnimated:YES];
 }
-- (void)goToFeed
-{
-    
-}
 
 - (void)goToMessages
 {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[UGModel sharedInstance] getAllConversationsWithSuccess:^(id responseObject) {
-        
-        
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         [self performSegueWithIdentifier:@"homeToInbox" sender:self];
     } fail:^(NSDictionary *errors) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"Couldn't get your conversations, sorry!"
                                    delegate:nil
                           cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
@@ -196,7 +204,7 @@
 
 - (void)goToRequests
 {
-    
+    [self performSegueWithIdentifier:@"homeToRequest" sender:self];
 }
 
 
@@ -212,6 +220,5 @@
         [SSKeychain deletePasswordForService:UGURU_KEYCHAIN_SERVICE account:UGURU_KEYCHAIN_ACCOUNT];
     }
 }
-
 
 @end
