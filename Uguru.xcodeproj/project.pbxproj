@@ -43,6 +43,7 @@
 		32C12944197EEE1A00FE483D /* UGNotificationTutorAcceptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C12943197EEE1A00FE483D /* UGNotificationTutorAcceptViewController.m */; };
 		4605AED1AD5B4D25BE748C28 /* libPods-UguruTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0C9B1101D1F4600A1B4C6F7 /* libPods-UguruTests.a */; };
 		5390E66D51B24390BAD4ECD6 /* libPods-Uguru.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DBA02B7D2546ECAE33C73E /* libPods-Uguru.a */; };
+		BF3242D2198187590025D5EF /* UGNotificationStudentAcceptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3242D1198187590025D5EF /* UGNotificationStudentAcceptViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +118,8 @@
 		32C12942197EEE1A00FE483D /* UGNotificationTutorAcceptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGNotificationTutorAcceptViewController.h; sourceTree = "<group>"; };
 		32C12943197EEE1A00FE483D /* UGNotificationTutorAcceptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGNotificationTutorAcceptViewController.m; sourceTree = "<group>"; };
 		48BD3755083547939D6F9810 /* Pods-Uguru.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Uguru.xcconfig"; path = "Pods/Pods-Uguru.xcconfig"; sourceTree = "<group>"; };
+		BF3242D0198187590025D5EF /* UGNotificationStudentAcceptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGNotificationStudentAcceptViewController.h; sourceTree = "<group>"; };
+		BF3242D1198187590025D5EF /* UGNotificationStudentAcceptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGNotificationStudentAcceptViewController.m; sourceTree = "<group>"; };
 		C5DBA02B7D2546ECAE33C73E /* libPods-Uguru.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Uguru.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0C9B1101D1F4600A1B4C6F7 /* libPods-UguruTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UguruTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -261,6 +264,8 @@
 				32C1292F197DC99B00FE483D /* UGHomeViewController.m */,
 				32C12942197EEE1A00FE483D /* UGNotificationTutorAcceptViewController.h */,
 				32C12943197EEE1A00FE483D /* UGNotificationTutorAcceptViewController.m */,
+				BF3242D0198187590025D5EF /* UGNotificationStudentAcceptViewController.h */,
+				BF3242D1198187590025D5EF /* UGNotificationStudentAcceptViewController.m */,
 				3289184D197F6E6700221E42 /* UGInboxViewController.h */,
 				3289184E197F6E6700221E42 /* UGInboxViewController.m */,
 				328918651980527100221E42 /* UGMessageTableViewController.h */,
@@ -479,6 +484,7 @@
 				3241626A19784D900055EF7A /* UGObject.m in Sources */,
 				328918581980501F00221E42 /* UGMessageDescriptionTableViewCell.m in Sources */,
 				3241626719784D330055EF7A /* User.m in Sources */,
+				BF3242D2198187590025D5EF /* UGNotificationStudentAcceptViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

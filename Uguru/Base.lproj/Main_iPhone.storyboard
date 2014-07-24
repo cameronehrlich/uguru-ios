@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="rS3-R9-Ivy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="rS3-R9-Ivy">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -365,13 +365,14 @@
                         <segue destination="BJD-gE-45c" kind="push" identifier="homeToInbox" id="dIW-kY-ZUJ"/>
                         <segue destination="7cg-Oy-dI0" kind="push" identifier="homeToRequest" id="28U-kp-Wq5"/>
                         <segue destination="52Y-o0-XXv" kind="push" identifier="homeToNotificationTutorAccept" id="EQk-zn-FGC"/>
+                        <segue destination="qEW-oX-W23" kind="push" identifier="homeToNotificationStudentAccept" id="753-Yy-K3B"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gMb-RC-MWv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1266" y="729"/>
         </scene>
-        <!--Notification Tutor Accept View Controller - Become a Tutor-->
+        <!--Notification Tutor Accept View Controller - Accept Student-->
         <scene sceneID="iPU-36-HzP">
             <objects>
                 <tableViewController id="52Y-o0-XXv" customClass="UGNotificationTutorAcceptViewController" sceneMemberID="viewController">
@@ -507,7 +508,7 @@
                             <outlet property="delegate" destination="52Y-o0-XXv" id="gIh-J4-5Sv"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Become a Tutor" id="JpL-J1-5Rn">
+                    <navigationItem key="navigationItem" title="Accept Student" id="JpL-J1-5Rn">
                         <barButtonItem key="rightBarButtonItem" title="Accept" style="done" id="8Ed-4T-zmK">
                             <connections>
                                 <action selector="sendAction:" destination="52Y-o0-XXv" id="0bE-wK-5dx"/>
@@ -529,7 +530,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F70-55-60H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1932" y="699"/>
+            <point key="canvasLocation" x="1960" y="699"/>
         </scene>
         <!--Inbox View Controller - Inbox-->
         <scene sceneID="n0A-kq-DEf">
@@ -1136,6 +1137,61 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1k4-5o-fsP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="666" y="729"/>
+        </scene>
+        <!--Notification Student Accept View Controller - Accept Tutor-->
+        <scene sceneID="jwL-9s-rmK">
+            <objects>
+                <tableViewController id="qEW-oX-W23" customClass="UGNotificationStudentAcceptViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="485" sectionHeaderHeight="22" sectionFooterHeight="22" id="wNQ-1o-zyZ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="FWA-1s-ZaF">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="485" id="ZKF-gS-7X2">
+                                        <rect key="frame" x="0.0" y="64" width="320" height="485"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZKF-gS-7X2" id="LdK-ff-0Az">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="484"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="485" id="t5y-tq-lO7">
+                                        <rect key="frame" x="0.0" y="549" width="320" height="485"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="t5y-tq-lO7" id="ZzD-8f-tqR">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="484"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="485" id="7k5-hf-dwN">
+                                        <rect key="frame" x="0.0" y="1034" width="320" height="485"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7k5-hf-dwN" id="ByU-Dh-KIi">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="484"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="qEW-oX-W23" id="RW2-Wx-MYt"/>
+                            <outlet property="delegate" destination="qEW-oX-W23" id="NgR-nN-ogr"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Accept Tutor" id="S4r-bb-WQi">
+                        <barButtonItem key="rightBarButtonItem" title="Accept" style="done" id="lk1-fK-nQU">
+                            <connections>
+                                <action selector="sendAction:" destination="qEW-oX-W23" id="ROC-RC-Pb5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BbD-yQ-WPG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2304" y="699"/>
         </scene>
     </scenes>
     <resources>
