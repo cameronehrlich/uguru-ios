@@ -46,6 +46,8 @@
 		4605AED1AD5B4D25BE748C28 /* libPods-UguruTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0C9B1101D1F4600A1B4C6F7 /* libPods-UguruTests.a */; };
 		5390E66D51B24390BAD4ECD6 /* libPods-Uguru.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DBA02B7D2546ECAE33C73E /* libPods-Uguru.a */; };
 		BF3242D2198187590025D5EF /* UGNotificationStudentAcceptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3242D1198187590025D5EF /* UGNotificationStudentAcceptViewController.m */; };
+		BF42828A19868FCA0049AE2E /* Calendar.m in Sources */ = {isa = PBXBuildFile; fileRef = BF42828919868FCA0049AE2E /* Calendar.m */; };
+		BF63078A198578BC0057EAEC /* UGCalendarCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF630789198578BC0057EAEC /* UGCalendarCollectionViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +127,10 @@
 		48BD3755083547939D6F9810 /* Pods-Uguru.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Uguru.xcconfig"; path = "Pods/Pods-Uguru.xcconfig"; sourceTree = "<group>"; };
 		BF3242D0198187590025D5EF /* UGNotificationStudentAcceptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGNotificationStudentAcceptViewController.h; sourceTree = "<group>"; };
 		BF3242D1198187590025D5EF /* UGNotificationStudentAcceptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGNotificationStudentAcceptViewController.m; sourceTree = "<group>"; };
+		BF42828819868FCA0049AE2E /* Calendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Calendar.h; sourceTree = "<group>"; };
+		BF42828919868FCA0049AE2E /* Calendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Calendar.m; sourceTree = "<group>"; };
+		BF630788198578BC0057EAEC /* UGCalendarCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGCalendarCollectionViewController.h; sourceTree = "<group>"; };
+		BF630789198578BC0057EAEC /* UGCalendarCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGCalendarCollectionViewController.m; sourceTree = "<group>"; };
 		C5DBA02B7D2546ECAE33C73E /* libPods-Uguru.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Uguru.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0C9B1101D1F4600A1B4C6F7 /* libPods-UguruTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UguruTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -163,8 +169,10 @@
 				32416262197845D90055EF7A /* UGModel.m */,
 				3241626819784D900055EF7A /* UGObject.h */,
 				3241626919784D900055EF7A /* UGObject.m */,
-				3241626519784D330055EF7A /* User.h */,
 				3241626619784D330055EF7A /* User.m */,
+				3241626519784D330055EF7A /* User.h */,
+				BF42828819868FCA0049AE2E /* Calendar.h */,
+				BF42828919868FCA0049AE2E /* Calendar.m */,
 				32C12935197DE30600FE483D /* Notification.h */,
 				32C12936197DE30600FE483D /* Notification.m */,
 				32C1293C197EDE5B00FE483D /* Payment.h */,
@@ -279,6 +287,8 @@
 				328918661980527100221E42 /* UGMessageViewController.m */,
 				3289C88319807F1A00DA6071 /* UGRequestViewController.h */,
 				3289C88419807F1A00DA6071 /* UGRequestViewController.m */,
+				BF630788198578BC0057EAEC /* UGCalendarCollectionViewController.h */,
+				BF630789198578BC0057EAEC /* UGCalendarCollectionViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -478,6 +488,8 @@
 				32C12937197DE30600FE483D /* Notification.m in Sources */,
 				3254E4C41975B64600205F33 /* UGAppDelegate.m in Sources */,
 				328918611980519F00221E42 /* UGMessageMeTableViewCell.m in Sources */,
+				BF63078A198578BC0057EAEC /* UGCalendarCollectionViewController.m in Sources */,
+				BF42828A19868FCA0049AE2E /* Calendar.m in Sources */,
 				32891852197F710500221E42 /* Conversation.m in Sources */,
 				3289186A198052D600221E42 /* Message.m in Sources */,
 				32C12930197DC99B00FE483D /* UGHomeViewController.m in Sources */,

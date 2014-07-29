@@ -19,11 +19,13 @@
 @property (strong, nonatomic) IBOutlet UISwitch *sameGuruSwitch;
 @property (strong, nonatomic) IBOutlet UISlider *offeringPriceSlider;
 @property (strong, nonatomic) IBOutlet UILabel *offeringPriceLabel;
+@property (strong, nonatomic) Request *request;
 
 
 - (IBAction)sendAction:(id)sender;
 - (IBAction)sessionLengthSliderAction:(id)sender;
 - (IBAction)offeringPriceSliderAction:(id)sender;
+- (IBAction)goToCalendar:(id)sender;
 
 
 @end

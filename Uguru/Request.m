@@ -10,4 +10,13 @@
 
 @implementation Request
 
++ (instancetype)new {
+    Request *request = [[Request alloc] init];
+    if (request) {
+        request.time_estimate = @2;
+        request.student_estimated_hour = @15;
+    }
+    return request;
+}
+
 @end

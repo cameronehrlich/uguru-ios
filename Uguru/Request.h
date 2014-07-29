@@ -7,8 +7,11 @@
 //
 
 #import "UGObject.h"
+#import "Calendar.h"
 
 @interface Request : UGObject
+
++ (instancetype)new;
 
 @property (nonatomic, strong) NSString *_description;
 @property (nonatomic, strong) NSString *course_name;
@@ -20,5 +23,6 @@
 @property (nonatomic, strong) NSNumber *student_estimated_hour;
 @property (nonatomic, strong) NSString *location_name;
 @property (nonatomic, strong) NSNumber *connected_tutor;
+@property (nonatomic, strong) Calendar *calendar;
 
 @end

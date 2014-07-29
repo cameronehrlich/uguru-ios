@@ -7,17 +7,26 @@
 //
 
 #import "UGRequestViewController.h"
+#import "UGCalendarCollectionViewController.h"
 
-@implementation UGRequestViewController
+@implementation UGRequestViewController 
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.request = [Request new];
+    if (!self.request.calendar) {
+        self.request.calendar = [Calendar new];
+    }
+    UGCalendarCollectionViewController *collectionVC = [[UGCalendarCollectionViewController alloc] init];
+    collectionVC.somethingHappenedInModalVC = ^(NSString *response) {
+        NSLog(@"Something was selected in the modalVC, and this is what it was:%@", response);
+    };
 }
 
 - (IBAction)sendAction:(id)sender
 {
-    Request *newRequest = [Request new];
+    Request *newRequest = self.request;
     [newRequest setCourse_name:self.classField.text];
     [newRequest setProfessor_name:self.professorField.text];
     [newRequest set_description:self.helpField.text];
@@ -45,6 +54,11 @@
     [self.offeringPriceLabel setText:[NSString stringWithFormat:@"$%ld/hr", (long)[[NSNumber numberWithFloat:[sender value]] integerValue]]];
 }
 
+- (IBAction)goToCalendar:(id)sender {
+    NSLog(@"reached here");
+    [self performSegueWithIdentifier:@"requestToCalendar" sender:self];
+}
+
 - (IBAction)sessionLengthSliderAction:(UISlider *)sender
 {
     [self.sessionLengthLabel setText:[NSString stringWithFormat:@"%ld hrs", (long)[[NSNumber numberWithFloat:[sender value]] integerValue]]];
@@ -61,8 +75,10 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"requestToCalendar"]) {
+        UGCalendarCollectionViewController *dst = [segue destinationViewController];
+        [dst setRequest:self.request];
+    }
 }
 
 

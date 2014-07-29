@@ -24,6 +24,7 @@ PODS:
   - NSDate+RelativeTime (1.0.1)
   - RDRStickyKeyboardView (0.0.2)
   - RNFrostedSidebar (0.2.0)
+  - SBJson (4.0.1)
   - SSKeychain (1.2.2)
   - UIColor+Hex (1.0.1):
     - UIColor+Hex/NSColor
@@ -37,6 +38,7 @@ DEPENDENCIES:
   - NSDate+RelativeTime (~> 1.0)
   - RDRStickyKeyboardView (~> 0.0)
   - RNFrostedSidebar (~> 0.2.0)
+  - SBJson (~> 4.0.0)
   - SSKeychain (~> 1.2)
   - UIColor+Hex (~> 1.0)
   - XCTestAsync (~> 1.0)
@@ -47,6 +49,7 @@ SPEC CHECKSUMS:
   NSDate+RelativeTime: e8b48c62cd2354d9b372b3361cff579c96833b2e
   RDRStickyKeyboardView: 52f8380fe05eb8bff6b55d367232fa607772658b
   RNFrostedSidebar: f1d95d9b2627f13cc10e75d36e751a623eec079c
+  SBJson: d71212c078abf4679d54b0d0565260c474e46235
   SSKeychain: cc48bd3ad24fcd9125adb9e0d23dd50b8bbd08b9
   UIColor+Hex: ac7e1ae4eeea4f522fe3f6eda35de4af69244432
   XCTestAsync: 17ffc4000abce9f313a4e75fe0fe64bbf26937f0

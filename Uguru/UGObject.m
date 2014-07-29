@@ -7,6 +7,7 @@
 //
 
 #import "UGObject.h"
+#import <SBJson4.h>
 @import ObjectiveC;
 
 @implementation UGObject
@@ -61,10 +62,19 @@
     
     // For self class properties
     properties = class_copyPropertyList([self class], &outCount);
+    
     for (i = 0; i < outCount; i++) {
         objc_property_t property = properties[i];
         const char *propName = property_getName(property);
         NSString *propertyName = [NSString stringWithUTF8String:propName];
+        if ([propertyName isEqualToString:@"calendar"]) {
+            Calendar *calendar = [self valueForKey:@"calendar"];
+            NSMutableArray *time_ranges = calendar.time_ranges;
+            if (time_ranges) {
+                [body setObject:time_ranges forKey:propertyName];
+            }
+            continue;
+        }
         id value = [self valueForKeyPath:propertyName] ? [self valueForKeyPath:propertyName] : nil;
         if (value) {
             [body setObject:value forKey:propertyName];
