@@ -9,6 +9,8 @@
 #import "UGHomeViewController.h"
 #import "UGNotificationTableViewCell.h"
 #import "UGNotificationTutorAcceptViewController.h"
+#import "UGNotificationStudentAcceptViewController.h"
+#import "UGNotificationStudentRequestViewController.h"
 #import <AFNetworking/UIKit+AFNetworking.h>
 #import <NSDate+RelativeTime.h>
 
@@ -156,6 +158,9 @@
                                           if ([_selectedNotification.type isEqualToString:@"tutor-request-offer"]) {
                                               [self performSegueWithIdentifier:@"homeToNotificationTutorAccept" sender:self];
                                           }
+                                          else if ([_selectedNotification.type isEqualToString:@"student-request-help"]) {
+                                              [self performSegueWithIdentifier:@"homeToNotificationStudentRequest" sender:self];
+                                          }
                                           else if ([_selectedNotification.type isEqualToString:@"student-incoming-offer"]) {
                                               [self performSegueWithIdentifier:@"homeToNotificationStudentAccept" sender:self];
                                           }
@@ -235,9 +240,13 @@
         
         UGNotificationTutorAcceptViewController *dst = [segue destinationViewController];
         [dst setNotification:_selectedNotification];
-        
-    }else if ([segue.identifier isEqualToString:@"homeToNotificationStudentAccept"]){
-        UGNotificationTutorAcceptViewController *dst = [segue destinationViewController];
+    }
+    else if ([segue.identifier isEqualToString:@"homeToNotificationStudentRequest"]){
+        UGNotificationStudentRequestViewController *dst = [segue destinationViewController];
+        [dst setNotification:_selectedNotification];
+    }
+    else if ([segue.identifier isEqualToString:@"homeToNotificationStudentAccept"]){
+        UGNotificationStudentAcceptViewController *dst = [segue destinationViewController];
         [dst setNotification:_selectedNotification];
     }else if ([segue.identifier isEqualToString:@"homeToWelcome"]){
         [SSKeychain deletePasswordForService:UGURU_KEYCHAIN_SERVICE account:UGURU_KEYCHAIN_ACCOUNT];

@@ -366,11 +366,12 @@
                         <segue destination="7cg-Oy-dI0" kind="push" identifier="homeToRequest" id="28U-kp-Wq5"/>
                         <segue destination="52Y-o0-XXv" kind="push" identifier="homeToNotificationTutorAccept" id="EQk-zn-FGC"/>
                         <segue destination="qEW-oX-W23" kind="push" identifier="homeToNotificationStudentAccept" id="753-Yy-K3B"/>
+                        <segue destination="KoU-T0-JBi" kind="push" identifier="homeToNotificationStudentRequest" id="oFF-lp-YP6"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gMb-RC-MWv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1266" y="729"/>
+            <point key="canvasLocation" x="1449" y="690"/>
         </scene>
         <!--Notification Tutor Accept View Controller - Accept Student-->
         <scene sceneID="iPU-36-HzP">
@@ -1245,22 +1246,6 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="485" id="t5y-tq-lO7">
-                                        <rect key="frame" x="0.0" y="549" width="320" height="485"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="t5y-tq-lO7" id="ZzD-8f-tqR">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="484"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="485" id="7k5-hf-dwN">
-                                        <rect key="frame" x="0.0" y="1034" width="320" height="485"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7k5-hf-dwN" id="ByU-Dh-KIi">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="484"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -1280,6 +1265,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BbD-yQ-WPG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2323" y="718"/>
+        </scene>
+        <!--Notification Student Request View Controller - Your Request-->
+        <scene sceneID="FZT-nN-Goo">
+            <objects>
+                <tableViewController id="KoU-T0-JBi" customClass="UGNotificationStudentRequestViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="zRC-QQ-IYR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="gs7-Oz-2c1">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="490" id="J7h-LN-dvi">
+                                        <rect key="frame" x="0.0" y="64" width="320" height="490"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="J7h-LN-dvi" id="dGB-cD-ved">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="489"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="KoU-T0-JBi" id="D4W-NJ-khT"/>
+                            <outlet property="delegate" destination="KoU-T0-JBi" id="9te-3b-ctc"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Your Request" id="ViS-0z-sXE"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eTB-zm-TKG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2685" y="718"/>
         </scene>
     </scenes>
     <resources>

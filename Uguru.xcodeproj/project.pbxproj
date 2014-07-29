@@ -47,6 +47,7 @@
 		5390E66D51B24390BAD4ECD6 /* libPods-Uguru.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DBA02B7D2546ECAE33C73E /* libPods-Uguru.a */; };
 		BF3242D2198187590025D5EF /* UGNotificationStudentAcceptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3242D1198187590025D5EF /* UGNotificationStudentAcceptViewController.m */; };
 		BF42828A19868FCA0049AE2E /* Calendar.m in Sources */ = {isa = PBXBuildFile; fileRef = BF42828919868FCA0049AE2E /* Calendar.m */; };
+		BF428296198831B50049AE2E /* UGNotificationStudentRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF428295198831B50049AE2E /* UGNotificationStudentRequestViewController.m */; };
 		BF63078A198578BC0057EAEC /* UGCalendarCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF630789198578BC0057EAEC /* UGCalendarCollectionViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -129,6 +130,8 @@
 		BF3242D1198187590025D5EF /* UGNotificationStudentAcceptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGNotificationStudentAcceptViewController.m; sourceTree = "<group>"; };
 		BF42828819868FCA0049AE2E /* Calendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Calendar.h; sourceTree = "<group>"; };
 		BF42828919868FCA0049AE2E /* Calendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Calendar.m; sourceTree = "<group>"; };
+		BF428294198831B50049AE2E /* UGNotificationStudentRequestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGNotificationStudentRequestViewController.h; sourceTree = "<group>"; };
+		BF428295198831B50049AE2E /* UGNotificationStudentRequestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGNotificationStudentRequestViewController.m; sourceTree = "<group>"; };
 		BF630788198578BC0057EAEC /* UGCalendarCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGCalendarCollectionViewController.h; sourceTree = "<group>"; };
 		BF630789198578BC0057EAEC /* UGCalendarCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGCalendarCollectionViewController.m; sourceTree = "<group>"; };
 		C5DBA02B7D2546ECAE33C73E /* libPods-Uguru.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Uguru.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -281,6 +284,8 @@
 				32C12943197EEE1A00FE483D /* UGNotificationTutorAcceptViewController.m */,
 				BF3242D0198187590025D5EF /* UGNotificationStudentAcceptViewController.h */,
 				BF3242D1198187590025D5EF /* UGNotificationStudentAcceptViewController.m */,
+				BF428294198831B50049AE2E /* UGNotificationStudentRequestViewController.h */,
+				BF428295198831B50049AE2E /* UGNotificationStudentRequestViewController.m */,
 				3289184D197F6E6700221E42 /* UGInboxViewController.h */,
 				3289184E197F6E6700221E42 /* UGInboxViewController.m */,
 				328918651980527100221E42 /* UGMessageViewController.h */,
@@ -490,6 +495,7 @@
 				328918611980519F00221E42 /* UGMessageMeTableViewCell.m in Sources */,
 				BF63078A198578BC0057EAEC /* UGCalendarCollectionViewController.m in Sources */,
 				BF42828A19868FCA0049AE2E /* Calendar.m in Sources */,
+				BF428296198831B50049AE2E /* UGNotificationStudentRequestViewController.m in Sources */,
 				32891852197F710500221E42 /* Conversation.m in Sources */,
 				3289186A198052D600221E42 /* Message.m in Sources */,
 				32C12930197DC99B00FE483D /* UGHomeViewController.m in Sources */,
