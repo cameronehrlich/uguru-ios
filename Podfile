@@ -11,6 +11,7 @@ target "Uguru" do
     pod 'RNFrostedSidebar', '~> 0.2.0'
     pod 'NSDate+RelativeTime', '~> 1.0'
     pod 'RDRStickyKeyboardView', '~> 0.0'
+    pod 'Stripe'
 end
 
 target "UguruTests" do

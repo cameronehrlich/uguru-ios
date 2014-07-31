@@ -7,7 +7,6 @@
 //
 
 #import "UGObject.h"
-#import <SBJson4.h>
 @import ObjectiveC;
 
 @implementation UGObject
@@ -25,6 +24,7 @@
     
     id newObject = [[self alloc] init];
     for (NSString *key in [dict allKeys]) {
+        
         if ([newObject respondsToSelector:NSSelectorFromString(key)]) {
             if ([reservedSymbols containsObject:key]) {
                 NSLog(@"Tried to map to an Objc reserved key path. BAD! ( %@ -> %@ )", NSStringFromClass([self class]), key);
@@ -35,7 +35,6 @@
                 // DON'T set properties to [NSNull null] object, leave them as nil
                 continue;
             }
-            
             [newObject setValue:dict[key] forKey:key];
         }
     }

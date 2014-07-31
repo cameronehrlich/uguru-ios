@@ -16,6 +16,7 @@
         request.time_estimate = @2;
         request.student_estimated_hour = @15;
     }
+    request.calendar = [Calendar new];
     return request;
 }
 

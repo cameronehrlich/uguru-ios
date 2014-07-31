@@ -49,6 +49,7 @@
 		BF42828A19868FCA0049AE2E /* Calendar.m in Sources */ = {isa = PBXBuildFile; fileRef = BF42828919868FCA0049AE2E /* Calendar.m */; };
 		BF428296198831B50049AE2E /* UGNotificationStudentRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF428295198831B50049AE2E /* UGNotificationStudentRequestViewController.m */; };
 		BF63078A198578BC0057EAEC /* UGCalendarCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF630789198578BC0057EAEC /* UGCalendarCollectionViewController.m */; };
+		BFAA65C41989447B000B9C02 /* PaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFAA65C31989447B000B9C02 /* PaymentViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +135,8 @@
 		BF428295198831B50049AE2E /* UGNotificationStudentRequestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGNotificationStudentRequestViewController.m; sourceTree = "<group>"; };
 		BF630788198578BC0057EAEC /* UGCalendarCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGCalendarCollectionViewController.h; sourceTree = "<group>"; };
 		BF630789198578BC0057EAEC /* UGCalendarCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGCalendarCollectionViewController.m; sourceTree = "<group>"; };
+		BFAA65C21989447B000B9C02 /* PaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentViewController.h; sourceTree = "<group>"; };
+		BFAA65C31989447B000B9C02 /* PaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentViewController.m; sourceTree = "<group>"; };
 		C5DBA02B7D2546ECAE33C73E /* libPods-Uguru.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Uguru.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0C9B1101D1F4600A1B4C6F7 /* libPods-UguruTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UguruTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -294,6 +297,8 @@
 				3289C88419807F1A00DA6071 /* UGRequestViewController.m */,
 				BF630788198578BC0057EAEC /* UGCalendarCollectionViewController.h */,
 				BF630789198578BC0057EAEC /* UGCalendarCollectionViewController.m */,
+				BFAA65C21989447B000B9C02 /* PaymentViewController.h */,
+				BFAA65C31989447B000B9C02 /* PaymentViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -488,6 +493,7 @@
 				32416260197836EC0055EF7A /* UGWelcomeViewController.m in Sources */,
 				32416263197845D90055EF7A /* UGModel.m in Sources */,
 				32652E471981B8AD004E1E7D /* UGSendMessageTableViewCell.m in Sources */,
+				BFAA65C41989447B000B9C02 /* PaymentViewController.m in Sources */,
 				32891855198040A300221E42 /* UGInboxTableViewCell.m in Sources */,
 				32891864198051AA00221E42 /* UGMessageYouTableViewCell.m in Sources */,
 				32C12937197DE30600FE483D /* Notification.m in Sources */,

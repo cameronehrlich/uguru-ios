@@ -60,6 +60,12 @@
 #define COCOAPODS_VERSION_MINOR_NSDate_RelativeTime 0
 #define COCOAPODS_VERSION_PATCH_NSDate_RelativeTime 1
 
+// PaymentKit
+#define COCOAPODS_POD_AVAILABLE_PaymentKit
+#define COCOAPODS_VERSION_MAJOR_PaymentKit 1
+#define COCOAPODS_VERSION_MINOR_PaymentKit 0
+#define COCOAPODS_VERSION_PATCH_PaymentKit 5
+
 // RDRStickyKeyboardView
 #define COCOAPODS_POD_AVAILABLE_RDRStickyKeyboardView
 #define COCOAPODS_VERSION_MAJOR_RDRStickyKeyboardView 0
@@ -72,17 +78,17 @@
 #define COCOAPODS_VERSION_MINOR_RNFrostedSidebar 2
 #define COCOAPODS_VERSION_PATCH_RNFrostedSidebar 0
 
-// SBJson
-#define COCOAPODS_POD_AVAILABLE_SBJson
-#define COCOAPODS_VERSION_MAJOR_SBJson 4
-#define COCOAPODS_VERSION_MINOR_SBJson 0
-#define COCOAPODS_VERSION_PATCH_SBJson 1
-
 // SSKeychain
 #define COCOAPODS_POD_AVAILABLE_SSKeychain
 #define COCOAPODS_VERSION_MAJOR_SSKeychain 1
 #define COCOAPODS_VERSION_MINOR_SSKeychain 2
 #define COCOAPODS_VERSION_PATCH_SSKeychain 2
+
+// Stripe
+#define COCOAPODS_POD_AVAILABLE_Stripe
+#define COCOAPODS_VERSION_MAJOR_Stripe 1
+#define COCOAPODS_VERSION_MINOR_Stripe 1
+#define COCOAPODS_VERSION_PATCH_Stripe 4
 
 // UIColor+Hex
 #define COCOAPODS_POD_AVAILABLE_UIColor_Hex

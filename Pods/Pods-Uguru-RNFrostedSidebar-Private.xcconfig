@@ -1,5 +1,5 @@
 #include "Pods-Uguru-RNFrostedSidebar.xcconfig"
 GCC_PREPROCESSOR_DEFINITIONS = COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/RNFrostedSidebar" "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/AFNetworking" "${PODS_ROOT}/Headers/MBProgressHUD" "${PODS_ROOT}/Headers/NSDate+RelativeTime" "${PODS_ROOT}/Headers/RDRStickyKeyboardView" "${PODS_ROOT}/Headers/RNFrostedSidebar" "${PODS_ROOT}/Headers/SBJson" "${PODS_ROOT}/Headers/SSKeychain" "${PODS_ROOT}/Headers/UIColor+Hex" "${PODS_ROOT}/Headers/XCTestAsync"
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/RNFrostedSidebar" "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/AFNetworking" "${PODS_ROOT}/Headers/MBProgressHUD" "${PODS_ROOT}/Headers/NSDate+RelativeTime" "${PODS_ROOT}/Headers/PaymentKit" "${PODS_ROOT}/Headers/RDRStickyKeyboardView" "${PODS_ROOT}/Headers/RNFrostedSidebar" "${PODS_ROOT}/Headers/SSKeychain" "${PODS_ROOT}/Headers/Stripe" "${PODS_ROOT}/Headers/UIColor+Hex" "${PODS_ROOT}/Headers/XCTestAsync"
 OTHER_LDFLAGS = -ObjC ${PODS_UGURU_RNFROSTEDSIDEBAR_OTHER_LDFLAGS}
 PODS_ROOT = ${SRCROOT}

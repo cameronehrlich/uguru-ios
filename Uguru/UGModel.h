@@ -44,6 +44,7 @@ typedef void (^UGFailBlock)(id errorObject);
 - (void)logoutUserWithSuccess:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock;
 - (void)getUserWithSuccess:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock;
 - (void)updateUser:(User *)user success:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock;
+- (void)updateUserWithAttr:(User *)user kvPair:(NSDictionary *)dict success:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock;
 
 // Messages
 - (void)getAllConversationsWithSuccess:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock;

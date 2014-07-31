@@ -517,6 +517,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="acceptButton" destination="8Ed-4T-zmK" id="CDU-Zc-KWO"/>
                         <outlet property="descriptionView" destination="ocB-8r-m9H" id="co9-Cc-wU0"/>
                         <outlet property="hourlyRateLabel" destination="XJn-cf-EzA" id="1YQ-UE-JSv"/>
                         <outlet property="hourlyRateSlider" destination="xeZ-f4-nx9" id="nHQ-CW-J9Q"/>
@@ -1238,11 +1239,11 @@
                         <sections>
                             <tableViewSection id="FWA-1s-ZaF">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="485" id="ZKF-gS-7X2">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="485" id="ZKF-gS-7X2">
                                         <rect key="frame" x="0.0" y="64" width="320" height="485"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZKF-gS-7X2" id="LdK-ff-0Az">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="484"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="484"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1257,14 +1258,43 @@
                     <navigationItem key="navigationItem" title="Accept Tutor" id="S4r-bb-WQi">
                         <barButtonItem key="rightBarButtonItem" title="Accept" style="done" id="lk1-fK-nQU">
                             <connections>
-                                <action selector="sendAction:" destination="qEW-oX-W23" id="ROC-RC-Pb5"/>
+                                <action selector="sendAction:" destination="qEW-oX-W23" id="mu3-il-qOM"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="pDt-NZ-jQw" kind="push" identifier="studentAcceptToCreditCard" id="v6B-p2-np3"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BbD-yQ-WPG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2323" y="718"/>
+            <point key="canvasLocation" x="2336" y="570"/>
+        </scene>
+        <!--Payment View Controller - Enter Card Info-->
+        <scene sceneID="Yss-yK-ecL">
+            <objects>
+                <viewController id="pDt-NZ-jQw" customClass="PaymentViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BxS-cC-nVb"/>
+                        <viewControllerLayoutGuide type="bottom" id="JKv-Nn-mJT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KiB-Wk-TBX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Enter Card Info" id="1vt-0I-HMT">
+                        <barButtonItem key="backBarButtonItem" title="back" id="5Tg-zf-M9d"/>
+                        <barButtonItem key="rightBarButtonItem" title="Submit" id="hGi-wC-LWR">
+                            <connections>
+                                <action selector="submitCreditCard:" destination="pDt-NZ-jQw" id="L55-ga-5Tz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vDQ-TQ-q4Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2738" y="-92"/>
         </scene>
         <!--Notification Student Request View Controller - Your Request-->
         <scene sceneID="FZT-nN-Goo">
@@ -1297,7 +1327,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eTB-zm-TKG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2685" y="718"/>
+            <point key="canvasLocation" x="2738" y="575"/>
         </scene>
     </scenes>
     <resources>

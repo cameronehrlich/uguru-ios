@@ -27,6 +27,7 @@
 {
     [super viewDidLoad];
     
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -45,17 +46,22 @@
     
     [params setObject:self.notification.server_id forKey:@"notif_id"];
     
+    if (![[UGModel sharedInstance] user].customer_id) {
+        [self performSegueWithIdentifier:@"studentAcceptToCreditCard" sender:self];
+        return;
+    } else{
+        NSLog(@"%@", [[[UGModel sharedInstance] user] recipient_id]);
+    }
+    
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[UGModel sharedInstance] studentAcceptTutor:params withSuccess:^(id responseObject) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         [self.navigationController popViewControllerAnimated:YES];
     } fail:^(id errorObject) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-        [[[UIAlertView alloc] initWithTitle:@"Oops!" message:[(NSArray *)errorObject componentsJoinedByString:@", "]
-                                   delegate:nil
-                          cancelButtonTitle:@"Okay"
-                          otherButtonTitles:nil] show];
+        [self.navigationController popViewControllerAnimated:YES];
     }];
     
 }
+
 @end

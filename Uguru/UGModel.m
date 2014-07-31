@@ -131,6 +131,19 @@
                      }];
 }
 
+- (void)updateUserWithAttr:(User *)user kvPair:(NSDictionary *)dict success:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock {
+    [self.requestManager PUT:@"user"
+                  parameters:dict
+                     success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                         User *updatedUser = [User fromDictionary:responseObject[@"user"]];
+                         self.user = updatedUser;
+                         successBlock(updatedUser);
+                     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                         NSLog(@"%@", error.debugDescription);
+                         failBlock(@{});
+                     }];
+}
+
 #pragma mark -
 #pragma mark Notifications
 - (void)getAllNotificationsWithSuccess:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock
@@ -184,6 +197,7 @@
                          else if ([responseType isEqualToString:@"tutor-request-offer"])
                          {
                              notification.request = [Request fromDictionary:responseObject[@"request"]];
+                             
                          }
                          else if ([responseType isEqualToString:@"student-incoming-offer"])
                          {

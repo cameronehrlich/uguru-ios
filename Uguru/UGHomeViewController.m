@@ -106,6 +106,20 @@
     
 }
 
+- (void) updateUser
+{
+    //Refresh User
+    [[UGModel sharedInstance] getUserWithSuccess:^(id responseObject) {
+        return;
+    } fail:^(NSDictionary *errors) {
+        [[[UIAlertView alloc] initWithTitle:@"Oops"
+                                    message:[NSString stringWithFormat:@"Couldn't load feed.\n %@", errors]
+                                   delegate:nil
+                          cancelButtonTitle:@"Okay"
+                          otherButtonTitles:nil] show];
+    }];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -154,8 +168,12 @@
                                       
                                       _selectedNotification = responseObject;
                                       
+                                      
                                       if (_selectedNotification.type) {
                                           if ([_selectedNotification.type isEqualToString:@"tutor-request-offer"]) {
+                                              [self performSegueWithIdentifier:@"homeToNotificationTutorAccept" sender:self];
+                                          }
+                                          else if ([_selectedNotification.type isEqualToString:@"tutor-accept-request"]) {
                                               [self performSegueWithIdentifier:@"homeToNotificationTutorAccept" sender:self];
                                           }
                                           else if ([_selectedNotification.type isEqualToString:@"student-request-help"]) {
@@ -237,8 +255,8 @@
 {
     
     if ([segue.identifier isEqualToString:@"homeToNotificationTutorAccept"]) {
-        
         UGNotificationTutorAcceptViewController *dst = [segue destinationViewController];
+        
         [dst setNotification:_selectedNotification];
     }
     else if ([segue.identifier isEqualToString:@"homeToNotificationStudentRequest"]){

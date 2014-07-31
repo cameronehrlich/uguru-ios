@@ -20,6 +20,8 @@
 @property (strong, nonatomic) IBOutlet UITextView *descriptionView;
 @property (strong, nonatomic) IBOutlet UILabel *personalMessageToLabel;
 @property (strong, nonatomic) IBOutlet UITextField *messageField;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *acceptButton;
+
 
 
 @property (nonatomic, strong) Notification *notification;

@@ -15,6 +15,9 @@
 @property (nonatomic, strong) NSString *password;
 @property (nonatomic, strong) NSString *auth_token;
 @property (nonatomic, strong) NSString *apn_token;
+@property (nonatomic, strong) NSString *recipient_id;
+@property (nonatomic, strong) NSString *customer_id;
+@property (nonatomic, strong) NSString *customer_last4;
 @property (nonatomic, strong) NSString *image_url; // TODO : Implement on the server side!
 
 @end
