@@ -7,6 +7,7 @@
 //
 
 #import "UGNotificationTutorAcceptViewController.h"
+#import "UGCalendarCollectionViewController.h"
 #import <AFNetworking/UIKit+AFNetworking.h>
 
 @implementation UGNotificationTutorAcceptViewController
@@ -14,6 +15,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     
     [self.titleLabel setText:self.notification.feed_message];
     [self.imageView setImageWithURL:[NSURL URLWithString:self.notification.image_url] placeholderImage:[UIImage imageNamed:@"guru"]]; // TODO : handle when the image doesn;t have the full path
@@ -46,6 +48,8 @@
     [params setObject:self.notification.request.server_id forKey:@"request_id"];
     [params setObject:self.notification.server_id forKey:@"notif_id"];
     [params setObject:self.messageField.text forKey:@"tutor_message"];
+    [params setObject:self.notification.request.tutorCalendar.time_ranges forKey:@"calendar"];
+    
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[UGModel sharedInstance] tutorAcceptRequest:params withSuccess:^(id responseObject) {
@@ -58,8 +62,23 @@
                           cancelButtonTitle:@"Okay"
                           otherButtonTitles:nil] show];
     }];
-    
-    
-    
 }
+
+- (IBAction)goToCalendar:(id)sender {
+    [self performSegueWithIdentifier:@"tutorAcceptToCalendar" sender:self];
+}
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"tutorAcceptToCalendar"]) {
+        UGCalendarCollectionViewController *dst = [segue destinationViewController];
+        [dst setRequest:self.notification.request];
+        [dst setTutor_accept_flag:true];
+    }
+}
+
+
 @end

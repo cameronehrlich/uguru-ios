@@ -41,6 +41,8 @@ install_resource()
       ;;
   esac
 }
+install_resource "AMRatingControl/star.png"
+install_resource "AMRatingControl/dot.png"
 install_resource "NSDate+RelativeTime/NSDate+RelativeTime.bundle"
 install_resource "PaymentKit/PaymentKit/Resources/Cards/amex.png"
 install_resource "PaymentKit/PaymentKit/Resources/Cards/amex@2x.png"

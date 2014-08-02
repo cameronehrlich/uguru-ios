@@ -177,6 +177,7 @@
                   parameters:nil
                      success:^(AFHTTPRequestOperation *operation, id responseObject) {
                          
+                         
                          Notification *notification = [Notification fromDictionary:responseObject[@"notification"]];
                          
                          // TODO : This is disgusting, like a switch statement but for retards...
@@ -197,11 +198,32 @@
                          else if ([responseType isEqualToString:@"tutor-request-offer"])
                          {
                              notification.request = [Request fromDictionary:responseObject[@"request"]];
-                             
+                             notification.request.calendar = [Calendar new];
+                             notification.request.calendar.time_ranges = responseObject[@"student-calendar"][@"time_ranges"];
+                             notification.request.tutorCalendar = [Calendar new];
+                         }
+                         else if ([responseType isEqualToString:@"student-match"])
+                         {
+                             notification.request = [Request fromDictionary:responseObject[@"request"]];
+                             notification.request.calendar = [Calendar new];
+                             notification.request.calendar.time_ranges = responseObject[@"student-calendar"][@"time_ranges"];
+                             notification.request.tutorCalendar = [Calendar new];
+                         }
+                         else if ([responseType isEqualToString:@"tutor-match"])
+                         {
+                             notification.request = [Request fromDictionary:responseObject[@"request"]];
+                             notification.request.calendar = [Calendar new];
+                             notification.request.calendar.time_ranges = responseObject[@"student-calendar"][@"time_ranges"];
+                             notification.request.tutorCalendar = [Calendar new];
                          }
                          else if ([responseType isEqualToString:@"student-incoming-offer"])
                          {
                              notification.request = [Request fromDictionary:responseObject[@"request"]];
+                             notification.request.calendar = [Calendar new];
+                             
+                             notification.request.tutorCalendar = [Calendar new];
+                             notification.request.calendar.time_ranges = responseObject[@"student-calendar"][@"time_ranges"];
+                             notification.request.tutorCalendar.time_ranges = responseObject[@"tutor-calendar"][@"time_ranges"];
                          }
                          else if ([responseType isEqualToString:@"student-payment-approval"])
                          {
@@ -222,6 +244,40 @@
                          failBlock(@{@"Errors": error.debugDescription});
                      }];
 }
+
+#pragma mark -
+#pragma mark Billing
+-(void)getAllBillingContactsWithSuccess:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock
+{
+    [self.requestManager GET:@"billing-contacts"
+                  parameters:nil
+                     success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                         successBlock(responseObject);
+                     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                         NSLog(@"Failed to get all billing contacts");
+                         failBlock(@{});
+                     }];
+}
+
+- (void)billStudentWithSuccess:(NSMutableDictionary *)params withSuccess:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock
+{
+    [self.requestManager POST:@"bill-student"
+                  parameters:params
+                     success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                         if ([self errorsToHandle:responseObject]) {
+                             failBlock(responseObject[@"errors"]);
+                             return;
+                         }
+                         successBlock(params);
+                         
+                     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                         NSLog(@"Failed in Post Request");
+                         failBlock(nil);
+                     }
+     ];
+    
+}
+
 
 #pragma mark -
 #pragma mark Messages
@@ -294,11 +350,35 @@
 }
 
 #pragma mark -
+#pragma mark Ratings submitRatingWithSuccess
+
+- (void)submitRatingWithSuccess:(NSMutableDictionary *)params withSuccess:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock
+{
+    [self.requestManager PUT:@"rating"
+     
+                   parameters:params
+                      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                          
+                          if ([self errorsToHandle:responseObject]) {
+                              failBlock(responseObject[@"errors"]);
+                              return;
+                          }
+                          
+                          Request *request = [Request fromDictionary:responseObject[@"request"]];
+                          successBlock(request);
+                      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                          NSLog(@"Failed in Post Request");
+                          failBlock(nil);
+                      }];
+}
+
+#pragma mark -
 #pragma mark Requests
 
 - (void)postRequest:(Request *)request withSuccess:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock
 {
     [self.requestManager POST:@"request"
+     
                    parameters:[request toDictionary]
                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
                           

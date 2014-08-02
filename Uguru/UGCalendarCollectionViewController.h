@@ -12,6 +12,8 @@
 
 
 @property (nonatomic, strong) Request *request;
+@property bool tutor_accept_flag;
+@property bool student_accept_flag;
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath;
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section;

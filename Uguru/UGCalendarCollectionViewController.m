@@ -64,9 +64,16 @@
         identifier = @"calendarCell";
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
         if ([self cellSelectedPreviously:indexPath]) {
-            cell.backgroundColor = UIColorFromRGB(6404685);
+            if (self.tutor_accept_flag || self.student_accept_flag) {
+                cell.backgroundColor = UIColorFromRGB(11917462);
+            } else {
+                cell.backgroundColor = UIColorFromRGB(6404685);
+            }
         } else {
             cell.backgroundColor = [UIColor whiteColor];
+        }
+        if ([self cellSelectedPreviouslyByTutor:indexPath]) {
+            cell.backgroundColor = UIColorFromRGB(6404685);
         }
         UIColor *lightGreyColor = UIColorFromRGB(15658734);
         [cell.contentView.layer setBorderColor:lightGreyColor.CGColor];
@@ -96,13 +103,29 @@
 }
 
 - (IBAction)sendAction:(id)sender {
-    if (self.request.calendar.num_hours_selected < [self.request.time_estimate intValue]) {
-        [[[UIAlertView alloc] initWithTitle:@"Oops!"
-                                    message:[NSString stringWithFormat:@"Please select at least %@ hours", self.request.time_estimate]
-                                   delegate:nil
-                          cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
-    } else {
-         [self.navigationController popViewControllerAnimated:YES];
+    if (self.tutor_accept_flag) {
+        if (self.request.calendar.num_hours_selected != [self.request.time_estimate intValue]) {
+            [[[UIAlertView alloc] initWithTitle:@"Oops!"
+                                        message:[NSString stringWithFormat:@"Please select exactly %@ hours", self.request.time_estimate]
+                                       delegate:nil
+                              cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
+        } else {
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    }
+    else if (self.student_accept_flag) {
+            [self.navigationController popViewControllerAnimated:YES];
+    }
+    else {
+        if (self.request.calendar.num_hours_selected < [self.request.time_estimate intValue]) {
+            [[[UIAlertView alloc] initWithTitle:@"Oops!"
+                                        message:[NSString stringWithFormat:@"Please select at least %@ hours", self.request.time_estimate]
+                                       delegate:nil
+                              cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
+        } else {
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+
     }
 }
 
@@ -110,17 +133,41 @@
 {
     
     UICollectionViewCell *cell =[collectionView cellForItemAtIndexPath:indexPath];
+    UIColor *studentSelectedColor = UIColorFromRGB(11917462);
+    UIColor *selectedColor = UIColorFromRGB(6404685);
+    CGPoint cellCoords = [self getCellCoord:indexPath];
+    
     NSLog(@"%li, %li", (long)indexPath.row, (long) indexPath.section);
     
     if ([cell.reuseIdentifier isEqual:@"calendarCell"]) {
-        if ([cell.backgroundColor isEqual:[UIColor whiteColor]]) {
-            cell.backgroundColor = UIColorFromRGB(6404685);
-            self.request.calendar.num_hours_selected++;
-            CGPoint cellCoords = [self getCellCoord:indexPath];
-            [self formatCoordToUguruAPICalendarRange:&cellCoords];
-        } else {
-            cell.backgroundColor = [UIColor whiteColor];
-            self.request.calendar.num_hours_selected--;
+        if (self.tutor_accept_flag) {
+            if ([cell.backgroundColor isEqual:studentSelectedColor]) {
+                cell.backgroundColor = UIColorFromRGB(6404685);
+                [self formatCoordToUguruAPICalendarRange:&cellCoords];
+                self.request.calendar.num_hours_selected++;
+                return;
+            }
+            if ([cell.backgroundColor isEqual:selectedColor]) {
+                cell.backgroundColor = studentSelectedColor;
+                self.request.calendar.num_hours_selected--;
+                return;
+            }
+            
+        }
+        //Student Accept --> VIEWING ONLY
+        else if (self.student_accept_flag){
+            return;
+        }
+        //Request Form Calendar
+        else {
+            if ([cell.backgroundColor isEqual:[UIColor whiteColor]] && !self.tutor_accept_flag) {
+                cell.backgroundColor = UIColorFromRGB(6404685);
+                self.request.calendar.num_hours_selected++;
+                [self formatCoordToUguruAPICalendarRange:&cellCoords];
+            } else {
+                cell.backgroundColor = [UIColor whiteColor];
+                self.request.calendar.num_hours_selected--;
+            }
         }
     }
     
@@ -130,7 +177,12 @@
     NSNumber *column = [NSNumber numberWithFloat: (cellCoords->y - 1)];
     NSNumber *row = [NSNumber numberWithFloat: (cellCoords->x - 1)];
     NSNumber *row_plus_one = [NSNumber numberWithFloat:(cellCoords->x)];
-    NSMutableArray *time_range_day = [self.request.calendar.time_ranges objectAtIndex:[column intValue]];
+    NSMutableArray *time_range_day = nil;
+    if (self.tutor_accept_flag) {
+        time_range_day = [self.request.tutorCalendar.time_ranges objectAtIndex:[column intValue]];
+    } else {
+        time_range_day = [self.request.calendar.time_ranges objectAtIndex:[column intValue]];
+    }
     [time_range_day addObject:[NSMutableArray arrayWithObjects: row, row_plus_one, nil]];
     NSLog(@"[%@, %@] added to Column %@", row, row_plus_one, column);
     
@@ -165,6 +217,28 @@
     return false;
     
 }
+
+-(BOOL) cellSelectedPreviouslyByTutor: (NSIndexPath *) indexPath {
+    if ([self isCalendarEmpty:self.request.tutorCalendar.time_ranges]) {
+        return false;
+    } else {
+        for (int i = 0; i < [self.request.tutorCalendar.time_ranges count]; i++) {
+            NSMutableArray *day_column_ranges = [self.request.tutorCalendar.time_ranges objectAtIndex:i];
+            for (int j = 0; j < [day_column_ranges count]; j++) {
+                NSMutableArray *day_range = [day_column_ranges objectAtIndex:j];
+                NSInteger cellRow = (((int)[[day_range objectAtIndex:0] intValue] + 1) * 8 + i + 1);
+                if (cellRow == indexPath.row) {
+                    return true;
+                }
+                
+            }
+        }
+    }
+    return false;
+    
+}
+
+
 
 -(CGPoint)getCellCoord: (NSIndexPath *)indexPath {
     float row = (int) indexPath.row;

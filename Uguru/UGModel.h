@@ -61,5 +61,10 @@ typedef void (^UGFailBlock)(id errorObject);
 - (void)tutorAcceptRequest:(NSMutableDictionary *)params withSuccess:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock;
 - (void)studentAcceptTutor:(NSMutableDictionary *)params withSuccess:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock;
 
+//Payments + Billing + Ratings
+- (void)getAllBillingContactsWithSuccess:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock;
+- (void)billStudentWithSuccess:(NSMutableDictionary *)params withSuccess:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock;
+- (void)submitRatingWithSuccess:(NSMutableDictionary *)params withSuccess:(UGSuccessBlock)successBlock fail:(UGFailBlock)failBlock;
+
 
 @end

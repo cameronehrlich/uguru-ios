@@ -50,6 +50,12 @@
 		BF428296198831B50049AE2E /* UGNotificationStudentRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF428295198831B50049AE2E /* UGNotificationStudentRequestViewController.m */; };
 		BF63078A198578BC0057EAEC /* UGCalendarCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF630789198578BC0057EAEC /* UGCalendarCollectionViewController.m */; };
 		BFAA65C41989447B000B9C02 /* PaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFAA65C31989447B000B9C02 /* PaymentViewController.m */; };
+		BFAA65C7198ADD50000B9C02 /* UGNotificationTutorMatchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFAA65C6198ADD50000B9C02 /* UGNotificationTutorMatchViewController.m */; };
+		BFAA65CA198ADE3D000B9C02 /* UGNotificationStudentMatchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFAA65C9198ADE3D000B9C02 /* UGNotificationStudentMatchViewController.m */; };
+		BFAA65CD198AEFD0000B9C02 /* UGBillingContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFAA65CC198AEFD0000B9C02 /* UGBillingContactsTableViewController.m */; };
+		BFAA65D0198AF0A3000B9C02 /* UGBillingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFAA65CF198AF0A2000B9C02 /* UGBillingTableViewController.m */; };
+		BFAA65D3198AF26E000B9C02 /* UGBillContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BFAA65D2198AF26E000B9C02 /* UGBillContactTableViewCell.m */; };
+		BFAA65D6198C4AF4000B9C02 /* UGRatingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFAA65D5198C4AF4000B9C02 /* UGRatingsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +143,18 @@
 		BF630789198578BC0057EAEC /* UGCalendarCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGCalendarCollectionViewController.m; sourceTree = "<group>"; };
 		BFAA65C21989447B000B9C02 /* PaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentViewController.h; sourceTree = "<group>"; };
 		BFAA65C31989447B000B9C02 /* PaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentViewController.m; sourceTree = "<group>"; };
+		BFAA65C5198ADD50000B9C02 /* UGNotificationTutorMatchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGNotificationTutorMatchViewController.h; sourceTree = "<group>"; };
+		BFAA65C6198ADD50000B9C02 /* UGNotificationTutorMatchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGNotificationTutorMatchViewController.m; sourceTree = "<group>"; };
+		BFAA65C8198ADE3D000B9C02 /* UGNotificationStudentMatchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGNotificationStudentMatchViewController.h; sourceTree = "<group>"; };
+		BFAA65C9198ADE3D000B9C02 /* UGNotificationStudentMatchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGNotificationStudentMatchViewController.m; sourceTree = "<group>"; };
+		BFAA65CB198AEFD0000B9C02 /* UGBillingContactsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGBillingContactsTableViewController.h; sourceTree = "<group>"; };
+		BFAA65CC198AEFD0000B9C02 /* UGBillingContactsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGBillingContactsTableViewController.m; sourceTree = "<group>"; };
+		BFAA65CE198AF0A2000B9C02 /* UGBillingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGBillingTableViewController.h; sourceTree = "<group>"; };
+		BFAA65CF198AF0A2000B9C02 /* UGBillingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGBillingTableViewController.m; sourceTree = "<group>"; };
+		BFAA65D1198AF26E000B9C02 /* UGBillContactTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGBillContactTableViewCell.h; sourceTree = "<group>"; };
+		BFAA65D2198AF26E000B9C02 /* UGBillContactTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGBillContactTableViewCell.m; sourceTree = "<group>"; };
+		BFAA65D4198C4AF4000B9C02 /* UGRatingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGRatingsViewController.h; sourceTree = "<group>"; };
+		BFAA65D5198C4AF4000B9C02 /* UGRatingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGRatingsViewController.m; sourceTree = "<group>"; };
 		C5DBA02B7D2546ECAE33C73E /* libPods-Uguru.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Uguru.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0C9B1101D1F4600A1B4C6F7 /* libPods-UguruTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UguruTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -276,6 +294,10 @@
 			isa = PBXGroup;
 			children = (
 				3241625E197836EC0055EF7A /* UGWelcomeViewController.h */,
+				BFAA65CB198AEFD0000B9C02 /* UGBillingContactsTableViewController.h */,
+				BFAA65CC198AEFD0000B9C02 /* UGBillingContactsTableViewController.m */,
+				BFAA65CE198AF0A2000B9C02 /* UGBillingTableViewController.h */,
+				BFAA65CF198AF0A2000B9C02 /* UGBillingTableViewController.m */,
 				3241625F197836EC0055EF7A /* UGWelcomeViewController.m */,
 				3241626D19785E990055EF7A /* UGLoginViewController.h */,
 				3241626E19785E990055EF7A /* UGLoginViewController.m */,
@@ -289,6 +311,10 @@
 				BF3242D1198187590025D5EF /* UGNotificationStudentAcceptViewController.m */,
 				BF428294198831B50049AE2E /* UGNotificationStudentRequestViewController.h */,
 				BF428295198831B50049AE2E /* UGNotificationStudentRequestViewController.m */,
+				BFAA65C5198ADD50000B9C02 /* UGNotificationTutorMatchViewController.h */,
+				BFAA65C6198ADD50000B9C02 /* UGNotificationTutorMatchViewController.m */,
+				BFAA65C8198ADE3D000B9C02 /* UGNotificationStudentMatchViewController.h */,
+				BFAA65C9198ADE3D000B9C02 /* UGNotificationStudentMatchViewController.m */,
 				3289184D197F6E6700221E42 /* UGInboxViewController.h */,
 				3289184E197F6E6700221E42 /* UGInboxViewController.m */,
 				328918651980527100221E42 /* UGMessageViewController.h */,
@@ -299,6 +325,8 @@
 				BF630789198578BC0057EAEC /* UGCalendarCollectionViewController.m */,
 				BFAA65C21989447B000B9C02 /* PaymentViewController.h */,
 				BFAA65C31989447B000B9C02 /* PaymentViewController.m */,
+				BFAA65D4198C4AF4000B9C02 /* UGRatingsViewController.h */,
+				BFAA65D5198C4AF4000B9C02 /* UGRatingsViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -306,6 +334,8 @@
 		32C1293B197E03D200FE483D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BFAA65D1198AF26E000B9C02 /* UGBillContactTableViewCell.h */,
+				BFAA65D2198AF26E000B9C02 /* UGBillContactTableViewCell.m */,
 				32652E451981B8AD004E1E7D /* UGSendMessageTableViewCell.h */,
 				32652E461981B8AD004E1E7D /* UGSendMessageTableViewCell.m */,
 				3289C8891980AF3600DA6071 /* UGNotificationTableViewCell.m */,
@@ -494,6 +524,7 @@
 				32416263197845D90055EF7A /* UGModel.m in Sources */,
 				32652E471981B8AD004E1E7D /* UGSendMessageTableViewCell.m in Sources */,
 				BFAA65C41989447B000B9C02 /* PaymentViewController.m in Sources */,
+				BFAA65CD198AEFD0000B9C02 /* UGBillingContactsTableViewController.m in Sources */,
 				32891855198040A300221E42 /* UGInboxTableViewCell.m in Sources */,
 				32891864198051AA00221E42 /* UGMessageYouTableViewCell.m in Sources */,
 				32C12937197DE30600FE483D /* Notification.m in Sources */,
@@ -504,6 +535,7 @@
 				BF428296198831B50049AE2E /* UGNotificationStudentRequestViewController.m in Sources */,
 				32891852197F710500221E42 /* Conversation.m in Sources */,
 				3289186A198052D600221E42 /* Message.m in Sources */,
+				BFAA65D3198AF26E000B9C02 /* UGBillContactTableViewCell.m in Sources */,
 				32C12930197DC99B00FE483D /* UGHomeViewController.m in Sources */,
 				32C1293E197EDE5B00FE483D /* Payment.m in Sources */,
 				328918671980527100221E42 /* UGMessageViewController.m in Sources */,
@@ -512,12 +544,16 @@
 				3289C88B1980AF3600DA6071 /* UGNotificationTableViewCell.m in Sources */,
 				32C12941197EDE6A00FE483D /* Request.m in Sources */,
 				32C12944197EEE1A00FE483D /* UGNotificationTutorAcceptViewController.m in Sources */,
+				BFAA65D0198AF0A3000B9C02 /* UGBillingTableViewController.m in Sources */,
 				3241627219785EAD0055EF7A /* UGSignUpViewController.m in Sources */,
 				3241626F19785E990055EF7A /* UGLoginViewController.m in Sources */,
 				3289184F197F6E6700221E42 /* UGInboxViewController.m in Sources */,
 				3241626A19784D900055EF7A /* UGObject.m in Sources */,
+				BFAA65D6198C4AF4000B9C02 /* UGRatingsViewController.m in Sources */,
 				328918581980501F00221E42 /* UGMessageDescriptionTableViewCell.m in Sources */,
 				3241626719784D330055EF7A /* User.m in Sources */,
+				BFAA65CA198ADE3D000B9C02 /* UGNotificationStudentMatchViewController.m in Sources */,
+				BFAA65C7198ADD50000B9C02 /* UGNotificationTutorMatchViewController.m in Sources */,
 				BF3242D2198187590025D5EF /* UGNotificationStudentAcceptViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

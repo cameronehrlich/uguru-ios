@@ -10,7 +10,11 @@
 #import "UGNotificationTableViewCell.h"
 #import "UGNotificationTutorAcceptViewController.h"
 #import "UGNotificationStudentAcceptViewController.h"
+#import "UGNotificationStudentMatchViewController.h"
+#import "UGNotificationTutorMatchViewController.h"
 #import "UGNotificationStudentRequestViewController.h"
+#import "UGRatingsViewController.h"
+#import "UGBillingContactsTableViewController.h"
 #import <AFNetworking/UIKit+AFNetworking.h>
 #import <NSDate+RelativeTime.h>
 
@@ -18,19 +22,21 @@
 @implementation UGHomeViewController
 {
     Notification *_selectedNotification;
+    NSDictionary *_billingContacts;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Create top right toolbar items
+    UIBarButtonItem *billingButton = [[UIBarButtonItem alloc] initWithTitle:@"$" style:UIBarButtonItemStylePlain target:self action:@selector(goToBilling)];
     UIBarButtonItem *messagesButton = [[UIBarButtonItem alloc] initWithTitle:@"M" style:UIBarButtonItemStylePlain target:self action:@selector(goToMessages)];
     UIBarButtonItem *requestsButton = [[UIBarButtonItem alloc] initWithTitle:@"A+" style:UIBarButtonItemStylePlain target:self action:@selector(goToRequests)];
     
     UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     spacer.width = 20;
     
-    [self.navigationItem setRightBarButtonItems:@[requestsButton, spacer, messagesButton, spacer] animated:YES];
+    [self.navigationItem setRightBarButtonItems:@[requestsButton, spacer, messagesButton, spacer, billingButton, spacer] animated:YES];
     
     // Create left toolbar item
     UIBarButtonItem *hamburger = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"hamburger"] style:UIBarButtonItemStylePlain target:self action:@selector(showSidebar)];
@@ -65,6 +71,10 @@
     
     // Go get 'em
     [self fetchNotifications];
+    if ([[UGModel sharedInstance] user].pending_ratings) {
+        [self goToRatings];
+    }
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -136,6 +146,7 @@
 {
     // Get the notification and dequeueueue a cell
     Notification *notification = [[[UGModel sharedInstance] notifications] objectAtIndex:indexPath.row];
+    
     static NSString *cellIdentifier = @"NotificationCell";
     UGNotificationTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
@@ -170,11 +181,20 @@
                                       
                                       
                                       if (_selectedNotification.type) {
+                                          //After tutor accepts there should still be a view
                                           if ([_selectedNotification.type isEqualToString:@"tutor-request-offer"]) {
                                               [self performSegueWithIdentifier:@"homeToNotificationTutorAccept" sender:self];
                                           }
+                                          //After tutor accepts there should still be a view
                                           else if ([_selectedNotification.type isEqualToString:@"tutor-accept-request"]) {
                                               [self performSegueWithIdentifier:@"homeToNotificationTutorAccept" sender:self];
+                                          }
+                                          
+                                          else if ([_selectedNotification.type isEqualToString:@"tutor-match"]) {
+                                              [self performSegueWithIdentifier:@"homeToNotificationTutorMatch" sender:self];
+                                          }
+                                          else if ([_selectedNotification.type isEqualToString:@"student-match"]) {
+                                              [self performSegueWithIdentifier:@"homeToNotificationStudentMatch" sender:self];
                                           }
                                           else if ([_selectedNotification.type isEqualToString:@"student-request-help"]) {
                                               [self performSegueWithIdentifier:@"homeToNotificationStudentRequest" sender:self];
@@ -242,6 +262,25 @@
     
 }
 
+- (void)goToBilling {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[UGModel sharedInstance] getAllBillingContactsWithSuccess:^(id responseObject) {
+        _billingContacts = responseObject;
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        [self performSegueWithIdentifier:@"homeToBilling" sender:self];
+    } fail:^(NSDictionary *errors) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        [[[UIAlertView alloc] initWithTitle:@"Oops" message:@"Couldn't get your conversations, sorry!"
+                                   delegate:nil
+                          cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
+    }];
+}
+
+- (void) goToRatings {
+    [self performSegueWithIdentifier:@"homeToRatings" sender:self];
+    
+}
+
 - (void)goToRequests
 {
     [self performSegueWithIdentifier:@"homeToRequest" sender:self];
@@ -256,7 +295,18 @@
     
     if ([segue.identifier isEqualToString:@"homeToNotificationTutorAccept"]) {
         UGNotificationTutorAcceptViewController *dst = [segue destinationViewController];
-        
+        [dst setNotification:_selectedNotification];
+    }
+    else if ([segue.identifier isEqualToString:@"homeToNotificationTutorMatch"]){
+        UGNotificationTutorMatchViewController *dst = [segue destinationViewController];
+        [dst setNotification:_selectedNotification];
+    }
+    else if ([segue.identifier isEqualToString:@"homeToBilling"]){
+        UGBillingContactsTableViewController *dst = [segue destinationViewController];
+        [dst setBillingContacts:[_billingContacts objectForKey:@"billing-contacts"]];
+    }
+    else if ([segue.identifier isEqualToString:@"homeToNotificationStudentMatch"]){
+        UGNotificationStudentMatchViewController *dst = [segue destinationViewController];
         [dst setNotification:_selectedNotification];
     }
     else if ([segue.identifier isEqualToString:@"homeToNotificationStudentRequest"]){

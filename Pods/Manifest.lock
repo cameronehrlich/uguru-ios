@@ -20,6 +20,7 @@ PODS:
   - AFNetworking/UIKit (2.3.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - AMRatingControl (1.3.0)
   - MBProgressHUD (0.8)
   - NSDate+RelativeTime (1.0.1)
   - PaymentKit (1.0.5)
@@ -36,6 +37,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.3)
+  - AMRatingControl
   - MBProgressHUD (~> 0.8)
   - NSDate+RelativeTime (~> 1.0)
   - RDRStickyKeyboardView (~> 0.0)
@@ -47,6 +49,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
+  AMRatingControl: 37b5793d45d37089d605621e53fcf1e527fe28af
   MBProgressHUD: c356980b0cd097f19acec959b49dca5eb8ec31be
   NSDate+RelativeTime: e8b48c62cd2354d9b372b3361cff579c96833b2e
   PaymentKit: 14b54835f57ae9e2bf5628140fcd67001740cba2

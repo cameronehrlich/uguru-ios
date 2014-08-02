@@ -28,5 +28,6 @@
 - (IBAction)hourlyRateSliderAction:(id)sender;
 
 - (IBAction)sendAction:(id)sender;
+- (IBAction)goToCalendar:(id)sender;
 
 @end

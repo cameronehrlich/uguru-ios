@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface UGNotificationStudentAcceptViewController : UITableViewController
-
 - (IBAction)sendAction:(id)sender;
 
 @property (nonatomic, strong) Notification *notification;
+- (IBAction)goToCalendar:(id)sender;
+
+
 
 @end

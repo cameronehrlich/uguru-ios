@@ -24,5 +24,6 @@
 @property (nonatomic, strong) NSString *location_name;
 @property (nonatomic, strong) NSNumber *connected_tutor;
 @property (nonatomic, strong) Calendar *calendar;
+@property (nonatomic, strong) Calendar *tutorCalendar;
 
 @end

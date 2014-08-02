@@ -7,6 +7,7 @@
 //
 
 #import "UGNotificationStudentAcceptViewController.h"
+#import "UGCalendarCollectionViewController.h"
 
 @interface UGNotificationStudentAcceptViewController ()
 
@@ -28,7 +29,7 @@
     [super viewDidLoad];
     
     
-    // Uncomment the following line to preserve selection between presentations.
+    // Uncomment mesthe following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
@@ -42,6 +43,7 @@
 }
 
 - (IBAction)sendAction:(id)sender {
+    
     NSMutableDictionary *params = [NSMutableDictionary new];
     
     [params setObject:self.notification.server_id forKey:@"notif_id"];
@@ -64,4 +66,20 @@
     
 }
 
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"studentAcceptToCalendar"]) {
+        UGCalendarCollectionViewController *dst = [segue destinationViewController];
+        [dst setRequest:self.notification.request];
+        [dst setStudent_accept_flag:true];
+    }
+}
+
+- (IBAction)goToCalendar:(id)sender {
+    [self performSegueWithIdentifier:@"studentAcceptToCalendar" sender:self];
+}
 @end

@@ -12,6 +12,7 @@ target "Uguru" do
     pod 'NSDate+RelativeTime', '~> 1.0'
     pod 'RDRStickyKeyboardView', '~> 0.0'
     pod 'Stripe'
+    pod 'AMRatingControl'
 end
 
 target "UguruTests" do

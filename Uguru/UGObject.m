@@ -74,6 +74,9 @@
             }
             continue;
         }
+        if ([propertyName isEqualToString:@"tutorCalendar"]) {
+            continue;
+        }
         id value = [self valueForKeyPath:propertyName] ? [self valueForKeyPath:propertyName] : nil;
         if (value) {
             [body setObject:value forKey:propertyName];

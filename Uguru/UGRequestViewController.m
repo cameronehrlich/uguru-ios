@@ -55,7 +55,6 @@
 }
 
 - (IBAction)goToCalendar:(id)sender {
-    NSLog(@"reached here");
     [self performSegueWithIdentifier:@"requestToCalendar" sender:self];
 }
 

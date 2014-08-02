@@ -19,5 +19,6 @@
 @property (nonatomic, strong) NSString *customer_id;
 @property (nonatomic, strong) NSString *customer_last4;
 @property (nonatomic, strong) NSString *image_url; // TODO : Implement on the server side!
+@property (nonatomic, strong) NSDictionary *pending_ratings;
 
 @end
