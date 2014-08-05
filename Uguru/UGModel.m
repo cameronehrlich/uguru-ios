@@ -122,6 +122,7 @@
     [self.requestManager PUT:@"user"
                   parameters:[user toDictionary]
                      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                         
                          User *updatedUser = [User fromDictionary:responseObject[@"user"]];
                          self.user = updatedUser;
                          successBlock(updatedUser);
@@ -135,6 +136,10 @@
     [self.requestManager PUT:@"user"
                   parameters:dict
                      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                         if ([self errorsToHandle:responseObject]) {
+                             failBlock(responseObject[@"errors"]);
+                             return;
+                         }
                          User *updatedUser = [User fromDictionary:responseObject[@"user"]];
                          self.user = updatedUser;
                          successBlock(updatedUser);
@@ -268,7 +273,7 @@
                              failBlock(responseObject[@"errors"]);
                              return;
                          }
-                         successBlock(params);
+                         successBlock(responseObject);
                          
                      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                          NSLog(@"Failed in Post Request");
@@ -364,8 +369,7 @@
                               return;
                           }
                           
-                          Request *request = [Request fromDictionary:responseObject[@"request"]];
-                          successBlock(request);
+                          successBlock(nil);
                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                           NSLog(@"Failed in Post Request");
                           failBlock(nil);

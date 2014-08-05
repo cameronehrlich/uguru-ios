@@ -56,6 +56,10 @@
 		BFAA65D0198AF0A3000B9C02 /* UGBillingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFAA65CF198AF0A2000B9C02 /* UGBillingTableViewController.m */; };
 		BFAA65D3198AF26E000B9C02 /* UGBillContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BFAA65D2198AF26E000B9C02 /* UGBillContactTableViewCell.m */; };
 		BFAA65D6198C4AF4000B9C02 /* UGRatingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFAA65D5198C4AF4000B9C02 /* UGRatingsViewController.m */; };
+		BFAA65D9198DCB85000B9C02 /* UGSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFAA65D8198DCB85000B9C02 /* UGSettingsViewController.m */; };
+		BFAA65DC198DCC26000B9C02 /* UGProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFAA65DB198DCC26000B9C02 /* UGProfileViewController.m */; };
+		BFAA65DF198DCDF2000B9C02 /* UGAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFAA65DE198DCDF2000B9C02 /* UGAccountViewController.m */; };
+		BFAA65E2198F09D5000B9C02 /* UGProfileEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFAA65E1198F09D5000B9C02 /* UGProfileEditViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -155,6 +159,14 @@
 		BFAA65D2198AF26E000B9C02 /* UGBillContactTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGBillContactTableViewCell.m; sourceTree = "<group>"; };
 		BFAA65D4198C4AF4000B9C02 /* UGRatingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGRatingsViewController.h; sourceTree = "<group>"; };
 		BFAA65D5198C4AF4000B9C02 /* UGRatingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGRatingsViewController.m; sourceTree = "<group>"; };
+		BFAA65D7198DCB85000B9C02 /* UGSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGSettingsViewController.h; sourceTree = "<group>"; };
+		BFAA65D8198DCB85000B9C02 /* UGSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGSettingsViewController.m; sourceTree = "<group>"; };
+		BFAA65DA198DCC26000B9C02 /* UGProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGProfileViewController.h; sourceTree = "<group>"; };
+		BFAA65DB198DCC26000B9C02 /* UGProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGProfileViewController.m; sourceTree = "<group>"; };
+		BFAA65DD198DCDF2000B9C02 /* UGAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGAccountViewController.h; sourceTree = "<group>"; };
+		BFAA65DE198DCDF2000B9C02 /* UGAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGAccountViewController.m; sourceTree = "<group>"; };
+		BFAA65E0198F09D5000B9C02 /* UGProfileEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGProfileEditViewController.h; sourceTree = "<group>"; };
+		BFAA65E1198F09D5000B9C02 /* UGProfileEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGProfileEditViewController.m; sourceTree = "<group>"; };
 		C5DBA02B7D2546ECAE33C73E /* libPods-Uguru.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Uguru.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0C9B1101D1F4600A1B4C6F7 /* libPods-UguruTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UguruTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -293,12 +305,12 @@
 		32C12931197DC9A800FE483D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				3241625E197836EC0055EF7A /* UGWelcomeViewController.h */,
+				BFAA65DD198DCDF2000B9C02 /* UGAccountViewController.h */,
+				BFAA65DE198DCDF2000B9C02 /* UGAccountViewController.m */,
 				BFAA65CB198AEFD0000B9C02 /* UGBillingContactsTableViewController.h */,
 				BFAA65CC198AEFD0000B9C02 /* UGBillingContactsTableViewController.m */,
 				BFAA65CE198AF0A2000B9C02 /* UGBillingTableViewController.h */,
 				BFAA65CF198AF0A2000B9C02 /* UGBillingTableViewController.m */,
-				3241625F197836EC0055EF7A /* UGWelcomeViewController.m */,
 				3241626D19785E990055EF7A /* UGLoginViewController.h */,
 				3241626E19785E990055EF7A /* UGLoginViewController.m */,
 				3241627019785EAD0055EF7A /* UGSignUpViewController.h */,
@@ -325,8 +337,16 @@
 				BF630789198578BC0057EAEC /* UGCalendarCollectionViewController.m */,
 				BFAA65C21989447B000B9C02 /* PaymentViewController.h */,
 				BFAA65C31989447B000B9C02 /* PaymentViewController.m */,
+				BFAA65DA198DCC26000B9C02 /* UGProfileViewController.h */,
+				BFAA65DB198DCC26000B9C02 /* UGProfileViewController.m */,
+				BFAA65E0198F09D5000B9C02 /* UGProfileEditViewController.h */,
+				BFAA65E1198F09D5000B9C02 /* UGProfileEditViewController.m */,
 				BFAA65D4198C4AF4000B9C02 /* UGRatingsViewController.h */,
 				BFAA65D5198C4AF4000B9C02 /* UGRatingsViewController.m */,
+				BFAA65D7198DCB85000B9C02 /* UGSettingsViewController.h */,
+				BFAA65D8198DCB85000B9C02 /* UGSettingsViewController.m */,
+				3241625E197836EC0055EF7A /* UGWelcomeViewController.h */,
+				3241625F197836EC0055EF7A /* UGWelcomeViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -524,8 +544,10 @@
 				32416263197845D90055EF7A /* UGModel.m in Sources */,
 				32652E471981B8AD004E1E7D /* UGSendMessageTableViewCell.m in Sources */,
 				BFAA65C41989447B000B9C02 /* PaymentViewController.m in Sources */,
+				BFAA65DC198DCC26000B9C02 /* UGProfileViewController.m in Sources */,
 				BFAA65CD198AEFD0000B9C02 /* UGBillingContactsTableViewController.m in Sources */,
 				32891855198040A300221E42 /* UGInboxTableViewCell.m in Sources */,
+				BFAA65E2198F09D5000B9C02 /* UGProfileEditViewController.m in Sources */,
 				32891864198051AA00221E42 /* UGMessageYouTableViewCell.m in Sources */,
 				32C12937197DE30600FE483D /* Notification.m in Sources */,
 				3254E4C41975B64600205F33 /* UGAppDelegate.m in Sources */,
@@ -551,8 +573,10 @@
 				3241626A19784D900055EF7A /* UGObject.m in Sources */,
 				BFAA65D6198C4AF4000B9C02 /* UGRatingsViewController.m in Sources */,
 				328918581980501F00221E42 /* UGMessageDescriptionTableViewCell.m in Sources */,
+				BFAA65DF198DCDF2000B9C02 /* UGAccountViewController.m in Sources */,
 				3241626719784D330055EF7A /* User.m in Sources */,
 				BFAA65CA198ADE3D000B9C02 /* UGNotificationStudentMatchViewController.m in Sources */,
+				BFAA65D9198DCB85000B9C02 /* UGSettingsViewController.m in Sources */,
 				BFAA65C7198ADD50000B9C02 /* UGNotificationTutorMatchViewController.m in Sources */,
 				BF3242D2198187590025D5EF /* UGNotificationStudentAcceptViewController.m in Sources */,
 			);

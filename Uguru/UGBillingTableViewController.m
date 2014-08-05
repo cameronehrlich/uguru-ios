@@ -74,7 +74,8 @@
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[UGModel sharedInstance] billStudentWithSuccess:params withSuccess:^(id responseObject) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        [[UGModel sharedInstance] user].pending_ratings =  [[responseObject objectForKey:@"bill_student"] objectForKey:@"pending_ratings"];
+        [self performSegueWithIdentifier:@"billingToTutorRatingStudent" sender:self];
     } fail:^(id errorObject) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         [[[UIAlertView alloc] initWithTitle:@"Oops!" message:[(NSArray *)errorObject componentsJoinedByString:@", "]
@@ -83,6 +84,7 @@
                           otherButtonTitles:nil] show];
     }];
 }
+
 
 
 - (IBAction)billingNumHoursSliderAction:(UISlider *)sender {

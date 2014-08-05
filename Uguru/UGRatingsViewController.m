@@ -83,9 +83,9 @@
     [params setObject: star_rating  forKey:@"star_rating"];
     
     if (currentUser.server_id == [self.ratings_info objectForKey:@"student_server_id"]) {
-        [params setObject:@YES forKey:@"tutor_rating_student"];
-    } else {
         [params setObject:@YES forKey:@"student_rating_tutor"];
+    } else {
+        [params setObject:@YES forKey:@"tutor_rating_student"];
     }
     
     [params setObject: self.additionalDetails.text  forKey:@"rating_description"];

@@ -28,15 +28,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
+    
     // Create top right toolbar items
+    UIBarButtonItem *profileButton = [[UIBarButtonItem alloc] initWithTitle:@"P" style:UIBarButtonItemStylePlain target:self action:@selector(goToProfile)];
+    UIBarButtonItem *accountButton = [[UIBarButtonItem alloc] initWithTitle:@"A" style:UIBarButtonItemStylePlain target:self action:@selector(goToAccount)];
+    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithTitle:@"S" style:UIBarButtonItemStylePlain target:self action:@selector(goToSettings)];
     UIBarButtonItem *billingButton = [[UIBarButtonItem alloc] initWithTitle:@"$" style:UIBarButtonItemStylePlain target:self action:@selector(goToBilling)];
     UIBarButtonItem *messagesButton = [[UIBarButtonItem alloc] initWithTitle:@"M" style:UIBarButtonItemStylePlain target:self action:@selector(goToMessages)];
     UIBarButtonItem *requestsButton = [[UIBarButtonItem alloc] initWithTitle:@"A+" style:UIBarButtonItemStylePlain target:self action:@selector(goToRequests)];
     
     UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    spacer.width = 20;
+    spacer.width = 10;
     
-    [self.navigationItem setRightBarButtonItems:@[requestsButton, spacer, messagesButton, spacer, billingButton, spacer] animated:YES];
+    [self.navigationItem setRightBarButtonItems:@[requestsButton, spacer, messagesButton, spacer, billingButton, spacer, settingsButton, spacer, accountButton, spacer, profileButton] animated:YES];
     
     // Create left toolbar item
     UIBarButtonItem *hamburger = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"hamburger"] style:UIBarButtonItemStylePlain target:self action:@selector(showSidebar)];
@@ -71,9 +77,6 @@
     
     // Go get 'em
     [self fetchNotifications];
-    if ([[UGModel sharedInstance] user].pending_ratings) {
-        [self goToRatings];
-    }
     
 }
 
@@ -109,10 +112,15 @@
     
     // Refresh user
     [[UGModel sharedInstance] getUserWithSuccess:^(id responseObject) {
-        // DO SOMETHING???
+        
     } fail:^(NSDictionary *errors) {
         // DO SOMETHING ELSE???
     }];
+    
+    
+    if ([[[UGModel sharedInstance] user].pending_ratings count]) {
+        [self goToRatings];
+    }
     
 }
 
@@ -284,6 +292,25 @@
 - (void)goToRequests
 {
     [self performSegueWithIdentifier:@"homeToRequest" sender:self];
+}
+
+- (void)goToSettings
+{
+    [self performSegueWithIdentifier:@"homeToSettings" sender:self];
+}
+
+- (void)goToAccount
+{
+    [self performSegueWithIdentifier:@"homeToAccount" sender:self];
+}
+
+- (void)goToProfile
+{
+    if ([[[UGModel sharedInstance] user].is_a_tutor boolValue]== YES) {
+        [self performSegueWithIdentifier:@"homeToProfile" sender:self];
+    } else {
+        [self performSegueWithIdentifier:@"homeToEditProfile" sender:self];
+    }
 }
 
 

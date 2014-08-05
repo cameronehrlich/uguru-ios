@@ -18,6 +18,8 @@
 
 + (instancetype)fromDictionary:(NSDictionary *)dict
 {
+    
+    
     NSAssert(dict != nil, @"Can't form %@ with nil dict.", NSStringFromClass([self class]));
     
     NSArray *reservedSymbols = @[@"description", @"id"];

@@ -10,6 +10,10 @@
 #import "STPView.h"
 
 @interface PaymentViewController : UIViewController <STPViewDelegate>
+
 @property STPView* stripeView;
+@property (nonatomic, strong) NSString *cardType;
+
 - (IBAction)submitCreditCard:(id)sender;
+
 @end

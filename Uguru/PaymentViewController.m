@@ -66,9 +66,18 @@
                                   cancelButtonTitle:@"Try Again" otherButtonTitles:nil] show];
             } else {
                 // Send off token to your server
+                
+                NSDictionary *params = nil;
+                
+                if ([self.cardType isEqualToString:@"recipient"]) {
+                    params = @{@"stripe_recipient_token": token.tokenId};
+                } else {
+                    params = @{@"stripe-card-token": token.tokenId};
+                }
+                
                 [MBProgressHUD showHUDAddedTo:self.view animated:YES];
                 [[UGModel sharedInstance] updateUserWithAttr:[[UGModel sharedInstance] user]
-                    kvPair:@{@"stripe-card-token": token.tokenId}
+                    kvPair:params
                     success:^(id responseObject) {
                         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
                         User *currentUser = [[UGModel sharedInstance] user];
