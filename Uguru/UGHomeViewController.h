@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <RNFrostedSidebar.h>
+#import <TheSidebarController.h>
 
 @interface UGHomeViewController : UITableViewController <RNFrostedSidebarDelegate>
 

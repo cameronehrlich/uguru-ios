@@ -29,6 +29,7 @@ PODS:
   - SSKeychain (1.2.2)
   - Stripe (1.1.4):
     - PaymentKit (~> 1.0.4)
+  - TheSidebarController (0.7)
   - UIColor+Hex (1.0.1):
     - UIColor+Hex/NSColor
     - UIColor+Hex/UIColor
@@ -44,6 +45,7 @@ DEPENDENCIES:
   - RNFrostedSidebar (~> 0.2.0)
   - SSKeychain (~> 1.2)
   - Stripe
+  - TheSidebarController (~> 0.6)
   - UIColor+Hex (~> 1.0)
   - XCTestAsync (~> 1.0)
 
@@ -57,6 +59,7 @@ SPEC CHECKSUMS:
   RNFrostedSidebar: f1d95d9b2627f13cc10e75d36e751a623eec079c
   SSKeychain: cc48bd3ad24fcd9125adb9e0d23dd50b8bbd08b9
   Stripe: a0ed1c0675a3c36f6e8d575820cfec1dc9335f53
+  TheSidebarController: 293f694a3480b7b1c84836b006baa3d760a18df6
   UIColor+Hex: ac7e1ae4eeea4f522fe3f6eda35de4af69244432
   XCTestAsync: 17ffc4000abce9f313a4e75fe0fe64bbf26937f0
 

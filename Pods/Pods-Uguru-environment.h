@@ -96,6 +96,12 @@
 #define COCOAPODS_VERSION_MINOR_Stripe 1
 #define COCOAPODS_VERSION_PATCH_Stripe 4
 
+// TheSidebarController
+#define COCOAPODS_POD_AVAILABLE_TheSidebarController
+#define COCOAPODS_VERSION_MAJOR_TheSidebarController 0
+#define COCOAPODS_VERSION_MINOR_TheSidebarController 7
+#define COCOAPODS_VERSION_PATCH_TheSidebarController 0
+
 // UIColor+Hex
 #define COCOAPODS_POD_AVAILABLE_UIColor_Hex
 #define COCOAPODS_VERSION_MAJOR_UIColor_Hex 1

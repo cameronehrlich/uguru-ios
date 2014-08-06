@@ -8,8 +8,13 @@
 
 #import "UGAppDelegate.h"
 #import <UIColor+Hex.h>
+#import "UGHomeViewController.h"
+#import "UGLeftMenuTableViewController.h"
+#import <TheSidebarController/TheSidebarController.h>
 
 @implementation UGAppDelegate
+
+TheSidebarController *sidebarController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -17,6 +22,8 @@
 	[[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
     [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithCSS:@"29ADE3"]];
     [[self window] setTintColor:[UIColor whiteColor]];
+    [self.window makeKeyAndVisible];
+    
     
 //    UIRemoteNotificationType enabledTypes = [[UIApplication sharedApplication] enabledRemoteNotificationTypes];
     
@@ -81,5 +88,4 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
-
 @end

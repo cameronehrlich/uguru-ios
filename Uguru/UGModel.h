@@ -35,6 +35,7 @@ typedef void (^UGFailBlock)(id errorObject);
 @property (nonatomic, strong) User *user;
 @property (nonatomic, strong) NSArray *notifications;
 @property (nonatomic, strong) NSArray *conversations;
+@property (nonatomic, strong) NSString *settings_dest;
 
 + (instancetype)sharedInstance;
 

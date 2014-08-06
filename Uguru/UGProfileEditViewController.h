@@ -37,5 +37,7 @@
 - (IBAction)resTutorAction:(id)sender;
 - (IBAction)hknTutorAction:(id)sender;
 - (IBAction)sendAction:(id)sender;
+- (IBAction)backAction:(id)sender;
+
 
 @end

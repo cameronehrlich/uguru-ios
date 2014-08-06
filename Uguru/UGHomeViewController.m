@@ -8,21 +8,29 @@
 
 #import "UGHomeViewController.h"
 #import "UGNotificationTableViewCell.h"
+#import "UGAppDelegate.h"
 #import "UGNotificationTutorAcceptViewController.h"
 #import "UGNotificationStudentAcceptViewController.h"
 #import "UGNotificationStudentMatchViewController.h"
 #import "UGNotificationTutorMatchViewController.h"
 #import "UGNotificationStudentRequestViewController.h"
+#import "UGLeftMenuTableViewController.h"
 #import "UGRatingsViewController.h"
 #import "UGBillingContactsTableViewController.h"
 #import <AFNetworking/UIKit+AFNetworking.h>
 #import <NSDate+RelativeTime.h>
+#import "TheSidebarController.h"
 
+@interface UGHomeViewController() <TheSidebarControllerDelegate>
+    
+@end
 
 @implementation UGHomeViewController
 {
     Notification *_selectedNotification;
     NSDictionary *_billingContacts;
+    bool menu_on;
+    TheSidebarController *sidebarController;
 }
 
 - (void)viewDidLoad
@@ -32,17 +40,13 @@
     
     
     // Create top right toolbar items
-    UIBarButtonItem *profileButton = [[UIBarButtonItem alloc] initWithTitle:@"P" style:UIBarButtonItemStylePlain target:self action:@selector(goToProfile)];
-    UIBarButtonItem *accountButton = [[UIBarButtonItem alloc] initWithTitle:@"A" style:UIBarButtonItemStylePlain target:self action:@selector(goToAccount)];
-    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithTitle:@"S" style:UIBarButtonItemStylePlain target:self action:@selector(goToSettings)];
-    UIBarButtonItem *billingButton = [[UIBarButtonItem alloc] initWithTitle:@"$" style:UIBarButtonItemStylePlain target:self action:@selector(goToBilling)];
     UIBarButtonItem *messagesButton = [[UIBarButtonItem alloc] initWithTitle:@"M" style:UIBarButtonItemStylePlain target:self action:@selector(goToMessages)];
     UIBarButtonItem *requestsButton = [[UIBarButtonItem alloc] initWithTitle:@"A+" style:UIBarButtonItemStylePlain target:self action:@selector(goToRequests)];
     
     UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     spacer.width = 10;
     
-    [self.navigationItem setRightBarButtonItems:@[requestsButton, spacer, messagesButton, spacer, billingButton, spacer, settingsButton, spacer, accountButton, spacer, profileButton] animated:YES];
+    [self.navigationItem setRightBarButtonItems:@[requestsButton, spacer, messagesButton, spacer]];
     
     // Create left toolbar item
     UIBarButtonItem *hamburger = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"hamburger"] style:UIBarButtonItemStylePlain target:self action:@selector(showSidebar)];
@@ -75,6 +79,21 @@
         }];
     }
     
+    UIStoryboard *main = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle: nil];
+//    UGHomeViewController *centerViewController = [main instantiateViewControllerWithIdentifier:@"UGHomeViewController"];
+    UGLeftMenuTableViewController *leftSidebarViewController = [main instantiateViewControllerWithIdentifier:@"UGLeftMenuTableViewController"];
+    UINavigationController *contentViewController = [[UINavigationController alloc] initWithRootViewController:self];
+    
+    
+    sidebarController = [[TheSidebarController alloc] initWithContentViewController:contentViewController leftSidebarViewController:leftSidebarViewController storyboardsUseAutoLayout:YES];
+    
+    sidebarController.delegate = self;
+    
+    UIWindow *mainWindow = [UIApplication sharedApplication].windows[0];
+    mainWindow.rootViewController = sidebarController;
+    [mainWindow makeKeyAndVisible];
+    
+    
     // Go get 'em
     [self fetchNotifications];
     
@@ -84,6 +103,7 @@
 {
     [super viewWillAppear:animated];
     [self fetchNotifications];
+    menu_on = false;
     
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
 }
@@ -232,7 +252,13 @@
 
 - (void)showSidebar
 {
-    [self.sidebar show];
+    if (menu_on) {
+        [self.sidebarController dismissSidebarViewController];
+        menu_on = false;
+    } else {
+        [self.sidebarController presentLeftSidebarViewControllerWithStyle:SidebarTransitionStyleFacebook];
+        menu_on = true;
+    }
 }
 
 
@@ -313,6 +339,15 @@
     }
 }
 
+- (void) logoutUser {
+    [[UGModel sharedInstance] logoutUserWithSuccess:^(id responseObject) {
+        [self performSegueWithIdentifier:@"homeToWelcome" sender:self];
+    } fail:^(id errorObject) {
+        NSLog(@"FAILED TO LOGOUT, CHECK YOURSELF!");
+        [self performSegueWithIdentifier:@"homeToWelcome" sender:self];
+    }];
+}
+
 
 #pragma mark - Navigation
 
@@ -346,6 +381,42 @@
     }else if ([segue.identifier isEqualToString:@"homeToWelcome"]){
         [SSKeychain deletePasswordForService:UGURU_KEYCHAIN_SERVICE account:UGURU_KEYCHAIN_ACCOUNT];
     }
+}
+
+#pragma mark - TheSidebarController Delegate Methods
+- (void)sidebarController:(TheSidebarController *)controller willShowViewController:(UIViewController *)viewController
+{
+    NSLog(@"sidebarController:%@ willShowViewController:%@", sidebarController, viewController);
+    
+}
+
+- (void)sidebarController:(TheSidebarController *)controller didShowViewController:(UIViewController *)viewController
+{
+    NSLog(@"sidebarController:%@ didShowViewController:%@", controller, viewController);
+}
+
+- (void)sidebarController:(TheSidebarController *)controller willHideViewController:(UIViewController *)viewController
+{
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+}
+
+- (void)sidebarController:(TheSidebarController *)controller didHideViewController:(UIViewController *)viewController
+{
+    NSString *dst = [[UGModel sharedInstance] settings_dest];
+    
+    if ([dst isEqualToString:@"profile"]) {
+        [self goToProfile];
+    } else if ([dst isEqualToString:@"logout"]) {
+        [self logoutUser];
+    } else if ([dst isEqualToString:@"billing"]) {
+        [self goToBilling];
+    } else if ([dst isEqualToString:@"account"]) {
+        [self goToAccount];
+    } else if ([dst isEqualToString:@"settings"]) {
+        [self goToSettings];
+    }
+    [UGModel sharedInstance].settings_dest = nil;
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 
 @end

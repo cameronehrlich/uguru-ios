@@ -121,6 +121,8 @@
             sendSwitchNameToServer:@"hkn_tutor"];
 }
 
+
+
 - (IBAction)sendAction:(id)sender {
     NSMutableDictionary *params = [NSMutableDictionary new];
     [params setObject:self.email.text forKey:@"email"];
@@ -144,6 +146,11 @@
                                                                         delegate:nil
                                                                cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
                                          }];
+}
+
+- (IBAction)backAction:(id)sender {
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void) sendSwitchActionToServer:(id)sender sendSwitchNameToServer:(NSString*)switch_name {
