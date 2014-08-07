@@ -49,6 +49,8 @@
 		BF42828A19868FCA0049AE2E /* Calendar.m in Sources */ = {isa = PBXBuildFile; fileRef = BF42828919868FCA0049AE2E /* Calendar.m */; };
 		BF428296198831B50049AE2E /* UGNotificationStudentRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF428295198831B50049AE2E /* UGNotificationStudentRequestViewController.m */; };
 		BF4D9E74199155A00005503F /* UGLeftMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4D9E73199155A00005503F /* UGLeftMenuTableViewController.m */; };
+		BF4D9E7719929E930005503F /* UGShowSkillsViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4D9E7619929E930005503F /* UGShowSkillsViewLayout.m */; };
+		BF4D9E7A1992A2560005503F /* UGSkillCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4D9E791992A2560005503F /* UGSkillCollectionViewCell.m */; };
 		BF63078A198578BC0057EAEC /* UGCalendarCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF630789198578BC0057EAEC /* UGCalendarCollectionViewController.m */; };
 		BFAA65C41989447B000B9C02 /* PaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFAA65C31989447B000B9C02 /* PaymentViewController.m */; };
 		BFAA65C7198ADD50000B9C02 /* UGNotificationTutorMatchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFAA65C6198ADD50000B9C02 /* UGNotificationTutorMatchViewController.m */; };
@@ -146,6 +148,10 @@
 		BF428295198831B50049AE2E /* UGNotificationStudentRequestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGNotificationStudentRequestViewController.m; sourceTree = "<group>"; };
 		BF4D9E72199155A00005503F /* UGLeftMenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGLeftMenuTableViewController.h; sourceTree = "<group>"; };
 		BF4D9E73199155A00005503F /* UGLeftMenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGLeftMenuTableViewController.m; sourceTree = "<group>"; };
+		BF4D9E7519929E930005503F /* UGShowSkillsViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGShowSkillsViewLayout.h; sourceTree = "<group>"; };
+		BF4D9E7619929E930005503F /* UGShowSkillsViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGShowSkillsViewLayout.m; sourceTree = "<group>"; };
+		BF4D9E781992A2560005503F /* UGSkillCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGSkillCollectionViewCell.h; sourceTree = "<group>"; };
+		BF4D9E791992A2560005503F /* UGSkillCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGSkillCollectionViewCell.m; sourceTree = "<group>"; };
 		BF630788198578BC0057EAEC /* UGCalendarCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UGCalendarCollectionViewController.h; sourceTree = "<group>"; };
 		BF630789198578BC0057EAEC /* UGCalendarCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UGCalendarCollectionViewController.m; sourceTree = "<group>"; };
 		BFAA65C21989447B000B9C02 /* PaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentViewController.h; sourceTree = "<group>"; };
@@ -373,6 +379,10 @@
 				328918601980519F00221E42 /* UGMessageMeTableViewCell.m */,
 				32891862198051AA00221E42 /* UGMessageYouTableViewCell.h */,
 				32891863198051AA00221E42 /* UGMessageYouTableViewCell.m */,
+				BF4D9E7519929E930005503F /* UGShowSkillsViewLayout.h */,
+				BF4D9E7619929E930005503F /* UGShowSkillsViewLayout.m */,
+				BF4D9E781992A2560005503F /* UGSkillCollectionViewCell.h */,
+				BF4D9E791992A2560005503F /* UGSkillCollectionViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -553,6 +563,7 @@
 				BFAA65CD198AEFD0000B9C02 /* UGBillingContactsTableViewController.m in Sources */,
 				32891855198040A300221E42 /* UGInboxTableViewCell.m in Sources */,
 				BFAA65E2198F09D5000B9C02 /* UGProfileEditViewController.m in Sources */,
+				BF4D9E7719929E930005503F /* UGShowSkillsViewLayout.m in Sources */,
 				32891864198051AA00221E42 /* UGMessageYouTableViewCell.m in Sources */,
 				32C12937197DE30600FE483D /* Notification.m in Sources */,
 				3254E4C41975B64600205F33 /* UGAppDelegate.m in Sources */,
@@ -582,6 +593,7 @@
 				3241626719784D330055EF7A /* User.m in Sources */,
 				BFAA65CA198ADE3D000B9C02 /* UGNotificationStudentMatchViewController.m in Sources */,
 				BFAA65D9198DCB85000B9C02 /* UGSettingsViewController.m in Sources */,
+				BF4D9E7A1992A2560005503F /* UGSkillCollectionViewCell.m in Sources */,
 				BF4D9E74199155A00005503F /* UGLeftMenuTableViewController.m in Sources */,
 				BFAA65C7198ADD50000B9C02 /* UGNotificationTutorMatchViewController.m in Sources */,
 				BF3242D2198187590025D5EF /* UGNotificationStudentAcceptViewController.m in Sources */,

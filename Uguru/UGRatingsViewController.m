@@ -58,7 +58,6 @@
                                                                          andMaxRating:5];
     
     self.colorRatingControl.center = CGPointMake(self.view.frame.size.width / 2, photoRect.size.height - photoRect.origin.y + 15);
-    
     [self.view addSubview:self.colorRatingControl];
     
     [self.navigationItem setHidesBackButton:YES];
